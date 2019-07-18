@@ -1,0 +1,23 @@
+
+.Footer{
+  text-align: center;
+  width: 100vw;
+  background-color: white;
+}
+
+.Footer img:hover{
+  opacity: 0.5;
+}
+
+.imgWrapper{
+  height: 100%;;
+}
+
+.homeIcon{
+  height: 100%;
+}
+
+.homeIconNotActive{
+  height: 100%;
+  opacity: 0;
+}
