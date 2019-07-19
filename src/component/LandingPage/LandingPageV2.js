@@ -6,7 +6,7 @@ import './LandingPage.css';
 const LandingPage = () => {
   return (
     <div className="landingPage">
-       
+
       <img className="LandingImg" src={MYtineraryLogo} alt="homeLogo"></img>
       <p className="textIns">Find your perfect trip, designed by insiders who knows and love their cities.</p>
 
@@ -20,10 +20,10 @@ const LandingPage = () => {
         <a href="/CreateAccount"><p>Create Account</p></a>
       </div>
 
-     
+
 
     </div>
   )
-  }
-  
+}
+
 export default LandingPage;

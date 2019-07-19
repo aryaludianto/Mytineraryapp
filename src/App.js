@@ -1,15 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
-import LandingPage from './component/LandingPageV2'
+import LandingPage from './component/LandingPage/LandingPageV2'
 // eslint-disable-next-line no-unused-vars
-import Header from './component/Header'
+import Header from './component/Header/Header'
 // eslint-disable-next-line no-unused-vars
-import Footer from './component/Footer'
+import Footer from './component/Footer/Footer'
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter, Route } from 'react-router-dom'
-import Login from './component/Login'
-import CreateAccount from './component/CreateAccount'
-import Cities from './component/Cities'
+import Login from './component/Login/Login'
+import CreateAccount from './component/CreateAccount/CreateAccount'
+import Cities from './component/Cities/Cities'
 import './App.css'
 
 
