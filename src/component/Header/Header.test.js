@@ -1,17 +1,34 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { shallow } from 'enzyme';
-// import {describe, it, expect} from 'jest';
 // eslint-disable-next-line no-unused-vars
 import Header from './Header'
-// import { exportAllDeclaration } from '@babel/types';
+// import { wrap } from 'module';
+
+const setUp = (props = {}) => {
+  const component = shallow(<Header {...props} />)
+  return component;
+}
+
+const findByTestAtrr = (component, attr) => {
+  const wrapper = component.find(`[data-test='${attr}']`);
+  return wrapper;
+}
 
 describe('Header Component', () => {
+
+  let component;
+  beforeEach(() => {
+    component = setUp()
+  });
+
   it('should render-without errors', () => {
-    const component = shallow(<Header />);
-    // console.log(component.debug());
-    const wrapper = component.find('.Header');
-    expect(wrapper.length).toBe(1)
+    console.log(component.debug());
+    const wrapper = findByTestAtrr(component, Header)
+    console.log(wrapper)
+
+    expect(wrapper.length).toBe(0)
+    expect(component).toMatchSnapshot();
     // expect(1).toBe(1);
-  }) 
+  })
 })

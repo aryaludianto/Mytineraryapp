@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing Page Component should render-without errors 1`] = `
+<div
+  className="landingPage"
+>
+  <img
+    alt="homeLogo"
+    className="LandingImg"
+    src="MYtineraryLogo.png"
+  />
+  <p
+    className="textIns"
+  >
+    Find your perfect trip, designed by insiders who knows and love their cities.
+  </p>
+  <h3>
+    Start Browsing
+  </h3>
+  <a
+    href="/Cities"
+  >
+    <img
+      alt="homeLogo"
+      className="CircleRight"
+      src="circled-right-2.png"
+    />
+  </a>
+  <p
+    className="textIns"
+  >
+    Want to build your own MYtinerary?
+  </p>
+  <div
+    className="acc"
+  >
+    <a
+      href="/Login"
+    >
+      <p>
+        Log in
+      </p>
+    </a>
+    <a
+      href="/CreateAccount"
+    >
+      <p>
+        Create Account
+      </p>
+    </a>
+  </div>
+</div>
+`;

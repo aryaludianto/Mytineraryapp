@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render-without errors 1`] = `
+<div
+  className="Header"
+>
+  <a
+    className="userIcon"
+    href="/login"
+  >
+    <img
+      alt="userIcon"
+      className="userIconA"
+      src="https://img.icons8.com/wired/64/000000/circled-user.png"
+    />
+  </a>
+  <a
+    className="navIcon"
+    href="/"
+  >
+    <img
+      alt="navIcon"
+      className="navIconA"
+      src="https://img.icons8.com/ios-glyphs/90/000000/menu.png"
+    />
+  </a>
+</div>
+`;

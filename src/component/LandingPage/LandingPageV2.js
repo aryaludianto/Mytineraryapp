@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import MYtineraryLogo from '../img/MYtineraryLogo.png';
 import circledright2 from '../img/circled-right-2.png';
@@ -19,9 +20,6 @@ const LandingPage = () => {
         <a href="/Login"><p>Log in</p></a>
         <a href="/CreateAccount"><p>Create Account</p></a>
       </div>
-
-
-
     </div>
   )
 }
