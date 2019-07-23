@@ -21,10 +21,11 @@ a{
 }
 
 img.CircleRight {
-  margin-top: 5%;
-  height: 100%;
+  height: 85%;
   display: flex;
   margin: auto;
+  background-color: #3c4f57;
+  border-radius: 50%;
 }
 
 img.CircleRight:hover {
@@ -51,7 +52,7 @@ h3 {
 
 .acc p {
   margin: auto;
-  font-size: 140%;
+  font-size: 120%;
   text-decoration: underline;
 }
 
@@ -65,7 +66,7 @@ h3 {
 }
 
 .textIns {
-  font-size: 130%;
+  font-size: 125%;
   margin: 0 5% 0 5%;
   align-self: end;
 }

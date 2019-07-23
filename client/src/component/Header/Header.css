@@ -4,7 +4,7 @@ div.Header {
   margin-top: 2%;
   grid-template-columns: 1fr 1fr;
   width: 100vw;
-  background-color: white;
+  background-color: #db2f00;
 }
 
 a.userIcon {

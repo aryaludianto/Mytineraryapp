@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import MYtineraryLogo from '../img/MYtineraryLogo.png';
-import circledright2 from '../img/circled-right-2.png';
+import circledright2 from '../img/circled-right-2-white.png';
 import './LandingPage.css';
 
 const LandingPage = () => {

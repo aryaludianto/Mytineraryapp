@@ -1,6 +1,6 @@
 
 .App{
-  background-color:white;
+  background-color:#db2f00;
   display: grid;
   grid-template-rows: 6% 80% 7%;
   grid-auto-columns: auto;
