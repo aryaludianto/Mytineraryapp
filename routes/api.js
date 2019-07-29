@@ -1,18 +1,42 @@
 const express = require('express');
 // get an instance of router
 var router = express.Router();
+const Cities = require('../models/cities')
 
 // ROUTES
 // ==============================================
 
 //get a list
-router.get("/cities", (req, res) => res.send({ type: 'GET' }));
+router.get("/cities", (req, res, next) => {
+  Cities.find({}).then((cities)=>{
+    res.send(cities);
+  })
+})
+
 //add a new record
-router.post("/cities", (req, res) => res.send({ type: 'POST' }));
+router.post("/cities", (req, res, next) => {
+  Cities.create(req.body).then((cities) => {
+    res.send(cities)
+  }).catch(next)
+});
+
+
 //update record
-router.put("/cities/:id", (req, res) => res.send({ type: 'UPDATE' }));
+router.put("/cities/:id", (req, res, next) => {
+  Cities.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
+    Cities.findOne({ _id: req.params.id }).then((cities) => {
+      res.send(cities)
+    })
+  })
+
+});
+
 //delete a record
-router.delete("/cities/:id", (req, res) => res.send({ type: 'DELETE' }));
+router.delete("/cities/:id", (req, res, next) => {
+  Cities.findByIdAndRemove({ _id: req.params.id }).then((cities) => {
+    res.send(cities)
+  });
+});
 
 // about page route (http://localhost:8080/about)
 // router.get('/about', function (req, res) {
