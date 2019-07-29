@@ -13,8 +13,6 @@ import Cities from './component/Cities/Cities'
 import './App.css'
 
 
-
-
 class App extends Component {
 
 
