@@ -1,0 +1,49 @@
+.citiesBody {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.citiesFillContainer{
+ margin: 0 10% 3%;
+} 
+
+.cities {
+  overflow-y: scroll;
+  /* background-color: white; */
+  display: grid;
+  align-items: center;
+  grid-gap: 5%;
+  /* height: 100%; */
+  margin: 0 0 2%;
+}
+
+.citiesFilter {
+ font-size: 80%;
+}
+
+.citiesFill {
+  width: 100%;
+}
+
+.card{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  /* background-color: aquamarine; */
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  display: grid;
+}
+
+.citiesDisp {
+  padding: 0 2% 0;
+  text-align: center;
+}
+
+.citiesDisp h1 {
+  text-align: center;
+  text-shadow: 1.5px 1.5px white;
+  font-size: 120%;
+  display: grid;
+}

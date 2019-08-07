@@ -1,0 +1,120 @@
+.topCard {
+  margin: 4% 0 0;
+}
+
+.itineraries {
+  overflow-y: scroll;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 5%;
+  /* height: 100%; */
+  margin: 0 0 2%;
+}
+
+.itiCard{
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+}
+
+.profile{
+  display: grid;
+  grid-auto-rows: 1fr;
+}
+
+.profile p {
+  font-size: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.titContainer{
+  display: grid;
+}
+
+.itiTitle {
+  display: flex;
+  align-items: center;
+  font-size: 120%;
+  margin: auto auto auto 10%;
+}
+
+
+
+.ratings{
+  display: flex;
+  flex-direction: row;
+  font-size: 80%;
+  margin: 0 5% 0;
+}
+
+.ratings p {
+  margin:auto;
+}
+
+.tags{
+  display: flex;
+  flex-direction: row;
+  font-size: 80%;
+}
+
+.tags p{
+  margin: auto;
+}
+
+.viewAll{
+  text-align: center;
+  justify-items: center;
+  height: 100%;
+  background-color: #3c4f57;
+  /* border-radius: 50%; */
+}
+
+.viewAll p{
+  margin: auto;
+  color: white;
+}
+
+.itinerariesDisp {
+  /* display: grid; */
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  margin: 2%;
+  border-radius: 3%;
+}
+
+.profPic {
+  display: flex;
+  border-radius: 50%;
+  width: 70%;
+  margin: 5% auto;
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  /* border-radius: 5%; */
+  /* background-color: aquamarine; */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+}
+
+.citiesDisp {
+  padding: 0 2% 0;
+  text-align: center;
+}
+
+.citiesDisp h1 {
+  text-align: center;
+  text-shadow: 1.5px 1.5px white;
+  font-size: 120%;
+  display: grid;
+}
+
+.anotherCity{
+  text-align: center;
+  margin: 10% auto;
+  font-size: 120%;
+}

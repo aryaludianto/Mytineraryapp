@@ -6,11 +6,13 @@ import Header from './component/Header/Header'
 // eslint-disable-next-line no-unused-vars
 import Footer from './component/Footer/Footer'
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter, Route } from 'react-router-dom'
-import Login from './component/Login/Login'
-import CreateAccount from './component/CreateAccount/CreateAccount'
-import Cities from './component/Cities/Cities'
+import { BrowserRouter, Route } from 'react-router-dom';
+import Login from './component/Login/Login';
+import CreateAccount from './component/CreateAccount/CreateAccount';
+import Cities from './component/Cities/Cities';
+import Itineraries from './component/Itineraries/Itineraries';
 import './App.css'
+
 
 
 class App extends Component {
@@ -25,7 +27,7 @@ class App extends Component {
           <Route path='/Login' component={Login} />
           <Route path='/CreateAccount' component={CreateAccount} />
           <Route path='/Cities' component={Cities} />
-          {/* <LandingPage /> */}
+          <Route path='/Itineraries' component={Itineraries} />
           <Footer />
         </div>
       </BrowserRouter>

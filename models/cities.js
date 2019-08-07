@@ -9,7 +9,12 @@ const CitiesSchema = new Schema({
     required: [true, 'country field is required']
   },
   name: {
-    type: String
+    type: String,
+    required: [true, 'city name field is required']
+  },
+  img:{
+    type: String,
+    required: [false]
   }
 })
 

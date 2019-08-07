@@ -1,0 +1,12 @@
+export const SET_CITIES = 'SET_CITIES';
+export const ADD_CITIES = 'ADD_CITIES';
+export const DELETE_CITIES = 'DELETE_CITIES';
+export const EDIT_CITIES = 'EDIT_CITIES';
+export const PICK_CITY = 'PICK_CITY';
+
+
+export const SET_ITINERARIES = 'SET_ITINERARIES';
+export const ADD_ITINERARIES = 'ADD_ITINERARIES';
+export const DELETE_ITINERARIES = 'DELETE_ITINERARIES';
+export const EDIT_ITINERARIES = 'EDIT_ITINERARIES';
+
