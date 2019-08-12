@@ -28,7 +28,7 @@ class Cities extends Component {
   }
 
   render() {
-    
+
 
     const { cities } = this.props;
     const filteredCity = cities.filter(city => {
@@ -41,18 +41,20 @@ class Cities extends Component {
 
     const citiesDisp = filteredCity.map((city) => {
       return (
-        <Link Link to={`/Itineraries/${city.name.toLowerCase()}`} key={city._id}>
         <div className="citiesDisp" key={city._id}>
-          <div className="card" style={{
-            backgroundImage: `url(${city.img})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
-          }}>
-            <h1>{city.name}</h1>
-          </div>
+          <Link to={`/Itineraries/${city.name.toLowerCase()}`} key={city._id}>
+            <div className="card" style={{
+              backgroundImage: `url(${city.img})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat'
+            }}></div>
+            <div className="cityName">
+              <h1 className="cityName">{city.name}</h1>
+            </div>
+          </Link>
+
         </div>
-        </Link>
       )
     })
 
@@ -84,4 +86,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchCities  })(Cities);
+export default connect(mapStateToProps, { fetchCities })(Cities);

@@ -1,4 +1,4 @@
-.citiesBody {
+/* .citiesBody {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -11,11 +11,9 @@
 
 .cities {
   overflow-y: scroll;
-  /* background-color: white; */
   display: grid;
   align-items: center;
   grid-gap: 5%;
-  /* height: 100%; */
   margin: 0 0 2%;
 }
 
@@ -31,7 +29,6 @@
   height: 100%;
   width: 100%;
   margin: auto;
-  /* background-color: aquamarine; */
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   display: grid;
 }
@@ -46,4 +43,76 @@
   text-shadow: 1.5px 1.5px white;
   font-size: 120%;
   display: grid;
+} */
+
+
+
+
+
+
+.citiesBody {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.citiesFilter {
+  font-size: 80%;
+  margin-bottom: 2%;
+ }
+ 
+ .citiesFill {
+   width: 100%;
+ }
+
+.citiesFillContainer{
+ margin: 5% 10% 5%;
+} 
+
+
+
+.cities {
+  overflow-y: scroll;
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+  /* grid-gap: 5%; */
+  /* margin: 0 0 2%; */
+  height: 100%;
+ 
+}
+
+
+.card {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  /* border-radius: 5%; */
+  /* background-color: aquamarine; */
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+}
+
+.citiesDisp {
+  text-align: center;
+  height: 20vh;
+  width: 95%;
+  margin-top: 5%;
+  /* border: 1px solid black; */
+}
+
+h1.cityName {
+  text-align: end;
+  text-shadow: 1.5px 1px grey;
+  font-size: 100%;
+  margin-top: 2%;
+}
+
+a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
 }

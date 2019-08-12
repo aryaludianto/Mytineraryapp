@@ -24,7 +24,6 @@ router.get("/:city", (req, res, next) => {
 //add a new record
 router.post("/", (req, res, next) => {
   Itinerary.create(req.body).then((itinerary) => {
-    console.log(itinerary)
     res.send(itinerary)
   }).catch(next)
 });

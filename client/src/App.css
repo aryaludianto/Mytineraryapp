@@ -3,7 +3,7 @@
   background-color:#db2f00;
   display: grid;
   grid-template-rows: 6% 80% 7%;
-  grid-auto-columns: auto;
-  height: 100vh;
-  width: 100vw;
+  /* grid-auto-columns: auto; */
+  height: 100%;
+  width: 100%;
 }

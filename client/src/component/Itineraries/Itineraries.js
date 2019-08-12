@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 import { fetchItineraries } from '../../store/actions/itineraryActions'
 import { fetchCities } from '../../store/actions/citiesActions'
 import './Itinerary.css';
+import Activities from '../Activities/Activities';
 
 class Itineraries extends Component {
+
+
 
   componentDidMount() {
     this.props.fetchItineraries(window.location.href.split('/').splice(-1)[0]);
@@ -13,12 +16,7 @@ class Itineraries extends Component {
   }
 
 
-
-  state = {isOpen:false}
-
-
-
-
+  state = { isOpen: {} }
 
   render() {
     const { itineraries, cities } = this.props;
@@ -26,53 +24,61 @@ class Itineraries extends Component {
     itineraries.forEach(iti => iti.isOpen = false)
 
     let drop = (e) => {
-      itineraries.filter(iti => {
-        if (iti._id === e) iti.isOpen = !iti.isOpen
+      this.setState({
+        isOpen: {
+          ...this.state.isOpen,
+          [e]: !this.state.isOpen[e]
+        }
       })
-      console.log(itineraries)
     }
+
+
+
+
 
     const citiesDisp = cities.map((city) => {
       return (
         <div className="citiesDisp" key={city._id}>
-          <div className="card" style={{
+          <div className="cardT" style={{
             backgroundImage: `url(${city.img})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'
-          }}>
-            <h1>{city.name}</h1>
+          }}></div>
+          <div className="cityName">
+            <h1 className="cityName">{city.name}</h1>
           </div>
         </div>
+
       )
     })
 
     const itinerariesDisp = itineraries.map((itinerary) => {
 
-      let tag = itinerary.hashtag.map(hashtag => {
+      let tag = itinerary.hashtags.map(hashtag => {
         return <p>#{hashtag}</p>
       })
 
       return (
-        <div className="itinerariesDisp" key={itinerary._id}>
+        <div className="itinerariesDisp" key={itinerary._id}  onClick={() => drop(itinerary._id)}>
           <div className="itiCard" key={itinerary._id}>
             <div className="profile">
-              <img src={itinerary.profilePic} className='profPic' alt={itinerary.profileName} />
+              <img src={itinerary.profilePic} className='profPic' alt={itinerary.profileName} key={itinerary._id} />
               <p>{itinerary.profileName}</p>
             </div>
-            <div className="titContainer">
+            <div className="titContainer" key={itinerary._id}>
               <h1 className="itiTitle">{itinerary.title}</h1>
               <div className='ratings'>
                 <p>Likes: {itinerary.rating}</p>
                 <p>{itinerary.duration} Hours</p>
-                <p>$$</p>
+                <p>{itinerary.price}</p>
               </div>
               <div className="tags">{tag}</div>
             </div>
           </div>
-          {itinerary.isOpen && <div>Tokaay</div>}
-          <div className="viewAll" onClick={() => drop(itinerary._id)}>
-            {!itinerary.isOpen ? <p>View All</p> : <p>Close</p>}
+          {this.state.isOpen[itinerary._id] && <Activities itinerary={itinerary}></Activities>}
+          <div className="viewAll">
+            {!this.state.isOpen[itinerary._id] ? <p>View All</p> : <p>Close</p>}
           </div>
         </div>
       )
@@ -84,12 +90,12 @@ class Itineraries extends Component {
           <div>
             {citiesDisp}
           </div>
-          <p>Available Mytineraries</p>
+          { itinerariesDisp.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}
         </div>
         <div className="itineraries">
           {itinerariesDisp}
+          <div className="anotherCity"> <a href="/Cities">Choose Another City ⤶ </a></div>
         </div>
-        <div className="anotherCity"> <a href="/Cities">Choose Another City </a></div>
       </div>
     )
   }

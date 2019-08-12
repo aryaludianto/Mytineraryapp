@@ -25,7 +25,7 @@ app.use((err, req, res, next)=>{
 
 //---- THE END OF MIDDLEWARE ------
 
-const uri = 'mongodb+srv://arya123:arya123@clustermytinerary-wulcn.gcp.mongodb.net/mytinerary?retryWrites=true&w=majority';
+const uri = '';
 
 mongoose.connect(uri, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;

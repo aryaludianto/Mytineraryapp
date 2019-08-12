@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const ItinerarySchema = new Schema({
   title: {
     type: String,
-  }, 
+  },
   city: {
     type: String,
   },
@@ -23,11 +23,19 @@ const ItinerarySchema = new Schema({
     type: Number,
   },
   price: {
-    type: Number,
+    type: String,
   },
-  hashtag: {
+  hashtags: {
     type: Array,
-  }
+  },
+  activities: [{
+    name: String,
+    address: String,
+    img: String,
+    time: Number,
+    cost: String,
+    comments: String
+  }]
 })
 
 

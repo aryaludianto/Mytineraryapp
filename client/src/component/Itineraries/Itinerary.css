@@ -1,20 +1,27 @@
+.itinerariesBody{
+  /* overflow: scroll; */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+
 .topCard {
   margin: 4% 0 0;
 }
 
 .itineraries {
-  overflow-y: scroll;
+  overflow:scroll;
   /* background-color: white; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  grid-gap: 5%;
-  /* height: 100%; */
   margin: 0 0 2%;
 }
 
 .itiCard{
   display: grid;
+  /* border: 1px solid black; */
   grid-template-columns: 2fr 8fr;
 }
 
@@ -66,7 +73,6 @@
 .viewAll{
   text-align: center;
   justify-items: center;
-  height: 100%;
   background-color: #3c4f57;
   /* border-radius: 50%; */
 }
@@ -78,6 +84,8 @@
 
 .itinerariesDisp {
   /* display: grid; */
+  /* overflow-y: scroll; */
+
   background-color: white;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   margin: 2%;
@@ -91,7 +99,7 @@
   margin: 5% auto;
 }
 
-.card {
+.cardT {
   height: 100%;
   width: 100%;
   margin: auto;
@@ -102,19 +110,33 @@
 }
 
 .citiesDisp {
-  padding: 0 2% 0;
-  text-align: center;
+    padding: 0 2% 0;
+    text-align: center;
 }
 
-.citiesDisp h1 {
+/* .citiesDisp h1 {
   text-align: center;
   text-shadow: 1.5px 1.5px white;
   font-size: 120%;
   display: grid;
-}
+} */
 
 .anotherCity{
   text-align: center;
   margin: 10% auto;
   font-size: 120%;
+  background-color: white;
+}
+
+.anotherCity a {
+  color: blueviolet;
+}
+
+.noAvail{
+  font-size: 150%;
+  margin: 10% 10% 10% 10%;
+}
+
+.avail{
+  margin: 5% 0 3%;
 }
