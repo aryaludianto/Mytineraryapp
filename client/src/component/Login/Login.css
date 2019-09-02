@@ -1,0 +1,70 @@
+
+.Login{
+  background-color: white;
+  /* margin: 0 5% 0; */
+}
+
+.createHeadLog{
+  margin: 10px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.addPhoto{
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 15vh;
+  width: 25vw;
+  margin: auto;
+  display: flex;
+}
+
+.addPhoto p {
+  margin: auto;
+  text-align: center;
+}
+
+form {
+  display: grid;
+}
+
+.formInpLog{
+  display: grid;
+  /* flex-direction: row; */
+  grid-auto-columns: 2fr;
+  margin: 2%;
+  height: 5vh;
+}
+
+label{
+  display: flex;
+  flex-direction: row;
+}
+
+.formInpLog input{
+  width: 150%;
+}
+
+.formInpLog p{
+  width:100%;
+}
+
+.formInp select{
+  width:50%;
+  margin-left: 0;
+}
+
+.submtLog{
+  width: 20%;
+  height: 100%;
+  margin: 2% auto;
+}
+
+.textLog{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: auto;
+}
+
+a {
+  text-decoration:fuchsia;
+}

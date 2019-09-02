@@ -35,7 +35,6 @@ class Itineraries extends Component {
 
 
 
-
     const citiesDisp = cities.map((city) => {
       return (
         <div className="citiesDisp" key={city._id}>
