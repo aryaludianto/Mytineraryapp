@@ -20,10 +20,6 @@ router.get("/:city", (req, res, next) => {
   })
 })
 
-
-
-
-
 //add a new record
 router.post("/", (req, res, next) => {
   Cities.create(req.body).then((cities) => {

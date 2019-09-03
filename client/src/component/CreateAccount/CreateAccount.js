@@ -1,5 +1,9 @@
 import React from 'react';
-import './CreateAccount.css'
+import './CreateAccount.css';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { userSignupRequest, fetchUsers } from '../../store/actions/signUpActions'
+
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -7,7 +11,7 @@ class CreateAccount extends React.Component {
     this.state = {
       username: '',
       password: '',
-      passwordConf:'',
+      passwordConf: '',
       email: '',
       firstName: '',
       lastName: '',
@@ -22,7 +26,12 @@ class CreateAccount extends React.Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
+    this.props.fetchUsers(this.state.email)
+    console.log(this.props.users)
+    
+    
+
+    // this.props.userSignupRequest(this.state)
   }
 
 
@@ -91,4 +100,15 @@ class CreateAccount extends React.Component {
   }
 }
 
-export default CreateAccount;
+CreateAccount.propTypes = {
+  userSignupRequest: PropTypes.func.isRequired
+}
+
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.users
+  }
+}
+
+export default connect(mapStateToProps, {fetchUsers, userSignupRequest}) (CreateAccount);
