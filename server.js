@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser'); //Body parser
 const mongoose = require('mongoose')
 const keys = require('./keys/mongoKey')
+const passportSetup = require('./config/passport-setup')
 
 
 // ---- THIS IS MIDDLEWARE ----------

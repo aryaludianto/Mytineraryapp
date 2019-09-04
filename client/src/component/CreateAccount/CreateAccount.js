@@ -11,7 +11,6 @@ class CreateAccount extends React.Component {
     this.state = {
       username: '',
       password: '',
-      passwordConf: '',
       email: '',
       firstName: '',
       lastName: '',
@@ -23,14 +22,12 @@ class CreateAccount extends React.Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
+    if(this.state.email) this.props.fetchUsers(this.state.email)
   }
+
   onSubmit(e) {
     e.preventDefault();
-    this.props.fetchUsers(this.state.email)
-    console.log(this.props.users)
-    
-    
-
+    this.props.userSignupRequest(this.state)
     // this.props.userSignupRequest(this.state)
   }
 
@@ -55,13 +52,9 @@ class CreateAccount extends React.Component {
           </div>
           <div className="formInp">
             <label>
-              <p>Confirm Password:</p><input type="password" name="confPassword" value={this.state.passwordConf} onChange={this.onChange}></input>
-            </label>
-          </div>
-          <div className="formInp">
-            <label>
               <p>Email:</p><input type="text" name="email" value={this.state.email} onChange={this.onChange}></input>
             </label>
+            { this.props.users[0] && <p>Email already exist!!!</p>}
           </div>
           <div className="formInp">
             <label>
@@ -93,7 +86,7 @@ class CreateAccount extends React.Component {
               <input type="checkbox" value="agree" /> I agree to Mytinerary's Terms & Conditions
             </label>
           </div>
-          <input className="submt" type="submit" value="OK" />
+          { !this.props.users[0] && <input className="submt" type="submit" value="OK" />}
         </form>
       </div>
     );

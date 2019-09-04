@@ -10,9 +10,6 @@ const UserSchema = new Schema({
   password: {
     type: String,
   },
-  passwordConf:{
-    type: String,
-  },
   email:{
     type: String,
   },

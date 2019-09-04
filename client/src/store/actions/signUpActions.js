@@ -26,11 +26,13 @@ export function fetchUsers(user) {
 }
 
 
+
 export function userSignupRequest(user) {
   return dispatch => {
-    // eslint-disable-next-line quotes
-    fetch(`/users/${user}`)
-      .then(res => res.json())
-      .then(user => dispatch(setUsers(user)))
+    fetch('/users/', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    }).then(user => dispatch(addUser(user)))
   }
 }
