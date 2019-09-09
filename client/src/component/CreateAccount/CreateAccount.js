@@ -22,7 +22,7 @@ class CreateAccount extends React.Component {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
-    if(this.state.email) this.props.fetchUsers(this.state.email)
+    this.state.email && this.props.fetchUsers(this.state.email)
   }
 
   onSubmit(e) {
@@ -54,7 +54,7 @@ class CreateAccount extends React.Component {
             <label>
               <p>Email:</p><input type="text" name="email" value={this.state.email} onChange={this.onChange}></input>
             </label>
-            { this.props.users[0] && <p>Email already exist!!!</p>}
+            {this.props.users[0] && <p>Email already exist!!!</p>}
           </div>
           <div className="formInp">
             <label>
@@ -86,7 +86,7 @@ class CreateAccount extends React.Component {
               <input type="checkbox" value="agree" /> I agree to Mytinerary's Terms & Conditions
             </label>
           </div>
-          { !this.props.users[0] && <input className="submt" type="submit" value="OK" />}
+          {!this.props.users[0] && <input className="submt" type="submit" value="OK" />}
         </form>
       </div>
     );
@@ -104,4 +104,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers, userSignupRequest}) (CreateAccount);
+export default connect(mapStateToProps, { fetchUsers, userSignupRequest })(CreateAccount);

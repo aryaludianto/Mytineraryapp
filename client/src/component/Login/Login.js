@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.css';
+import responseGoogle from '../googleLogin/googleLogin'
 
 class Login extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Login extends React.Component {
         <form onSubmit={this.onSubmit}>
           <div className="formInp">
             <label>
-              <p>Username:</p><input type="text" name="username" value={this.state.username} onChange={this.onChange}></input>
+              <p>Email:</p><input type="text" name="username" value={this.state.username} onChange={this.onChange}></input>
             </label>
           </div>
           <div className="formInpLog">
@@ -44,6 +45,8 @@ class Login extends React.Component {
           </div>
           <input className="submtLog" type="submit" value="OK" />
         </form>
+
+        {/* {responseGoogle} */}
 
         <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
 
