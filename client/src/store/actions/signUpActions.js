@@ -36,3 +36,22 @@ export function userSignupRequest(user) {
     }).then(user => dispatch(addUser(user)))
   }
 }
+
+//Adding google auth
+
+// export const oauthGoogle = accessToken => {
+//   return async dispatch => {
+//     console.log('we received', accessToken);
+//     const res = await fetch('/auth/googlelogin', {
+//       method:'post',
+//       access_token: accessToken
+//     });
+//     dispatch({
+//       type: ADD_USER,
+//       payload: res.data
+//     });
+//     console.log('res', res);
+//     localStorage.setItem('user', res.data.token);
+//     localStorage.setItem('email', res.data.user.email);
+//   };
+// };

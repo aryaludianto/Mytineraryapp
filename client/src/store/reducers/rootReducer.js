@@ -2,7 +2,8 @@ import citiesReducer  from './citiesReducer';
 import { combineReducers } from 'redux';
 import itinerariesReducer from './itineraryReducers';
 import usersReducer from './userReducers';
+import loginReducer from './loginReducers'
 
-const rootReducer = combineReducers({ cities:citiesReducer, itineraries:itinerariesReducer, users:usersReducer })
+const rootReducer = combineReducers({ cities:citiesReducer, itineraries:itinerariesReducer, users:usersReducer, login:loginReducer })
 
 export default rootReducer;

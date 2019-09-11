@@ -15,14 +15,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-//auth
-app.use('/auth', require('./routes/auth-routes'))
-
-
 //initialized routes
 app.use('/users', require('./routes/users'))
 app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
+
+//auth
+app.use('/auth', require('./routes/auth-routes'))
+app.use('/log', require('./routes/login'))
+
+
 
 //error handling middleware
 app.use((err, req, res, next)=>{
@@ -32,7 +34,6 @@ app.use((err, req, res, next)=>{
 //---- THE END OF MIDDLEWARE ------
 
 const uri = keys.mongoDB.uri;
-
 
 mongoose.connect(uri, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
