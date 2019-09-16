@@ -23,14 +23,15 @@ router.get('/logout', (req, res) => {
 
 
 // auth with google
-router.get('/google',
-passport.authenticate('google',{
-  scope:['profile', 'email']
-})
+router.get(
+  '/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email']
+  })
 );
 
 //callback routes for google to riderect to
-router.get('/google/redirect', passport.authenticate('google'), (req, res) =>{
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   res.send('you have reach the callback URI')
 })
 

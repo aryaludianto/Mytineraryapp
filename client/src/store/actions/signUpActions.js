@@ -16,12 +16,12 @@ export function addUser(user) {
 }
 
 
-export function fetchUsers(user) {
+export function fetchUsers(email) {
   return dispatch => {
     // eslint-disable-next-line quotes
-    fetch(`/users/${user}`)
+    fetch(`/users/${email}`)
       .then(res => res.json())
-      .then(user => dispatch(setUsers(user)))
+      .then(email => dispatch(setUsers(email)))
   }
 }
 

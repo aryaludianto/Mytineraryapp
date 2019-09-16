@@ -6,7 +6,10 @@ import { connect } from 'react-redux';
 import GoogleLogin from 'react-google-login';
 import google from '../img/google_logo.png';
 import PropTypes from 'prop-types';
-import { checkAccount, oauthGoogle } from '../../store/actions/loginActions'
+import {
+  checkAccount,
+  oauthGoogle
+} from '../../store/actions/loginActions'
 
 class Login extends React.Component {
   constructor(props) {
