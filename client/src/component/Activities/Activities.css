@@ -1,0 +1,39 @@
+.activeContainer {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.actvContainer{
+  display: flex;
+  /* overflow: scroll; */
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.activitesContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.actv {
+  display: flex;
+}
+
+.imageContainer {
+  display: flex;
+  height: 100px;
+  width: 150px;
+  margin: 5px;
+  text-align: center;
+}
+
+.activityName {
+  text-align: center;
+  margin: auto;
+  color: white;
+}

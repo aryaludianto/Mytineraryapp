@@ -3,22 +3,21 @@ div.Header {
   grid-auto-flow: column;
   margin-top: 2%;
   grid-template-columns: 1fr 1fr;
-  width: 100vw;
+  width: 100%;
   background-color: #db2f00;
 }
 
 a.userIcon {
   display: grid;
-  margin-left: 10%;
-  height: 100%;
+  margin-left: 40%;
+  height: 150%;
 }
 
 a.navIcon {
   display: grid;
-
   justify-self: end;
-  margin-right: 10%;
-  height: 100%;
+  margin-right: 40%;
+  height: 150%;
 }
 
 .userIcon:hover,
@@ -33,6 +32,53 @@ a.navIcon {
 
 .navIconA {
   display: grid;
-
   height: 100%;
+}
+
+
+@media (max-height:812px){
+
+  div.Header {
+    display: grid;
+    grid-auto-flow: column;
+    margin-top: 2%;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    background-color: #db2f00;
+  }
+  
+  a.userIcon {
+    display: grid;
+    margin-left: 10%;
+    height: 100%;
+  }
+  
+  a.navIcon {
+    display: grid;
+  
+    justify-self: end;
+    margin-right: 10%;
+    height: 100%;
+  }
+  
+  .userIcon:hover,
+  .navIcon:hover {
+    opacity: 0.5;
+  }
+  
+  .userIconA {
+    display: grid;
+    height: 100%;
+  }
+  
+  .navIconA {
+    display: grid;
+  
+    height: 100%;
+  }
+
+}
+
+@media (max-height:667px){
+
 }

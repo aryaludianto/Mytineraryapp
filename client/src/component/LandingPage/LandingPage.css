@@ -8,6 +8,90 @@ h3 {
   grid-template-rows: 30% 10% 10% 20% 10% 10%;
   grid-auto-columns: auto;
   height: 100%;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin-top: 3%;
+  padding: 0;
+}
+
+a{
+  display: grid;
+  height: 100%;
+}
+
+img.CircleRight {
+  height: 85%;
+  display: flex;
+  margin: auto;
+  background-color: #3c4f57;
+  border-radius: 50%;
+}
+
+img.CircleRight:hover {
+  opacity: 0.5;
+}
+
+img.LandingImg {
+  margin: auto ;
+  background-color: white;
+}
+
+h3 {
+  font-size: 160%;
+}
+
+.acc {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-self: end;
+}
+
+.acc p {
+  margin: auto;
+  font-size: 200%;
+  text-decoration: underline;
+}
+
+.acc p:hover{
+  opacity: 0.5;
+}
+
+.homeIcon {
+  height: 100%;
+  margin: auto;
+}
+
+.textIns {
+  font-size: 200%;
+  margin: 0 5% 0 5%;
+  align-self: end;
+}
+
+.acc a {
+  margin: auto;
+  font-size: 100%;
+  text-decoration: underline;
+}
+
+
+
+
+
+
+@media (max-height:812px){
+
+  p,
+h3 {
+  font-family: "DM Serif Text", serif;
+}
+.landingPage {
+  background-color: white;
+  display: grid;
+  grid-template-rows: 30% 10% 10% 20% 10% 10%;
+  grid-auto-columns: auto;
+  height: 100%;
   width: 100vw;
   align-items: center;
   text-align: center;
@@ -78,3 +162,20 @@ h3 {
 }
 
 
+
+
+}
+
+
+
+@media (max-height:667px) {
+
+
+  .textIns {
+    font-size: 100%;
+    margin: 0 5% 0 5%;
+    align-self: end;
+  }
+
+
+}

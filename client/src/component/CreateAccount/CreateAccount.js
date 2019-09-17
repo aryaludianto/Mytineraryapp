@@ -1,13 +1,107 @@
 import React from 'react';
+import './CreateAccount.css';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { userSignupRequest, fetchUsers } from '../../store/actions/signUpActions'
 
-function CreateAccount() {
 
+class CreateAccount extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      email: '',
+      firstName: '',
+      lastName: '',
+      country: ''
+    }
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
+    this.state.email && this.props.fetchUsers(this.state.email)
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.userSignupRequest(this.state)
+    // this.props.userSignupRequest(this.state)
+  }
+
+
+  render() {
     return (
-      <div className="App">
-          <h1>this is Create Account Page</h1>
+      <div className="CreateAccount">
+        <h1 className="createHead">Create Account</h1>
+        <div className="addPhoto">
+          <p>Add Photo</p>
+        </div>
+        <form onSubmit={this.onSubmit}>
+          <div className="formInp">
+            <label>
+              <p>Username:</p><input type="text" name="username" value={this.state.username} onChange={this.onChange}></input>
+            </label>
+          </div>
+          <div className="formInp">
+            <label>
+              <p>Password:</p><input type="password" name="password" value={this.state.password} onChange={this.onChange}></input>
+            </label>
+          </div>
+          <div className="formInp">
+            <label>
+              <p>Email:</p><input type="text" name="email" value={this.state.email} onChange={this.onChange}></input>
+            </label>
+            {this.props.users[0] && <p>Email already exist!!!</p>}
+          </div>
+          <div className="formInp">
+            <label>
+              <p>First Name:</p><input type="text" name="firstName" value={this.state.firstName} onChange={this.onChange}></input>
+            </label>
+          </div>
+          <div className="formInp">
+            <label>
+              <p>Last Name:</p><input type="text" name="lastName" value={this.state.lastName} onChange={this.onChange}></input>
+            </label>
+          </div>
+          <div className="formInp">
+            <label>
+              <p>Country:</p>
+              <select className="countrySelect" value={this.state.country} onChange={this.onChange}>
+                <option value="" disabled>Choose</option>
+                <option value="England">England</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="Holland">Holland</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Spain">Spain</option>
+                <option value="United States">United States</option>
+              </select>
+            </label>
+          </div>
+          <div className="userAgree">
+            <label>
+              <input type="checkbox" value="agree" /> I agree to Mytinerary's Terms & Conditions
+            </label>
+          </div>
+          {!this.props.users[0] && <input className="submt" type="submit" value="OK" />}
+        </form>
       </div>
     );
-
+  }
 }
 
-export default CreateAccount;
+CreateAccount.propTypes = {
+  userSignupRequest: PropTypes.func.isRequired
+}
+
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.users
+  }
+}
+
+export default connect(mapStateToProps, { fetchUsers, userSignupRequest })(CreateAccount);
