@@ -48,7 +48,6 @@ router
           email: user.email,
           name: user.firstName + " " + user.lastName
         },
-        // process.env.JWT_KEY,
         config.secret,
         {
           expiresIn: "24h"

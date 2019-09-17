@@ -10,7 +10,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
   case AUTH_SIGN_UP:
-    console.log("reducer");
+    // console.log('reducer');
     return {
       ...state,
       token: action.payload.token,
