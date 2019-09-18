@@ -58,3 +58,23 @@ label{
   width: 40%;
   margin: 2% auto;
 }
+
+
+
+/* redesign starts here */
+
+.input {
+  display: flex;
+  margin: 10px;
+}
+
+.form-label {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  color: #484848;
+}
+
+.error {
+  background: pink;
+}

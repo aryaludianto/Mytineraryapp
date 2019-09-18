@@ -26,16 +26,37 @@ export function fetchUsers(email) {
 }
 
 
-
 export function userSignupRequest(user) {
+  console.log(user)
   return dispatch => {
     fetch('/users/', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user)
     }).then(user => dispatch(addUser(user)))
+      .catch(err => {
+        console.log(err);
+      })
   }
 }
+
+
+
+
+
+
+// export function userSignupRequest(user) {
+//   return dispatch => {
+//     fetch('/users/', {
+//       method: 'post',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(user)
+//     }).then(user => dispatch(addUser(user)))
+//       .catch(err => {
+//         console.log(err);
+//       })
+//   }
+// }
 
 //Adding google auth
 
