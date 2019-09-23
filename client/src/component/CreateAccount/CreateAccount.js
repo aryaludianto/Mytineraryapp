@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userSignupRequest, fetchUsers } from '../../store/actions/signUpActions'
 import Add from '@material-ui/icons/Add';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Country from './Country'
+// import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 const emailRegx = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
+
+const countries = Country;
 
 const formIsValid = ({ formErrors, ...rest }) => {
   let valid = true;
@@ -56,42 +59,38 @@ class CreateAccount extends React.Component {
   }
 
 
-
-
-
-
   onChange(e) {
     e.preventDefault();
     const { name, value } = e.target;
     let formErrors = this.state.formErrors;
 
     switch (name) {
-    case 'username':
-      formErrors.userName =
-        value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'password':
-      formErrors.password =
-        value.length < 6 ? 'minimum 3 characters required' : '';
-      break;
-    case 'email':
-      formErrors.email = emailRegx.test(value)
-        ? ''
-        : 'invalid email address';
-      break;
-    case 'firstname':
-      formErrors.firstName =
-        value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'lastname':
-      formErrors.lastName =
-        value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'country':
-      formErrors.country = value.length < 0 ? 'please choose a country' : "";
-      break;
-    default:
-      break;
+      case 'username':
+        formErrors.username =
+          value.length < 3 ? 'minimum 3 characters required' : '';
+        break;
+      case 'password':
+        formErrors.password =
+          value.length < 6 ? 'minimum 3 characters required' : '';
+        break;
+      case 'email':
+        formErrors.email = emailRegx.test(value)
+          ? ''
+          : 'invalid email address';
+        break;
+      case 'firstname':
+        formErrors.firstname =
+          value.length < 3 ? 'minimum 3 characters required' : '';
+        break;
+      case 'lastname':
+        formErrors.lastname =
+          value.length < 3 ? 'minimum 3 characters required' : '';
+        break;
+      case 'country':
+        formErrors.country = value.length < 0 ? 'please choose a country' : "";
+        break;
+      default:
+        break;
     }
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
@@ -138,10 +137,7 @@ class CreateAccount extends React.Component {
         'lastname': this.state.lastname,
         'country': this.state.country
       }
-
-
       this.props.userSignupRequest(user)
-
     }
     this.props.history.push('/')
   }
@@ -159,11 +155,12 @@ class CreateAccount extends React.Component {
 
   render() {
     const { formErrors } = this.state;
+
     return (
       <div className="CreateAccount">
         <h1 className="createHead">Create Account</h1>
         <div className="addPhoto">
-          <p>Add Photo</p>
+          <p>Add Photo <Add /> </p>
         </div>
 
         <form
@@ -178,6 +175,8 @@ class CreateAccount extends React.Component {
               </div>
             </div>
           </label> */}
+
+
 
           {/*redesign starts here */}
           <div className="userName form-Group input" >
@@ -197,31 +196,103 @@ class CreateAccount extends React.Component {
                   : 'form-control'
               }
               style={{ flex: 2 }} />
+
+            {formErrors.username.length > 0 && (
+              <span>{formErrors.username}</span>
+            )}
           </div>
 
 
-          <div className="formInp">
-            <label>
-              <p>Password:</p><input type="password" name="password" value={this.state.password} onChange={this.onChange}></input>
+
+
+          <div className="password input form-Group">
+            <label className="form-label"
+              style={{ flex: 1 }}
+              htmlFor="password"
+            >
+              Password:{' '}
             </label>
+            <input type="password" name="password" onChange={this.onChange}
+              className={
+                formErrors.password.length > 0 ? 'error form-control'
+                  : 'form-control'
+              }
+            />
+            {formErrors.password.length > 0 && (<span>
+              {formErrors.password}
+            </span>)}
           </div>
-          <div className="formInp">
-            <label>
-              <p>Email:</p><input type="text" name="email" value={this.state.email} onChange={this.onChange}></input>
+
+
+          <div className="email input form-Group">
+            <label className="form-label" style={{ flex: 1 }}
+              htmlFor="email">
+              Email:{' '}
             </label>
-            {this.props.users[0] && <p>Email already exist!!!</p>}
+            <input
+              type="email"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              className={
+                formErrors.email.length > 0
+                  ? 'error form-control'
+                  : 'form-control'
+              }
+            />
+            {formErrors.email.length > 0 && <span>{formErrors.email}</span>}
+            {/* {this.props.users[0] && <p>Email already exist!!!</p>} */}
           </div>
-          <div className="formInp">
-            <label>
-              <p>First Name:</p><input type="text" name="firstName" value={this.state.firstName} onChange={this.onChange}></input>
+
+
+          <div className="firstName input form-group">
+            <label
+              className="form-label"
+              style={{ flex: 1 }}
+              htmlFor="firstname"
+            >
+              First Name:{' '}
             </label>
+            <input type="text"
+              name="firstname"
+              onChange={this.onChange}
+              className={
+                formErrors.firstname.length > 0
+                  ? 'error form-control'
+                  : 'form-control'
+              }
+              style={{ flex: 2 }}
+            />
+            {formErrors.firstname.length > 0
+              && (<span>{formErrors.firstname} </span>)}
           </div>
-          <div className="formInp">
-            <label>
-              <p>Last Name:</p><input type="text" name="lastName" value={this.state.lastName} onChange={this.onChange}></input>
+
+
+          <div className="lastName input form-group">
+            <label
+              className="form-label"
+              style={{ flex: 1 }}
+              htmlFor="lastname"
+            >
+              Last Name:{' '}
             </label>
+            <input type="text"
+              name="lastName"
+              onChange={this.onChange}
+              className={
+                formErrors.lastname.length > 0
+                  ? 'form-control'
+                  : 'form-control'
+              }
+              style={{ flex: 2 }}
+            />
+            {formErrors.lastname.length > 0 && (<span>{formErrors.lastname}</span>)
+            }
           </div>
-          <div className="formInp">
+
+
+
+          {/* <div className="formInp">
             <label>
               <p>Country:</p>
               <select className="countrySelect" value={this.state.country} onChange={this.onChange}>
@@ -235,13 +306,89 @@ class CreateAccount extends React.Component {
                 <option value="United States">United States</option>
               </select>
             </label>
+          </div> */}
+
+          <div className="country form-group input">
+            <label
+              className="form-label"
+              style={{ flex: 1 }}
+              htmlFor="country"
+            >
+              Country:{' '}
+            </label>
+            <select
+              className="custom-select"
+              name="country"
+              onChange={this.onChange}
+              required
+              style={{ flex: 2 }}
+              value={this.state.country}
+            >
+              <option value='Choose your country' disabled>
+                Choose your country{' '}
+              </option>
+
+              {countries.map(country => (
+                <option key={country.code} value={country.name}>
+                  {country.name}
+                </option>
+              ))}
+
+            </select>
+            {formErrors.country.length > 0 && (
+              <span>{formErrors.country}</span>
+            )}
           </div>
-          <div className="userAgree">
+
+
+
+
+          {/* <div className="userAgree">
             <label>
               <input type="checkbox" value="agree" /> I agree to Mytinerary's Terms & Conditions
             </label>
           </div>
           {!this.props.users[0] && <input className="submt" type="submit" value="OK" />}
+        */}
+
+          <div>
+            <input className="form-check-input" required type="checkbox" />
+            <label className="form-check-label">
+              I agree to MYtinerary's Terms &amp; Conditions
+            </label>
+          </div>
+
+
+
+          <div style={{ marginBottom: '80px', marginTop: '20px' }}>
+            {' '}
+            {this.state.submitReady ? (
+              <button
+                style={{
+                  width: '70%',
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  fontWeight: 'bold'
+                }}
+                className="btn btn-primary"
+              >
+                OK
+              </button>
+            ) : (
+              <button
+                style={{
+                  width: '70%',
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  fontWeight: 'bold'
+                }}
+                className="btn btn-outline-primary"
+              >
+                  OK
+              </button>
+            )}
+          </div>
+
         </form>
       </div>
     );
