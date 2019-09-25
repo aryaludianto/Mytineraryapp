@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import { SET_USERS, ADD_USER, DELETE_USER, EDIT_USER, PICK_USER } from './actions'
+import axios from 'axios';
+
 
 export function setUsers(users) {
   return {
@@ -26,19 +28,59 @@ export function fetchUsers(email) {
 }
 
 
-export function userSignupRequest(user) {
-  console.log(user)
-  return dispatch => {
-    fetch('/users/', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user)
-    }).then(user => dispatch(addUser(user)))
-      .catch(err => {
-        console.log(err);
-      })
-  }
-}
+// export function userSignupRequest(user) {
+//   console.log(user)
+//   return dispatch => {
+//     fetch('/users/', {
+//       method: 'post',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(user)
+//     }).then(user => dispatch(addUser(user)))
+//       .catch(err => {
+//         console.log(err);
+//       })
+//   }
+// }
+
+
+// export function userSignupRequest(formData) {
+//   console.log(formData);  
+//   return dispatch => {
+//     axios
+//       .post('/users/', formData)
+//       .then(res => {
+//         console.log(res);
+//         console.log(res.data);
+//         dispatch(addUser(formData))
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   };
+// }
+
+
+export const userSignupRequest = formData => dispatch => {
+  console.log(formData);
+  
+  // const config = {
+  //   headers: { 'content-type': 'multipart/form-data' }
+  // }
+
+  axios
+    .post('/users/', formData)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      dispatch({
+        type: SET_USERS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 
 
@@ -46,6 +88,7 @@ export function userSignupRequest(user) {
 
 
 // export function userSignupRequest(user) {
+// console.log(user)
 //   return dispatch => {
 //     fetch('/users/', {
 //       method: 'post',

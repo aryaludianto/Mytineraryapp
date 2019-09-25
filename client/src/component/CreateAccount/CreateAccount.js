@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import './CreateAccount.css';
 import PropTypes from 'prop-types';
@@ -33,12 +34,13 @@ class CreateAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedFile: null,
       submitReady: false,
       username: '',
       password: '',
       email: '',
-      firstName: '',
-      lastName: '',
+      firstname: '',
+      lastname: '',
       country: 'Choose Country',
       formErrors: {
         username: '',
@@ -55,6 +57,7 @@ class CreateAccount extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleButtonChange = this.handleButtonChange.bind(this);
+    this.handleFile = this.handleFile.bind(this);
 
   }
 
@@ -65,32 +68,32 @@ class CreateAccount extends React.Component {
     let formErrors = this.state.formErrors;
 
     switch (name) {
-      case 'username':
-        formErrors.username =
+    case 'username':
+      formErrors.username =
           value.length < 3 ? 'minimum 3 characters required' : '';
-        break;
-      case 'password':
-        formErrors.password =
+      break;
+    case 'password':
+      formErrors.password =
           value.length < 6 ? 'minimum 3 characters required' : '';
-        break;
-      case 'email':
-        formErrors.email = emailRegx.test(value)
-          ? ''
-          : 'invalid email address';
-        break;
-      case 'firstname':
-        formErrors.firstname =
+      break;
+    case 'email':
+      formErrors.email = emailRegx.test(value)
+        ? ''
+        : 'invalid email address';
+      break;
+    case 'firstname':
+      formErrors.firstname =
           value.length < 3 ? 'minimum 3 characters required' : '';
-        break;
-      case 'lastname':
-        formErrors.lastname =
+      break;
+    case 'lastname':
+      formErrors.lastname =
           value.length < 3 ? 'minimum 3 characters required' : '';
-        break;
-      case 'country':
-        formErrors.country = value.length < 0 ? 'please choose a country' : "";
-        break;
-      default:
-        break;
+      break;
+    case 'country':
+      formErrors.country = value.length < 0 ? 'please choose a country' : "";
+      break;
+    default:
+      break;
     }
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
@@ -100,9 +103,14 @@ class CreateAccount extends React.Component {
   }
 
 
+  handleFile(event) {
+    console.log('this is event', event);
+    console.log('selectedfile', event.target.files[0]);
+    this.setState({ selectedFile: event.target.files[0] });
+  }
+
   onSubmit(e) {
     e.preventDefault();
-
 
     if (formIsValid(this.state)) {
       console.log(`Submitting
@@ -118,26 +126,32 @@ class CreateAccount extends React.Component {
 
 
     if (formIsValid(this.state)) {
-      // let formData = new FormData();
 
-      // formData.append("username", this.state.username);
-      // formData.append("password", this.state.password);
-      // formData.append("email", this.state.email);
-      // formData.append("firstname", this.state.firstname);
-      // formData.append("lastname", this.state.lastname);
-      // formData.append("country", this.state.country);
+      // let user = {
+      //   'file': this.state.selectedFile,
+      //   'username': this.state.username,
+      //   'password': this.state.password,
+      //   'email': this.state.email,
+      //   'firstname': this.state.firstname,
+      //   'lastname': this.state.lastname,
+      //   'country': this.state.country
 
-      // console.log(formData)
+      // }
+      // this.props.userSignupRequest(user)
 
-      let user = {
-        'username': this.state.username,
-        'password': this.state.password,
-        'email': this.state.email,
-        'firstname': this.state.firstname,
-        'lastname': this.state.lastname,
-        'country': this.state.country
-      }
-      this.props.userSignupRequest(user)
+      let formData = new FormData();
+
+      formData.append('file', this.state.selectedFile);
+      formData.append('username', this.state.username);
+      formData.append('password', this.state.password);
+      formData.append('email', this.state.email);
+      formData.append('firstName', this.state.firstname);
+      formData.append('lastName', this.state.lastname);
+      formData.append('country', this.state.country);
+
+
+      this.props.userSignupRequest(formData)
+
     }
     this.props.history.push('/')
   }
@@ -159,16 +173,27 @@ class CreateAccount extends React.Component {
     return (
       <div className="CreateAccount">
         <h1 className="createHead">Create Account</h1>
-        <div className="addPhoto">
-          <p>Add Photo <Add /> </p>
-        </div>
 
         <form
           onChange={this.handleButtonChange}
           onSubmit={this.onSubmit}
         >
 
-          {/* <label className="profileImageUpload" htmlFor="file">
+
+          <div className="addPhoto">
+            <p>Add Photo <Add /> </p>
+          </div>
+
+          <input
+            id="file"
+            name="file"
+            type="file"
+            onChange={this.handleFile}
+            style={{ color: '#484848' }}
+          />
+
+          {/* 
+          <label className="profileImageUpload" htmlFor="file">
             <div className="box">
               <div style={{ fontSize: 14 }}>
                 Add Photo <Add />
@@ -277,7 +302,7 @@ class CreateAccount extends React.Component {
               Last Name:{' '}
             </label>
             <input type="text"
-              name="lastName"
+              name="lastname"
               onChange={this.onChange}
               className={
                 formErrors.lastname.length > 0
@@ -290,23 +315,6 @@ class CreateAccount extends React.Component {
             }
           </div>
 
-
-
-          {/* <div className="formInp">
-            <label>
-              <p>Country:</p>
-              <select className="countrySelect" value={this.state.country} onChange={this.onChange}>
-                <option value="" disabled>Choose</option>
-                <option value="England">England</option>
-                <option value="France">France</option>
-                <option value="Germany">Germany</option>
-                <option value="Holland">Holland</option>
-                <option value="Ireland">Ireland</option>
-                <option value="Spain">Spain</option>
-                <option value="United States">United States</option>
-              </select>
-            </label>
-          </div> */}
 
           <div className="country form-group input">
             <label
@@ -324,8 +332,8 @@ class CreateAccount extends React.Component {
               style={{ flex: 2 }}
               value={this.state.country}
             >
-              <option value='Choose your country' disabled>
-                Choose your country{' '}
+              <option value='Choose your country'>
+                {this.state.country}
               </option>
 
               {countries.map(country => (
@@ -342,19 +350,12 @@ class CreateAccount extends React.Component {
 
 
 
-
-          {/* <div className="userAgree">
-            <label>
-              <input type="checkbox" value="agree" /> I agree to Mytinerary's Terms & Conditions
-            </label>
-          </div>
-          {!this.props.users[0] && <input className="submt" type="submit" value="OK" />}
-        */}
-
           <div>
-            <input className="form-check-input" required type="checkbox" />
             <label className="form-check-label">
+              {/* <input className="form-check-input" required type="checkbox" /> */}
+
               I agree to MYtinerary's Terms &amp; Conditions
+
             </label>
           </div>
 

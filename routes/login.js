@@ -33,7 +33,7 @@ router.post("/login", (req, res, next) => {
             // process.env.JWT_KEY,
             config.secret,
             {
-              expiresIn: "24h"
+              expiresIn: 86400
             }
           );
           return res.status(200).json({
