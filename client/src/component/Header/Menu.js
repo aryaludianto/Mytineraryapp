@@ -58,7 +58,7 @@ class MenuShow extends React.Component {
     };
 
     const style = {
-      textAlign: "center",
+      textAlign: "left",
       justifyContent: "center"
     };
 
@@ -69,7 +69,7 @@ class MenuShow extends React.Component {
         {...other}
         max-width="md"
       >
-        <div>
+        <div >
           <div style={menuStyle}>
             <DialogTitle id="simple-dialog-title">Menu</DialogTitle>
             {this.state.isLoggedIn ? (
@@ -84,18 +84,18 @@ class MenuShow extends React.Component {
                     Home
                   </MenuItem>
                 </NavLink>
-                <NavLink to="/citiesList">
+                <NavLink to="/Cities">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Cities
                   </MenuItem>
                 </NavLink>
-                <NavLink to="/favouritePage">
+                <NavLink to="/Favourite">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Favourites
                   </MenuItem>
                 </NavLink>
 
-                <NavLink to="/profile">
+                <NavLink to="/ProfilePageCont">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Profile
                   </MenuItem>
@@ -113,22 +113,22 @@ class MenuShow extends React.Component {
                     Home
                   </MenuItem>
                 </NavLink>
-                <NavLink to="/citiesList">
+                <NavLink to="/Cities">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Cities
                   </MenuItem>
                 </NavLink>
-                <NavLink to="/favouritePage">
+                <NavLink to="/Favourite">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Favourites
                   </MenuItem>
                 </NavLink>
-                <NavLink to="/loginPage">
+                <NavLink to="/Login">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Login
                   </MenuItem>
                 </NavLink>
-                <NavLink to="/signupPage">
+                <NavLink to="/CreateAccount">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Create Account
                   </MenuItem>
@@ -167,11 +167,12 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="menuIn">
         <IconButton
           aria-label="More"
           aria-haspopup="true"
           onClick={this.handleClickOpen}
+          id="lost"
         >
           <MenuIcon style={{ fontSize: 36, color: "#484848" }} />
         </IconButton>

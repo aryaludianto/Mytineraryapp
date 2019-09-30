@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import './Profile.css'
+
 import { getProfile } from '../../store/actions/profileAction';
 
-import Header from '../Header/Header';
 import Profile from './Profile';
 
 class ProfilePageCont extends Component {
@@ -33,7 +34,6 @@ class ProfilePageCont extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div
           className="container"
           style={{
@@ -56,16 +56,16 @@ class ProfilePageCont extends Component {
           ) : (
             <div className="noLoginFavourites">
               {' '}
-              Oops you haven't logged in!
+              You're not logged in!
               <span
                 role="img"
                 aria-label="smiling face with open mouth and cold sweat"
               >
-                😅{' '}
+                {' '}
               </span>
-              Please log in order to see your account
+              Please log in to see your Profile
               <span role="img" aria-label="thumbs up sign">
-                👍🏻
+                
               </span>
             </div>
           )}

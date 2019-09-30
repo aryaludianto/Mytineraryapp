@@ -39,13 +39,13 @@ passport.use(
         new Users({
           profilePhoto: profilePhotoEnlarged,
           username: profile.displayName,
-          firstname: profile.name.givenName,
-          lastname: profile.name.familyName,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
           email: profile.emails[0].value
         })
           .save()
           .then(newAccount => {
-            console.log("new user created:", +newAccount);
+            console.log("new user created:", + newAccount);
             let user = newAccount;
             done(null, user);
           });

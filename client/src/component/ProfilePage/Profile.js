@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import './Profile.css'
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { getProfile } from '../../store/actions/profileAction';
 

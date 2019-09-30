@@ -31,7 +31,12 @@ class Header extends Component {
     const guestLink = (
       <div className="Header">
 
-        <a href="/login" className="userIcon"><img src='https://img.icons8.com/wired/64/000000/circled-user.png' alt="userIcon" className="userIconA"></img></a>
+        {/* <a href="/login" className="userIcon"><img src='https://img.icons8.com/wired/64/000000/circled-user.png' alt="userIcon" className="userIconA"></img></a> */}
+      
+        <NavLink to="/login" className="userIcon">
+          <AccountCircle style={{ fontSize: 36, color: "#484848" }} />
+        </NavLink>
+
         <div className="navIcon" >
           <Menu />
         </div>
@@ -41,7 +46,13 @@ class Header extends Component {
 
     const userLink = (
       <div className="Header">
-        <a href="/ProfilePageCont" className="userIcon"><img src='https://img.icons8.com/wired/64/000000/circled-user.png' alt="userIcon" className="userIconA"></img></a>
+        {/* <a href="/ProfilePageCont" className="userIcon"><img src='https://img.icons8.com/wired/64/000000/circled-user.png' alt="userIcon" className="userIconA"></img></a> */}
+
+        <NavLink to="/ProfilePageCont" className="userIcon">
+          <AccountCircle style={{ fontSize: 36, color: "#D8D8D8" }} />
+        </NavLink>
+
+
         <div className="navIcon" >
           <Menu />
         </div>
@@ -51,11 +62,11 @@ class Header extends Component {
 
 
     return (
-      <div className="Header">
-        {this.state.isLoggedIn ? userLink : guestLink }
+      <div className="Head">
+        {this.state.isLoggedIn ? userLink : guestLink}
       </div>
 
-      // <div className="headerContainer">
+      // {/* <div className="headerContainer">
       //   <div className="header">
       //     <div className="profile">
       //       <NavLink to="/profilePage">
@@ -70,7 +81,7 @@ class Header extends Component {
       //       <Menu />
       //     </div>
       //   </div>
-      // </div>
+      // </div> */}
 
     );
   }
