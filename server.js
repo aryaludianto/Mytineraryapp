@@ -43,6 +43,11 @@ app.use('/log', require('./routes/login'))
 
 
 
+//profile
+
+app.use("/profile", require("./routes/profileRoutes"));
+
+
 
 
 //error handling middleware

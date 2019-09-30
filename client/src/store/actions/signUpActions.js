@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import { SET_USERS, ADD_USER, DELETE_USER, EDIT_USER, PICK_USER } from './actions'
+import { SET_USERS, ADD_USER } from './actions'
 import axios from 'axios';
 
 
@@ -73,7 +73,7 @@ export const userSignupRequest = formData => dispatch => {
       console.log(res);
       console.log(res.data);
       dispatch({
-        type: SET_USERS,
+        type: ADD_USER,
         payload: res.data
       });
     })

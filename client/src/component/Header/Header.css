@@ -10,7 +10,7 @@ div.Header {
 a.userIcon {
   display: grid;
   margin-left: 40%;
-  height: 150%;
+  height: 100%;
 }
 
 a.navIcon {
@@ -35,6 +35,11 @@ a.navIcon {
   height: 100%;
 }
 
+
+
+/* .header {
+  display: flex;
+} */
 
 @media (max-height:812px){
 

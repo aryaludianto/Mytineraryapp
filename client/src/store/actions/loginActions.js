@@ -1,4 +1,4 @@
-import { AUTH_SIGN_UP } from './actions';
+import { AUTH_SIGN_UP, LOG_OUT } from './actions';
 import axios from "axios";
 
 export const checkAccount = (email, password) => dispatch => {
@@ -31,7 +31,7 @@ export const checkAccount = (email, password) => dispatch => {
 export const oauthGoogle = accessToken => {
   return async dispatch => {
     console.log('we received', accessToken);
-   
+
     const res = await axios.post('/auth/googlelogin', {
       access_token: accessToken
     });
@@ -67,3 +67,16 @@ export const oauthGoogle = accessToken => {
 //     localStorage.setItem("email", res.data.user.email);
 //   };
 // };
+
+
+
+export function logout() {
+  return dispatch => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('email');
+    dispatch({
+      type: LOG_OUT
+    })
+  
+  }
+}

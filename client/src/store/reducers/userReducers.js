@@ -1,4 +1,4 @@
-import { SET_USERS, ADD_USER, DELETE_USER, EDIT_USER, PICK_USER } from '../actions/actions'
+import { SET_USERS, ADD_USER } from '../actions/actions'
 
 
 

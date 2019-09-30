@@ -16,6 +16,9 @@ import Login from './component/Login/Login';
 import CreateAccount from './component/CreateAccount/CreateAccount';
 import Cities from './component/Cities/Cities';
 import Itineraries from './component/Itineraries/Itineraries';
+import LogOut from './component/Header/LogOut';
+import Profile from './component/ProfilePage/Profile'
+import ProfilePageCont from './component/ProfilePage/ProfilePageCont'
 import './App.css';
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
@@ -38,6 +41,10 @@ class App extends Component {
           <Route path='/CreateAccount' component={CreateAccount} />
           <Route path='/Cities' component={Cities} />
           <Route path='/Itineraries' component={Itineraries} />
+          <Route path='/LogOut' component={LogOut} />
+          <Route path='/Profile' component={Profile}/>
+          <Route path='/ProfilePageCont' component={ProfilePageCont}/>
+          
           <Footer />
         </div>
       </BrowserRouter>
