@@ -29,6 +29,17 @@ export const IS_LOGGED_IN = 'IS_LOGGED_IN'
 //Profile Actions
 export const GET_PROFILE = 'GET_PROFILE'
 
+//Favourite Actions
+export const GET_FAVOURITES = 'GET_FAVOURITES'
+export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
+
+
+//Activiy actions
+export const FETCH_ACTIVITIES  = 'FETCH_ACTIVITIES'
+
+//comment actions
+export const POST_COMMENT = 'POST_COMMENT'
+
 
 
 

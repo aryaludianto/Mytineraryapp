@@ -10,25 +10,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   isLoggedIn: false
-    // };
-  }
-
-  componentDidMount() {
-    // let user = localStorage.getItem('user')
-    // if (user) {
-    //   this.setState({ isLoggedIn: true })
-    //   console.log("loggin")
-    // } else {
-    //   console.log("logged out")
-    // }
-  }
-
-
-
 
   render() {
 
@@ -76,24 +57,6 @@ class Header extends Component {
       <div className="Head">
         { isAuthenticated ? userLink : guestLink}
       </div>
-
-      // {/* <div className="headerContainer">
-      //   <div className="header">
-      //     <div className="profile">
-      //       <NavLink to="/profilePage">
-      //         {this.state.isLoggedIn ? (
-      //           <AccountCircle style={{ fontSize: 36, color: "#484848" }} />
-      //         ) : (
-      //             <AccountCircle style={{ fontSize: 36, color: "#D8D8D8" }} />
-      //           )}
-      //       </NavLink>
-      //     </div>
-      //     <div className="menu">
-      //       <Menu />
-      //     </div>
-      //   </div>
-      // </div> */}
-
     );
   }
 }

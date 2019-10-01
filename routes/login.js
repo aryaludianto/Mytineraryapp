@@ -30,7 +30,6 @@ router.post("/login", (req, res, next) => {
               accountId: account[0]._id,
               name: account[0].firstname + " " + account[0].lastname
             },
-            // process.env.JWT_KEY,
             config.secret,
             {
               expiresIn: 86400
