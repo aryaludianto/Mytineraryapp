@@ -35,7 +35,7 @@ class Login extends React.Component {
     const email = this.state.email;
     const password = this.state.password;
     this.props.checkAccount(email, password);
-    this.props.history.push("/");
+    this.props.history.push('/');
   }
 
   async responseGoogle(res) {
@@ -90,7 +90,7 @@ class Login extends React.Component {
               >
                 <div>
                   <img
-                    style={{ maxHeight: "25px", marginRight: 10 }}
+                    style={{ maxHeight: '25px', marginRight: 10 }}
                     src={google}
                     alt="google"
                   />

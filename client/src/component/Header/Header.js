@@ -12,21 +12,32 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false
-    };
+    // this.state = {
+    //   isLoggedIn: false
+    // };
   }
 
   componentDidMount() {
-    let user = localStorage.getItem('user')
-    if (user) {
-      this.setState({ isLoggedIn: true })
-      console.log("loggin")
-    } else {
-      console.log("logged out")
-    }
+    // let user = localStorage.getItem('user')
+    // if (user) {
+    //   this.setState({ isLoggedIn: true })
+    //   console.log("loggin")
+    // } else {
+    //   console.log("logged out")
+    // }
   }
+
+
+
+
   render() {
+
+
+    let isAuthenticated  = this.props.login.isLoggedIn
+
+    console.log(this.props.login.isLoggedIn)
+
+    isAuthenticated ? console.log("logged in " + isAuthenticated) : console.log("Logged out " + isAuthenticated)
 
     const guestLink = (
       <div className="Header">
@@ -63,7 +74,7 @@ class Header extends Component {
 
     return (
       <div className="Head">
-        {this.state.isLoggedIn ? userLink : guestLink}
+        { isAuthenticated ? userLink : guestLink}
       </div>
 
       // {/* <div className="headerContainer">
@@ -94,7 +105,8 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
-    users: state.users
+    users: state.users,
+    login: state.login
   }
 }
 

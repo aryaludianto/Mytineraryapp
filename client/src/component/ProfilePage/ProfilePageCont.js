@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import './Profile.css'
 
 import { getProfile } from '../../store/actions/profileAction';
-
 import Profile from './Profile';
 
 class ProfilePageCont extends Component {
@@ -22,6 +19,7 @@ class ProfilePageCont extends Component {
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('email');
     this.setState({ isLoggedIn: false });
+    this.props.history.push('/')
   }
 
   componentDidMount() {

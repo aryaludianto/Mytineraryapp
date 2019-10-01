@@ -1,4 +1,4 @@
-import { AUTH_SIGN_UP, LOG_OUT } from './actions';
+import { AUTH_SIGN_UP, LOG_OUT, IS_LOGGED_IN } from './actions';
 import axios from "axios";
 
 export const checkAccount = (email, password) => dispatch => {
@@ -77,6 +77,27 @@ export function logout() {
     dispatch({
       type: LOG_OUT
     })
-  
+  }
+}
+
+
+export function isLoggedIn() {
+  return dispatch => {
+    let user = localStorage.getItem('user');
+    if (user) {
+      console.log("loggin from action")
+      let isLoggedIn = true
+      dispatch({
+        type: IS_LOGGED_IN,
+        isLoggedIn
+      })
+    } else {
+      console.log("is log out from action")
+      let isLoggedIn = false
+      dispatch({
+        type: IS_LOGGED_IN,
+        isLoggedIn
+      })
+    }
   }
 }

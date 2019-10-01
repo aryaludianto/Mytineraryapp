@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import './Cities.css';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
+import { isLoggedIn } from '../../store/actions/loginActions';
+
 
 
 class Cities extends Component {
@@ -19,6 +21,8 @@ class Cities extends Component {
 
   componentDidMount() {
     this.props.fetchCities()
+    this.props.isLoggedIn()
+
   }
 
   handleChange = e => {
@@ -86,4 +90,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchCities })(Cities);
+export default connect(mapStateToProps, { fetchCities, isLoggedIn })(Cities);

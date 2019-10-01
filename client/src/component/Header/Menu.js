@@ -12,6 +12,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import { NavLink } from "react-router-dom";
+import { connect } from 'react-redux';
+
 
 import "./Header.css";
 
@@ -24,18 +26,18 @@ const styles = {
 
 class MenuShow extends React.Component {
   componentDidMount(props) {
-    let user = localStorage.getItem("user");
-    if (user) {
-      this.setState({
-        isLoggedIn: true
-      });
-    }
+    // let user = localStorage.getItem("user");
+    // if (user) {
+    //   this.setState({
+    //     isLoggedIn: true
+    //   });
+    // }
   }
   constructor(props) {
     super(props);
     this.state = {
-      selected: "",
-      isLoggedIn: false
+      selected: ""
+      // isLoggedIn: false
     };
   }
 
@@ -48,7 +50,8 @@ class MenuShow extends React.Component {
   };
 
   render() {
-    const { classes, onClose, ...other } = this.props;
+
+    const { classes, onClose, isLoggedIn, ...other } = this.props;
 
     var menuStyle = {
       width: "250px",
@@ -72,7 +75,7 @@ class MenuShow extends React.Component {
         <div >
           <div style={menuStyle}>
             <DialogTitle id="simple-dialog-title">Menu</DialogTitle>
-            {this.state.isLoggedIn ? (
+            {isLoggedIn ? (
               <List>
                 <NavLink to="/">
                   <MenuItem
@@ -166,6 +169,8 @@ class Menu extends React.Component {
   };
 
   render() {
+    let isLoggedIn  = this.props.login.isLoggedIn
+
     return (
       <div className="menuIn">
         <IconButton
@@ -180,10 +185,20 @@ class Menu extends React.Component {
           open={this.state.open}
           selected={this.state.selected}
           onClose={this.handleClose}
+          isLoggedIn={isLoggedIn}
         />
       </div>
     );
   }
 }
 
-export default Menu;
+
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+    users: state.users,
+    login: state.login
+  }
+}
+
+export default connect(mapStateToProps)(Menu);

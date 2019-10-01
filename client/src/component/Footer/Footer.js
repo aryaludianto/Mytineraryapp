@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
 import homeIcon from '../img/homeIcon.png';
-import './Footer.css'
+import './Footer.css';
+import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
+
 
 class Footer extends Component {
   state = {
-    isActive: true
+    // isActive: true
   }
 
   render() {
+
+    let isAuthenticated = this.props.login.isLoggedIn
+
     return (
       <div className="Footer">
         <div className="imgWrapper">
-          {this.state.isActive ? <img className="homeIcon" src={homeIcon} alt="homeIcon"></img> :
+          {isAuthenticated ?
+            <NavLink to="/">
+            <img className="homeIcon" src={homeIcon} alt="homeIcon"></img>
+            </NavLink>
+            :
             <img className="homeIconNotActive" src={homeIcon} alt="homeIcon"></img>
           }
         </div>
@@ -20,4 +30,11 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+
+function mapStateToProps(state) {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(mapStateToProps)(Footer);

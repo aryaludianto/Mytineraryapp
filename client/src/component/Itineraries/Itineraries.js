@@ -85,7 +85,7 @@ class Itineraries extends Component {
 
     return (
       <div className="itinerariesBody">
-        <div className="topCard">
+        <div className="topCard" >
           <div>
             {citiesDisp}
           </div>

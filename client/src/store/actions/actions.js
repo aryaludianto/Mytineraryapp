@@ -23,6 +23,7 @@ export const PICK_USER = 'PICK_USER';
 //login Actions
 export const AUTH_SIGN_UP = 'AUTH_SIGN_UP';
 export const LOG_OUT = 'LOG_OUT'
+export const IS_LOGGED_IN = 'IS_LOGGED_IN'
 
 
 //Profile Actions
