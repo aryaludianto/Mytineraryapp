@@ -5,6 +5,8 @@ import { fetchItineraries } from '../../store/actions/itineraryActions'
 import { fetchCities } from '../../store/actions/citiesActions'
 import './Itinerary.css';
 import Activities from '../Activities/Activities';
+import { isLoggedIn } from '../../store/actions/loginActions';
+
 
 class Itineraries extends Component {
 
@@ -13,6 +15,7 @@ class Itineraries extends Component {
   componentDidMount() {
     this.props.fetchItineraries(window.location.href.split('/').splice(-1)[0]);
     this.props.fetchCities(window.location.href.split('/').splice(-1)[0]);
+    this.props.isLoggedIn()
   }
 
 
@@ -31,9 +34,6 @@ class Itineraries extends Component {
         }
       })
     }
-
-
-
 
     const citiesDisp = cities.map((city) => {
       return (
@@ -59,7 +59,7 @@ class Itineraries extends Component {
       })
 
       return (
-        <div className="itinerariesDisp" key={itinerary._id}  onClick={() => drop(itinerary._id)}>
+        <div className="itinerariesDisp" key={itinerary._id}>
           <div className="itiCard" key={itinerary._id}>
             <div className="profile">
               <img src={itinerary.profilePic} className='profPic' alt={itinerary.profileName} key={itinerary._id} />
@@ -76,7 +76,7 @@ class Itineraries extends Component {
             </div>
           </div>
           {this.state.isOpen[itinerary._id] && <Activities itinerary={itinerary}></Activities>}
-          <div className="viewAll">
+          <div className="viewAll"  onClick={() => drop(itinerary._id)}>
             {!this.state.isOpen[itinerary._id] ? <p>View All</p> : <p>Close</p>}
           </div>
         </div>
@@ -89,7 +89,7 @@ class Itineraries extends Component {
           <div>
             {citiesDisp}
           </div>
-          { itinerariesDisp.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}
+          {itinerariesDisp.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}
         </div>
         <div className="itineraries">
           {itinerariesDisp}
@@ -109,9 +109,11 @@ class Itineraries extends Component {
 const mapStateToProps = (state) => {
   return {
     itineraries: state.itineraries,
-    cities: state.cities
+    cities: state.cities,
+    login: state.login,
+    profile: state.profile.profile
   }
 }
 
 
-export default connect(mapStateToProps, { fetchItineraries, fetchCities })(Itineraries);
+export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn })(Itineraries);

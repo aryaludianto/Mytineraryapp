@@ -36,12 +36,6 @@ export const oauthGoogle = accessToken => {
       access_token: accessToken
     });
 
-    // const res = await fetch('/auth/googlelogin', {
-    //   method: 'post',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({'access_token': accessToken}) 
-    // })
-
     dispatch({
       type: AUTH_SIGN_UP,
       payload: res.data

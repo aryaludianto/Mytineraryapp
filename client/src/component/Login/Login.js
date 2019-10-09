@@ -49,66 +49,68 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="Login">
-        <h1 className="createHeadLog">Login</h1>
-        <form onSubmit={this.onSubmit}>
-          <div className="formInp">
-            <label>
-              <p>Email:</p><input type="text"
-                name="email"
-                value={this.state.value}
-                onChange={this.onChange}>
-              </input>
-            </label>
-          </div>
-          <div className="formInpLog">
-            <label>
-              <p>Password:</p><input type="password"
-                name="password"
-                value={this.state.value}
-                onChange={this.onChange}>
-              </input>
-            </label>
-          </div>
+      <React.Fragment>
+        <div className="Login">
+          <h1 className="createHeadLog">Login</h1>
+          <form onSubmit={this.onSubmit}>
+            <div className="formInp">
+              <label>
+                <p>Email:</p><input type="text"
+                  name="email"
+                  value={this.state.value}
+                  onChange={this.onChange}>
+                </input>
+              </label>
+            </div>
+            <div className="formInpLog">
+              <label>
+                <p>Password:</p><input type="password"
+                  name="password"
+                  value={this.state.value}
+                  onChange={this.onChange}>
+                </input>
+              </label>
+            </div>
 
 
-          <div className="userAgree">
-            <label>
-              <input type="checkbox" value="remember" /> Remember Me
+            <div className="userAgree">
+              <label>
+                <input type="checkbox" value="remember" /> Remember Me
             </label>
-          </div>
-          <input className="submtLog" type="submit" value="OK" />
-        </form>
+            </div>
+            <input className="submtLog" type="submit" value="OK" />
+          </form>
 
-        <div className="googleButton">
-          <GoogleLogin
-            clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
-            render={renderProps => (
-              <button
-                onClick={renderProps.onClick}
-                className="btn btn-primary google "
-              >
-                <div>
-                  <img
-                    style={{ maxHeight: '25px', marginRight: 10 }}
-                    src={google}
-                    alt="google"
-                  />
-                  Log in with Google
+          <div className="googleButton">
+            <GoogleLogin
+              clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
+              render={renderProps => (
+                <button
+                  onClick={renderProps.onClick}
+                  className="btn btn-primary google "
+                >
+                  <div>
+                    <img
+                      style={{ maxHeight: '25px', marginRight: 10 }}
+                      src={google}
+                      alt="google"
+                    />
+                    Log in with Google
                 </div>
-              </button>
-            )}
-            buttonText="Log in with Google"
-            onSuccess={this.responseGoogle}
-            onFailure={this.responseGoogle}
-          />
+                </button>
+              )}
+              buttonText="Log in with Google"
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+            />
+          </div>
+
+
+          <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
+
+          <a href="/CreateAccount"> <p>CreateAccount</p> </a>
         </div>
-
-
-        <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
-
-        <a href="/CreateAccount"> <p>CreateAccount</p> </a>
-      </div>
+      </React.Fragment>
     );
   }
 }

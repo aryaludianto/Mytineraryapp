@@ -18,7 +18,7 @@ export class LandingButton extends Component {
    
     return (
       <div>
-        { this.props.profile[0] ? (<p> Welcome {this.props.profile[0].firstName}  !! </p>) : (
+        { this.props.profile[0] ? (<p> Welcome {this.props.profile[0].firstName}</p>) : (
           <div className="acc">
             <a href="/Login"><p>Log in</p></a>
             <a href="/CreateAccount"><p>Create Account</p></a>

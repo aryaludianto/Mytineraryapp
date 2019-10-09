@@ -52,16 +52,16 @@ class Favourite extends Component {
           {!this.state.isLoggedIn ? (
             <div className="noLoginFavourites">
               {' '}
-              Oops you haven't logged in!
+              You have to Log in!
               <span
                 role="img"
                 aria-label="smiling face with open mouth and cold sweat"
               >
-                😅{' '}
+                {' '}
               </span>
-              Please log in order to see your{' '}
+              Please log in{' '}
               <span role="img" aria-label="red heart">
-                ❤️'s
+                To see your Favourite Itineraries
               </span>
             </div>
           ) : this.props.favourites.length !== 0 ? (
@@ -76,16 +76,16 @@ class Favourite extends Component {
           ) : (
             <div className="noLoginFavourites">
               {' '}
-              You don't have any favourites!
+                  You don't have any favourites!
               <span
                 role="img"
                 aria-label="smiling face with open mouth and cold sweat"
               >
                 {' '}
               </span>
-              Check out all the fun itineraries and find the ones You love!{' '}
+                  Check out all the fun itineraries and find the ones You love!{' '}
               <span role="img" aria-label="left pointing magnifying glass">
-                
+
               </span>
             </div>
           )}
