@@ -55,13 +55,13 @@ class Itineraries extends Component {
     const itinerariesDisp = itineraries.map((itinerary) => {
 
       let tag = itinerary.hashtags.map(hashtag => {
-        return <p>#{hashtag}</p>
+        return <p key={hashtag}>#{hashtag}</p>
       })
 
       return (
         <div className="itinerariesDisp" key={itinerary._id}>
           <div className="itiCard" key={itinerary._id}>
-            <div className="profile">
+            <div className="profile" >
               <img src={itinerary.profilePic} className='profPic' alt={itinerary.profileName} key={itinerary._id} />
               <p>{itinerary.profileName}</p>
             </div>
@@ -86,7 +86,7 @@ class Itineraries extends Component {
     return (
       <div className="itinerariesBody">
         <div className="topCard" >
-          <div>
+          <div className="cityDisplay">
             {citiesDisp}
           </div>
           {itinerariesDisp.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}

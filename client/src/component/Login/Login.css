@@ -1,16 +1,15 @@
-
-.Login{
+.Login {
   background-color: white;
   /* margin: 0 5% 0; */
 }
 
-.createHeadLog{
+.createHeadLog {
   margin: 10px;
   text-align: center;
   font-weight: bolder;
 }
 
-.addPhoto{
+.addPhoto {
   border: 1px solid black;
   border-radius: 50%;
   height: 15vh;
@@ -28,7 +27,7 @@ form {
   display: grid;
 }
 
-.formInpLog{
+.formInpLog {
   display: grid;
   /* flex-direction: row; */
   grid-auto-columns: 2fr;
@@ -36,35 +35,41 @@ form {
   height: 5vh;
 }
 
-label{
+label {
   display: flex;
   flex-direction: row;
 }
 
-.formInpLog input{
+.formInpLog input {
   width: 150%;
 }
 
-.formInpLog p{
-  width:100%;
+.formInpLog p {
+  width: 100%;
 }
 
-.formInp select{
-  width:50%;
+.formInp select {
+  width: 50%;
   margin-left: 0;
 }
 
-.submtLog{
+.submtLog {
   width: 20%;
   height: 100%;
   margin: 2% auto;
 }
 
-.textLog{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.textLog {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: auto;
+  font-size: 20px;
 }
 
 a {
-  text-decoration:fuchsia;
+  text-decoration: fuchsia;
+  height: 100%;
+}
+
+.googleButton {
+  margin: 10% 20% 10%;
 }

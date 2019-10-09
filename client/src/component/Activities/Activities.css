@@ -8,7 +8,7 @@
   display: flex;
   /* overflow: scroll; */
   flex-direction: row;
-  width: 90vw;
+  width: 95vw;
   overflow-x: scroll;
   overflow-y: hidden;
 }
@@ -23,6 +23,10 @@
 
 .actv {
   display: flex;
+}
+
+.Actv{
+  margin-left: 5%;
 }
 
 .imageContainer {

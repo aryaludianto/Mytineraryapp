@@ -108,7 +108,7 @@ class Login extends React.Component {
 
           <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
 
-          <a href="/CreateAccount"> <p>CreateAccount</p> </a>
+          {/* <a href="/CreateAccount"> <p>CreateAccount</p> </a> */}
         </div>
       </React.Fragment>
     );
