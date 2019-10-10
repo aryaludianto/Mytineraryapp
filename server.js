@@ -25,8 +25,6 @@ app.use(express.static('uploads'))
 app.use('/uploads', express.static('uploads'))
 
 
-
-
 //body parsers used
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,7 +46,7 @@ app.use("/profile", require("./routes/profileRoutes"));
 
 
 //favourites
-app.use("/favourite", require("./routes/favouriteRoutes"));
+// app.use("/favourite", require("./routes/favouriteRoutes"));
 
 
 
@@ -87,7 +85,6 @@ var conn = mongoose.createConnection(uri);
 conn.once("open", () => {
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection("uploads");
-  //set!
 });
 
 
@@ -127,11 +124,6 @@ mongoose.connection
   .on("error", function(error) {
     console.log("Connection error:", error);
   });
-
-
-
-
-
 
 
 mongoose.Promise = global.Promise;

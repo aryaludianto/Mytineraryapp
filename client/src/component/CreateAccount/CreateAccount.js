@@ -17,9 +17,7 @@ const countries = Country;
 
 const formIsValid = ({ formErrors, ...rest }) => {
   let valid = true;
-
   Object.values(formErrors).forEach(val => val.length > 0 && (valid = false));
-
   Object.values(rest).forEach(val => {
     val === null && (valid = false);
   });
@@ -126,19 +124,6 @@ class CreateAccount extends React.Component {
 
 
     if (formIsValid(this.state)) {
-
-      // let user = {
-      //   'file': this.state.selectedFile,
-      //   'username': this.state.username,
-      //   'password': this.state.password,
-      //   'email': this.state.email,
-      //   'firstname': this.state.firstname,
-      //   'lastname': this.state.lastname,
-      //   'country': this.state.country
-
-      // }
-      // this.props.userSignupRequest(user)
-
       let formData = new FormData();
 
       formData.append('file', this.state.selectedFile);
@@ -181,8 +166,7 @@ class CreateAccount extends React.Component {
 
 
           <div className="addPhoto">
-            <p>Add Photo <Add /> </p>
-
+            <p>Add Photo : </p>
             <input
               id="file"
               name="file"
@@ -208,7 +192,7 @@ class CreateAccount extends React.Component {
               style={{ flex: 1 }}
               htmlFor="username"
             >
-              Username:{' '}
+              Username :{' '}
             </label>
             <input
               type="text"
@@ -221,10 +205,15 @@ class CreateAccount extends React.Component {
               }
               style={{ flex: 2 }} />
 
-            {formErrors.username.length > 0 && (
+            {/* {formErrors.username.length > 0 && (
               <span>{formErrors.username}</span>
-            )}
+            )} */}
           </div>
+          {formErrors.username.length > 0 && (
+            <div className="errorForm">
+              <span>{formErrors.username}</span>
+            </div>
+          )}
 
 
 
@@ -239,13 +228,17 @@ class CreateAccount extends React.Component {
             <input type="password" name="password" onChange={this.onChange}
               className={
                 formErrors.password.length > 0 ? 'error form-control'
-                  : 'form-control'
+                  : 'form-control psswd'
               }
             />
-            {formErrors.password.length > 0 && (<span>
-              {formErrors.password}
-            </span>)}
           </div>
+          {formErrors.password.length > 0 && (
+            <div className="errorForm">
+              <span>
+                {formErrors.password}
+              </span>
+            </div>
+          )}
 
 
           <div className="email input form-Group">
@@ -261,12 +254,19 @@ class CreateAccount extends React.Component {
               className={
                 formErrors.email.length > 0
                   ? 'error form-control'
-                  : 'form-control'
+                  : 'form-control eml'
               }
             />
-            {formErrors.email.length > 0 && <span>{formErrors.email}</span>}
+            {/* {formErrors.email.length > 0 && <span>{formErrors.email}</span>} */}
             {/* {this.props.users[0] && <p>Email already exist!!!</p>} */}
           </div>
+          {formErrors.email.length > 0 && (
+            <div className="errorForm">
+              <span>
+                {formErrors.email}
+              </span>
+            </div>
+          )}
 
 
           <div className="firstName input form-group">
@@ -287,9 +287,16 @@ class CreateAccount extends React.Component {
               }
               style={{ flex: 2 }}
             />
-            {formErrors.firstname.length > 0
-              && (<span>{formErrors.firstname} </span>)}
+            {/* {formErrors.firstname.length > 0
+              && (<span>{formErrors.firstname} </span>)} */}
           </div>
+          {formErrors.firstname.length > 0 && (
+            <div className="errorForm">
+              <span>
+                {formErrors.firstname}
+              </span>
+            </div>
+          )}
 
 
           <div className="lastName input form-group">
@@ -310,9 +317,16 @@ class CreateAccount extends React.Component {
               }
               style={{ flex: 2 }}
             />
-            {formErrors.lastname.length > 0 && (<span>{formErrors.lastname}</span>)
-            }
+            {/* {formErrors.lastname.length > 0 && (<span>{formErrors.lastname}</span>)
+            } */}
           </div>
+          {formErrors.lastname.length > 0 && (
+            <div className="errorForm">
+              <span>
+                {formErrors.lastname}
+              </span>
+            </div>
+          )}
 
 
           <div className="country form-group input">
@@ -342,21 +356,26 @@ class CreateAccount extends React.Component {
               ))}
 
             </select>
-            {formErrors.country.length > 0 && (
+            {/* {formErrors.country.length > 0 && (
               <span>{formErrors.country}</span>
-            )}
+            )} */}
           </div>
+          {formErrors.country.length > 0 && (
+            <div className="errorForm">
+              <span>
+                {formErrors.country}
+              </span>
+            </div>
+          )}
 
 
 
-          <div>
-            <label className="form-check-label">
-              {/* <input className="form-check-input" required type="checkbox" /> */}
-
-              I agree to MYtinerary's Terms &amp; Conditions
-
-            </label>
-          </div>
+          {/* <div> */}
+          <label className="form-check-label chk">
+            <input className="form-check-input" required type="checkbox" />
+            I agree to MYtinerary's Terms &amp; Conditions
+          </label>
+          {/* </div> */}
 
 
 
@@ -370,7 +389,7 @@ class CreateAccount extends React.Component {
                   paddingBottom: 10,
                   fontWeight: 'bold'
                 }}
-                className="btn btn-primary"
+                className="btn btn-primary chkd"
               >
                 OK
               </button>
@@ -382,7 +401,7 @@ class CreateAccount extends React.Component {
                     paddingBottom: 10,
                     fontWeight: 'bold'
                   }}
-                  className="btn btn-outline-primary"
+                  className="btn btn-outline-primary chkd"
                 >
                   OK
               </button>

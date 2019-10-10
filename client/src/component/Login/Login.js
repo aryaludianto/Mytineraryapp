@@ -10,6 +10,8 @@ import {
   checkAccount,
   oauthGoogle
 } from '../../store/actions/loginActions'
+import { NavLink } from "react-router-dom";
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -75,8 +77,8 @@ class Login extends React.Component {
 
             <div className="userAgree">
               <label>
-                <input type="checkbox" value="remember" /> Remember Me
-            </label>
+                {/* <input type="checkbox" value="remember" /> Remember Me */}
+              </label>
             </div>
             <input className="submtLog" type="submit" value="OK" />
           </form>
@@ -96,7 +98,7 @@ class Login extends React.Component {
                       alt="google"
                     />
                     Log in with Google
-                </div>
+                  </div>
                 </button>
               )}
               buttonText="Log in with Google"
@@ -108,6 +110,21 @@ class Login extends React.Component {
 
           <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
 
+
+          <div className="createAcc">
+            <NavLink to='CreateAccount'>
+              <button
+                className="btn btn-primary google "
+              >
+                <div>
+                  <img
+                    style={{ maxHeight: '25px', marginRight: 10 }}
+                  />
+                  Create Account
+              </div>
+              </button>
+            </NavLink>
+          </div>
           {/* <a href="/CreateAccount"> <p>CreateAccount</p> </a> */}
         </div>
       </React.Fragment>

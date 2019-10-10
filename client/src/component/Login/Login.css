@@ -63,6 +63,7 @@ label {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: auto;
   font-size: 20px;
+  padding: 0 5% 0;
 }
 
 a {
@@ -72,4 +73,12 @@ a {
 
 .googleButton {
   margin: 10% 20% 10%;
+}
+
+.userAgree{
+  margin-left: 20%;
+}
+
+.createAcc{
+  margin:10%;
 }
