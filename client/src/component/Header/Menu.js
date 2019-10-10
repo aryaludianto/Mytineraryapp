@@ -97,10 +97,14 @@ class MenuShow extends React.Component {
                     Favourites
                   </MenuItem>
                 </NavLink>
-
                 <NavLink to="/ProfilePageCont">
                   <MenuItem style={style} onClick={this.handleClose}>
                     Profile
+                  </MenuItem>
+                </NavLink>
+                <NavLink to="/add">
+                  <MenuItem style={style} onClick={this.handleClose}>
+                    Add Itinerary
                   </MenuItem>
                 </NavLink>
               </List>

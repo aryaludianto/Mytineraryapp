@@ -6,6 +6,8 @@ import { fetchCities } from '../../store/actions/citiesActions'
 import './Itinerary.css';
 import Activities from '../Activities/Activities';
 import { isLoggedIn } from '../../store/actions/loginActions';
+import { NavLink } from "react-router-dom";
+
 
 
 class Itineraries extends Component {
@@ -93,6 +95,11 @@ class Itineraries extends Component {
         </div>
         <div className="itineraries">
           {itinerariesDisp}
+
+          {this.props.login.isLoggedIn && (<div className="addItinerary">
+           <NavLink to='/add'> <button>Add Your Own Itinerary</button>
+           </NavLink>
+          </div>)}
           <div className="anotherCity"> <a href="/Cities">Choose Another City ⤶ </a></div>
         </div>
       </div>

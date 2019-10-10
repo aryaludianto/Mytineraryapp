@@ -19,7 +19,8 @@ import Itineraries from './component/Itineraries/Itineraries';
 import LogOut from './component/Header/LogOut';
 import Profile from './component/ProfilePage/Profile'
 import ProfilePageCont from './component/ProfilePage/ProfilePageCont'
-import favouriteCont from './component/Favourite/FavouriteCont'
+import favouriteCont from './component/Favourite/FavouriteCont';
+import AddItinerary from './component/AddItinerary/AddItinerary'
 import './App.css';
 
 // import { library } from '@fortawesome/fontawesome-svg-core';
@@ -46,6 +47,7 @@ class App extends Component {
           <Route path='/Profile' component={Profile}/>
           <Route path='/ProfilePageCont' component={ProfilePageCont}/>
           <Route path='/favourite' component={favouriteCont}/>
+          <Route path='/add' component={AddItinerary}/>
           
           <Footer />
         </div>
