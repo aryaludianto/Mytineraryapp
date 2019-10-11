@@ -1,0 +1,34 @@
+.addIti h1{
+  margin: auto;
+  text-align: center;
+}
+
+.activities{
+  background-color: white;
+  margin: 1% 3% 1%;
+  border-radius: 2%;
+
+}
+
+.addItiPage{
+  margin-top: 5%;
+  overflow-y: scroll;
+}
+
+.addActButCont{
+  margin: 5% 35% 5%;
+}
+
+.AddItis{
+  font-size: 70%;
+  margin-top: 0;
+}
+
+.hashtagDisp{
+  display: flex;
+  flex-direction: row;
+}
+
+.hashtagDisp p{
+  margin:auto;
+}
