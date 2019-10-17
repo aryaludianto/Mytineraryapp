@@ -1,7 +1,46 @@
 const express = require('express');
 // get an instance of router
 var router = express.Router();
-const Itinerary = require('../models/Itineraries')
+const Itinerary = require('../models/Itineraries');
+const multer = require('multer');
+
+
+
+
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, './uploads/activities');
+  },
+  filename: function(req, file, cb){
+    cb(null, new Date().toISOString() + file.originalname)
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+
+  if (
+    file.mimetype ==='image/jpeg' ||
+    file.mimetype ==='image/png' ||
+    file.mimetype ==='image/jpg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 10
+  },
+  fileFilter: fileFilter
+});
+
+
+
+
 
 // ROUTES
 // ==============================================
@@ -44,6 +83,17 @@ router.delete("/:id", (req, res, next) => {
   Itinerary.findByIdAndRemove({ _id: req.params.id }).then((itinerary) => {
     res.send(itinerary)
   });
+});
+
+
+
+
+//adding image
+router.post("/uploads", upload.single("file"), (req, res) => {
+  console.log("this is req.file", req.file);
+
+
+  res.send(req.file.path);
 });
 
 module.exports = router

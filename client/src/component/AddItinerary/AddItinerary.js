@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { isLoggedIn } from '../../store/actions/loginActions';
 import { connect } from 'react-redux';
 import { fetchCities } from '../../store/actions/citiesActions'
+import { getProfile } from '../../store/actions/profileAction'
 import './AddItinerary.css';
+import { addActivityPict } from '../../store/actions/activityActions'
 // import { Card, Accordion } from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Card, Accordion } from 'react-bootstrap';
@@ -69,9 +71,19 @@ class AddItinerary extends Component {
 
   }
 
+  handleFile(event) {
+    console.log('this is event', event);
+    console.log('selectedfile', event.target.files[0]);
+    let img = event.target.files[0]
+    // let nameImg = new Date().toISOString() + event.target.files[0].name
+    // let imgPath = '/uploads/activities/' +  nameImg
+
+    this.setState({ selectedFile: img });
+  }
+
   addHastag(e) {
     e.preventDefault();
-    let same = this.state.hashtags.filter(hash => hash == this.state.hashtag)
+    let same = this.state.hashtags.filter(hash => hash === this.state.hashtag)
 
     if (same.length > 0) {
       return null
@@ -121,11 +133,6 @@ class AddItinerary extends Component {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   }
 
-  handleFile(event) {
-    console.log('this is event', event);
-    console.log('selectedfile', event.target.files[0]);
-    this.setState({ activity:{ img:event.target.files[0] } });
-  }
 
 
   activityOnChange(e) {
@@ -163,6 +170,7 @@ class AddItinerary extends Component {
 
 
 
+
   removeHastag(e) {
     let res = this.state.hashtags.filter(hash => {
       return hash !== e
@@ -174,11 +182,21 @@ class AddItinerary extends Component {
 
   addActivity(e) {
     e.preventDefault();
+
+
+    let formData = new FormData();
+
+    formData.append('file', this.state.selectedFile);
+
+    this.props.addActivityPict(formData);
+
     let act = this.state.activity,
       prev = this.state.activities.filter(act => act.name !== '');
 
     this.setState({
+      profileId: this.props.profile[0]._id,
       activities: [act, ...prev,],
+      selectedFile: null,
       activity: {
         name: '',
         address: '',
@@ -189,9 +207,9 @@ class AddItinerary extends Component {
       }
     })
 
-
-
   }
+
+
 
 
   printState(e) {
@@ -200,11 +218,28 @@ class AddItinerary extends Component {
     console.log(this.state)
   }
 
+  async addImage() {
+    let temp = this.state.activities.filter(ress => {
+      return ress.img !== ''
+    })
+
+    let resTemp = this.state.activities.filter(ress => {
+      return ress.img === ''
+    })
+
+    resTemp[0].img = this.props.activity.img
+
+    console.log(resTemp)
+
+    this.setState({ activities: [resTemp] })
+  }
+
 
 
   componentDidMount() {
     this.props.isLoggedIn()
     this.props.fetchCities()
+    this.props.getProfile()
   }
 
 
@@ -212,8 +247,9 @@ class AddItinerary extends Component {
 
 
   render() {
-    const { formErrors } = this.state;
+    // this.props.activity.img && (this.addImage())
 
+    const { formErrors } = this.state;
 
     const hastagsDisp = this.state.hashtags !== [] && (<div className="hashtagDisp">
       <p>Click To remove Hashtag -> </p>
@@ -236,7 +272,6 @@ class AddItinerary extends Component {
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0">
-                {/* <Card.Img variant="top" src={activity.img} /> */}
                 <Card.Body>
                   <div className='activityDisplay'>
                     <p>Address : </p> {activity.address}
@@ -593,10 +628,11 @@ const mapStateToProps = (state) => {
     itineraries: state.itineraries,
     cities: state.cities,
     login: state.login,
-    profile: state.profile.profile
+    profile: state.profile.profile,
+    activity: state.activity
   }
 }
 
 
-export default connect(mapStateToProps, { isLoggedIn, fetchCities })(AddItinerary);
+export default connect(mapStateToProps, { isLoggedIn, fetchCities, addActivityPict, getProfile })(AddItinerary);
 

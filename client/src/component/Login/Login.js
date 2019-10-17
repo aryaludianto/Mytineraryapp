@@ -119,6 +119,7 @@ class Login extends React.Component {
                 <div>
                   <img
                     style={{ maxHeight: '25px', marginRight: 10 }}
+                    alt="accountImg"
                   />
                   Create Account
               </div>

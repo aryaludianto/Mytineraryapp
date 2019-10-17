@@ -36,6 +36,7 @@ export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
 
 //Activiy actions
 export const FETCH_ACTIVITIES  = 'FETCH_ACTIVITIES'
+export const ADD_ACTIVITY_PICT = 'ADD_ACTIVITY_PICT'
 
 //comment actions
 export const POST_COMMENT = 'POST_COMMENT'
