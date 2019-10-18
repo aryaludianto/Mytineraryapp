@@ -66,32 +66,32 @@ class CreateAccount extends React.Component {
     let formErrors = this.state.formErrors;
 
     switch (name) {
-      case 'username':
-        formErrors.username =
+    case 'username':
+      formErrors.username =
           value.length < 3 ? 'minimum 3 characters required' : '';
-        break;
-      case 'password':
-        formErrors.password =
+      break;
+    case 'password':
+      formErrors.password =
           value.length < 6 ? 'minimum 3 characters required' : '';
-        break;
-      case 'email':
-        formErrors.email = emailRegx.test(value)
-          ? ''
-          : 'invalid email address';
-        break;
-      case 'firstname':
-        formErrors.firstname =
+      break;
+    case 'email':
+      formErrors.email = emailRegx.test(value)
+        ? ''
+        : 'invalid email address';
+      break;
+    case 'firstname':
+      formErrors.firstname =
           value.length < 3 ? 'minimum 3 characters required' : '';
-        break;
-      case 'lastname':
-        formErrors.lastname =
+      break;
+    case 'lastname':
+      formErrors.lastname =
           value.length < 3 ? 'minimum 3 characters required' : '';
-        break;
-      case 'country':
-        formErrors.country = value.length < 0 ? 'please choose a country' : "";
-        break;
-      default:
-        break;
+      break;
+    case 'country':
+      formErrors.country = value.length < 0 ? 'please choose a country' : "";
+      break;
+    default:
+      break;
     }
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
@@ -394,18 +394,18 @@ class CreateAccount extends React.Component {
                 OK
               </button>
             ) : (
-                <button
-                  style={{
-                    width: '70%',
-                    paddingTop: 10,
-                    paddingBottom: 10,
-                    fontWeight: 'bold'
-                  }}
-                  className="btn btn-outline-primary chkd"
-                >
+              <button
+                style={{
+                  width: '70%',
+                  paddingTop: 10,
+                  paddingBottom: 10,
+                  fontWeight: 'bold'
+                }}
+                className="btn btn-outline-primary chkd"
+              >
                   OK
               </button>
-              )}
+            )}
           </div>
 
         </form>

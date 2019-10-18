@@ -20,10 +20,10 @@ const ItinerarySchema = new Schema({
     type: String,
   },
   rating: {
-    type: Number,
+    type: String,
   },
   duration: {
-    type: Number,
+    type: String,
   },
   price: {
     type: String,
@@ -35,7 +35,7 @@ const ItinerarySchema = new Schema({
     name: String,
     address: String,
     img: String,
-    time: Number,
+    time: String,
     cost: String,
     comments: String
   }]

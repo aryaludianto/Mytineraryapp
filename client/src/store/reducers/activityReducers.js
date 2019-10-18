@@ -6,10 +6,7 @@ const activityReducer = (state = [], action = {}) => {
   case FETCH_ACTIVITIES:
     return action.data;
   case ADD_ACTIVITY_PICT:
-    return {
-      ...state,
-      img: action.payload
-    }
+    return state = [...state, action.payload ]
   default: 
     return state
   }

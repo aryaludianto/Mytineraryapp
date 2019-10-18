@@ -17,15 +17,21 @@ export const fetchActivities = itinerariesArray => dispatch => {
 };
 
 
-export const addActivityPict = activityPict => dispatch => {
-  console.log(activityPict)
+export const addActivityPict = tempData => dispatch => {
 
-  axios.post('/itineraries/uploads', activityPict)
+  let { formData, data } = tempData
+
+  console.log(data)
+
+  axios.post('/itineraries/uploads', formData)
     .then(res => {
       console.log(res);
+      
+      data.img = res.data
+
       dispatch({
         type: ADD_ACTIVITY_PICT,
-        payload: res.data
+        payload: data
       })
     })
     .catch(err=>{

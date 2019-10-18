@@ -8,6 +8,7 @@ import { addActivityPict } from '../../store/actions/activityActions'
 // import { Card, Accordion } from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Card, Accordion } from 'react-bootstrap';
+import { addItinerariesReq } from '../../store/actions/itineraryActions';
 
 
 
@@ -17,7 +18,7 @@ class AddItinerary extends Component {
     super(props)
     this.state = {
       selectedFile: null,
-      submitReady: false,
+      submitReady: true,
       title: '',
       city: '',
       rating: '',
@@ -32,7 +33,7 @@ class AddItinerary extends Component {
         img: '',
         time: '',
         cost: '',
-        comment: ''
+        comments: ''
       },
       activities: [{
         name: '',
@@ -68,6 +69,7 @@ class AddItinerary extends Component {
     this.addActivity = this.addActivity.bind(this)
     this.printState = this.printState.bind(this)
     this.handleFile = this.handleFile.bind(this);
+    this.onSubmit = this.onSubmit.bind(this)
 
   }
 
@@ -169,6 +171,27 @@ class AddItinerary extends Component {
   }
 
 
+  onSubmit(e) {
+    e.preventDefault();
+
+    let data = {
+      title: this.state.title,
+      city: this.state.city,
+      rating: this.state.rating,
+      profileId: this.state.profileId,
+      profilePic: this.props.profile[0].profilePhoto,
+      profileName: this.props.profile[0].username,
+      duration: this.state.duration,
+      price: this.state.price,
+      hashtags: this.state.hashtags,
+      activities: this.props.activities
+    }
+
+    // console.log(data)
+
+    this.props.addItinerariesReq(data)
+  }
+
 
 
   removeHastag(e) {
@@ -188,7 +211,12 @@ class AddItinerary extends Component {
 
     formData.append('file', this.state.selectedFile);
 
-    this.props.addActivityPict(formData);
+    let tempData = {
+      formData,
+      data: this.state.activity
+    }
+
+    this.props.addActivityPict(tempData);
 
     let act = this.state.activity,
       prev = this.state.activities.filter(act => act.name !== '');
@@ -218,10 +246,7 @@ class AddItinerary extends Component {
     console.log(this.state)
   }
 
-  async addImage() {
-    let temp = this.state.activities.filter(ress => {
-      return ress.img !== ''
-    })
+  addImage() {
 
     let resTemp = this.state.activities.filter(ress => {
       return ress.img === ''
@@ -260,7 +285,7 @@ class AddItinerary extends Component {
     </div>)
 
 
-    const activityDisp = this.state.activities.map(activity => {
+    const activityDisp = this.props.activities !== undefined && this.props.activities.map(activity => {
 
       return (
         <div className='' key={activity.index}>
@@ -273,10 +298,17 @@ class AddItinerary extends Component {
               </Card.Header>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
+                  <Card.Img variant="top" src={activity.img} />
                   <div className='activityDisplay'>
-                    <p>Address : </p> {activity.address}
-                    <p>Cost : </p> {activity.cost}
-                    <p>Comment : </p> {activity.comment}
+                    <label>
+                      <p>Address :  </p> {activity.address}
+                    </label>
+                    <label>
+                      <p>Cost :    </p> {activity.cost}
+                    </label>
+                    <label>
+                      <p>Comment :  </p> {activity.comment}
+                    </label>
                   </div>
                 </Card.Body>
               </Accordion.Collapse>
@@ -293,7 +325,7 @@ class AddItinerary extends Component {
           this.props.login.isLoggedIn ? (
             <div className='addIti'>
               <h1> Add Itinerary </h1>
-              <form>
+              <form onSubmit={this.onSubmit}>
                 {/* City */}
                 <div className="city form-group input">
                   <label
@@ -458,7 +490,7 @@ class AddItinerary extends Component {
 
                   <h3>Activities</h3>
 
-                  {this.state.activities[0].name !== '' && activityDisp}
+                  {this.props.activities !== undefined && activityDisp}
 
                   <div className="name form-Group input" >
                     <label className="form-label"
@@ -585,7 +617,7 @@ class AddItinerary extends Component {
                     </label>
                     <input
                       type="text"
-                      name="comment"
+                      name="comments"
                       onChange={this.activityOnChange}
                       value={this.state.activity.comment}
 
@@ -606,10 +638,36 @@ class AddItinerary extends Component {
                   <div className='addActButCont'>
                     <button onClick={this.addActivity}> Add Activity </button>
                     <button onClick={this.printState}> Print state </button>
-
                   </div>
                 </div>
-
+                <div style={{ marginBottom: '80px', marginTop: '20px' }}>
+                  {' '}
+                  {this.state.submitReady ? (
+                    <button
+                      style={{
+                        width: '70%',
+                        paddingTop: 10,
+                        paddingBottom: 10,
+                        fontWeight: 'bold'
+                      }}
+                      className="btn btn-primary chkd"
+                    >
+                      OK
+                    </button>
+                  ) : (
+                      <button
+                        style={{
+                          width: '70%',
+                          paddingTop: 10,
+                          paddingBottom: 10,
+                          fontWeight: 'bold'
+                        }}
+                        className="btn btn-outline-primary chkd"
+                      >
+                        OK
+                    </button>
+                    )}
+                </div>
 
               </form>
             </div>
@@ -629,10 +687,10 @@ const mapStateToProps = (state) => {
     cities: state.cities,
     login: state.login,
     profile: state.profile.profile,
-    activity: state.activity
+    activities: state.activities
   }
 }
 
 
-export default connect(mapStateToProps, { isLoggedIn, fetchCities, addActivityPict, getProfile })(AddItinerary);
+export default connect(mapStateToProps, { isLoggedIn, fetchCities, addActivityPict, getProfile, addItinerariesReq })(AddItinerary);
 

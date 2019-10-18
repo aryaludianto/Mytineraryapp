@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   login: loginReducer,
   profile: profileReducer,
   favourites: favouritesReducer,
-  activity: activityReducer
+  activities: activityReducer
 })
 
 export default rootReducer;

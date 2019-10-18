@@ -91,8 +91,6 @@ router.delete("/:id", (req, res, next) => {
 //adding image
 router.post("/uploads", upload.single("file"), (req, res) => {
   console.log("this is req.file", req.file);
-
-
   res.send(req.file.path);
 });
 

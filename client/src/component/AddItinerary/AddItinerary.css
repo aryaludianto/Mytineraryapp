@@ -32,3 +32,13 @@
 .hashtagDisp p{
   margin:auto;
 }
+
+.activityDisplay {
+display: flex;
+flex-direction: column;  
+}
+
+.activityDisplay label{
+  display: flex;
+  flex-direction: row;
+}
