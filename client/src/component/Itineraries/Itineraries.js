@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchItineraries } from '../../store/actions/itineraryActions'
 import { fetchCities } from '../../store/actions/citiesActions'
+import { getUsers } from '../../store/actions/profileAction'
 import './Itinerary.css';
 import Activities from '../Activities/Activities';
 import { isLoggedIn } from '../../store/actions/loginActions';
@@ -18,6 +19,7 @@ class Itineraries extends Component {
     this.props.fetchItineraries(window.location.href.split('/').splice(-1)[0]);
     this.props.fetchCities(window.location.href.split('/').splice(-1)[0]);
     this.props.isLoggedIn()
+    this.props.getUsers()
   }
 
 
@@ -64,7 +66,12 @@ class Itineraries extends Component {
         <div className="itinerariesDisp" key={itinerary._id}>
           <div className="itiCard" key={itinerary._id}>
             <div className="profile" >
-              <img src={itinerary.profilePic} className='profPic' alt={itinerary.profileName} key={itinerary._id} />
+              <img
+                src={itinerary.profilePic}
+              
+                className='profPic'
+                alt={itinerary.profileName}
+                key={itinerary._id} />
               <p>{itinerary.profileName}</p>
             </div>
             <div className="titContainer" key={itinerary._id}>
@@ -78,7 +85,7 @@ class Itineraries extends Component {
             </div>
           </div>
           {this.state.isOpen[itinerary._id] && <Activities itinerary={itinerary}></Activities>}
-          <div className="viewAll"  onClick={() => drop(itinerary._id)}>
+          <div className="viewAll" onClick={() => drop(itinerary._id)}>
             {!this.state.isOpen[itinerary._id] ? <p>View All</p> : <p>Close</p>}
           </div>
         </div>
@@ -97,8 +104,8 @@ class Itineraries extends Component {
           {itinerariesDisp}
 
           {this.props.login.isLoggedIn && (<div className="addItinerary">
-           <NavLink to='/add'> <button>Add Your Own Itinerary</button>
-           </NavLink>
+            <NavLink to='/add'> <button>Add Your Own Itinerary</button>
+            </NavLink>
           </div>)}
           <div className="anotherCity"> <a href="/Cities">Choose Another City ⤶ </a></div>
         </div>
@@ -118,9 +125,10 @@ const mapStateToProps = (state) => {
     itineraries: state.itineraries,
     cities: state.cities,
     login: state.login,
-    profile: state.profile.profile
+    profile: state.profile.profile,
+    users: state.profile.users
   }
 }
 
 
-export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn })(Itineraries);
+export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn, getUsers })(Itineraries);

@@ -12,13 +12,30 @@ import { addItinerariesReq } from '../../store/actions/itineraryActions';
 
 
 
+const formIsValid = ({ formErrors }) => {
+  let valid = true;
+  Object.values(formErrors).forEach(val => {
+   console.log(val)  
+    
+    val.length > 1 && (valid = false)
+  
+  });
+  // Object.values(rest).forEach(val => {
+  //   val === null && (valid = false);
+  // });
+  console.log('valid is :' + valid)
+
+  return valid;
+};
+
+
 class AddItinerary extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
       selectedFile: null,
-      submitReady: true,
+      submitReady: false,
       title: '',
       city: '',
       rating: '',
@@ -62,14 +79,13 @@ class AddItinerary extends Component {
       }
     }
     this.onChange = this.onChange.bind(this);
-
     this.addHastag = this.addHastag.bind(this);
     this.removeHastag = this.removeHastag.bind(this);
     this.activityOnChange = this.activityOnChange.bind(this)
     this.addActivity = this.addActivity.bind(this)
-    this.printState = this.printState.bind(this)
     this.handleFile = this.handleFile.bind(this);
     this.onSubmit = this.onSubmit.bind(this)
+    this.handleButtonChange = this.handleButtonChange.bind(this)
 
   }
 
@@ -77,8 +93,6 @@ class AddItinerary extends Component {
     console.log('this is event', event);
     console.log('selectedfile', event.target.files[0]);
     let img = event.target.files[0]
-    // let nameImg = new Date().toISOString() + event.target.files[0].name
-    // let imgPath = '/uploads/activities/' +  nameImg
 
     this.setState({ selectedFile: img });
   }
@@ -99,10 +113,23 @@ class AddItinerary extends Component {
     }
   }
 
+
+  handleButtonChange(e) {
+    console.log('change buttons');
+    e.preventDefault();
+    if (formIsValid(this.state)) {
+      this.setState({ submitReady: true });
+    } else {
+      console.log('form is not valid');
+    }
+  }
+
+
   onChange(e) {
     e.preventDefault();
     const { name, value } = e.target;
     let formErrors = this.state.formErrors;
+
 
     switch (name) {
       case 'title':
@@ -133,6 +160,7 @@ class AddItinerary extends Component {
     }
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+
   }
 
 
@@ -149,11 +177,11 @@ class AddItinerary extends Component {
         break;
       case 'address':
         formErrors.activity[0].address =
-          value.length < 6 ? 'minimum 3 characters required' : '';
+          value.length < 3 ? 'minimum 3 characters required' : '';
         break;
       case 'time':
         formErrors.activity[0].time =
-          value.length < 6 ? 'minimum 3 characters required' : '';
+          value.length < 3 ? 'minimum 3 characters required' : '';
         break;
       case 'cost':
         formErrors.activity[0].cost =
@@ -166,13 +194,14 @@ class AddItinerary extends Component {
       default:
         break;
     }
-
     this.setState({ formErrors, activity: { ...this.state.activity, [name]: value } }, () => console.log(this.state));
   }
 
 
   onSubmit(e) {
     e.preventDefault();
+
+
 
     let data = {
       title: this.state.title,
@@ -186,10 +215,13 @@ class AddItinerary extends Component {
       hashtags: this.state.hashtags,
       activities: this.props.activities
     }
+    if (formIsValid(this.state)) {
+      this.props.addItinerariesReq(data)
+      this.props.history.push('/')
+    } else {
+      console.log('form is not valid')
+    }
 
-    // console.log(data)
-
-    this.props.addItinerariesReq(data)
   }
 
 
@@ -205,7 +237,6 @@ class AddItinerary extends Component {
 
   addActivity(e) {
     e.preventDefault();
-
 
     let formData = new FormData();
 
@@ -240,11 +271,6 @@ class AddItinerary extends Component {
 
 
 
-  printState(e) {
-    e.preventDefault();
-
-    console.log(this.state)
-  }
 
   addImage() {
 
@@ -272,7 +298,6 @@ class AddItinerary extends Component {
 
 
   render() {
-    // this.props.activity.img && (this.addImage())
 
     const { formErrors } = this.state;
 
@@ -325,7 +350,8 @@ class AddItinerary extends Component {
           this.props.login.isLoggedIn ? (
             <div className='addIti'>
               <h1> Add Itinerary </h1>
-              <form onSubmit={this.onSubmit}>
+
+              <form onSubmit={this.onSubmit} onChange={this.handleButtonChange}>
                 {/* City */}
                 <div className="city form-group input">
                   <label
@@ -472,7 +498,7 @@ class AddItinerary extends Component {
                         ? 'error form-control'
                         : 'form-control'
                     }
-                    style={{ flex: 2 }} />
+                    style={{ flex: 1 }} />
                   <button onClick={this.addHastag}> Add Hastag </button>
 
                 </div>
@@ -637,7 +663,6 @@ class AddItinerary extends Component {
 
                   <div className='addActButCont'>
                     <button onClick={this.addActivity}> Add Activity </button>
-                    <button onClick={this.printState}> Print state </button>
                   </div>
                 </div>
                 <div style={{ marginBottom: '80px', marginTop: '20px' }}>

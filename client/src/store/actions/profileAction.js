@@ -1,4 +1,4 @@
-import { GET_PROFILE } from './actions';
+import { GET_PROFILE, LOAD_USERS } from './actions';
 import axios from 'axios';
 
 let config = {
@@ -24,3 +24,19 @@ export const getProfile = () => dispatch => {
       console.log(err);
     });
 };
+
+
+export const getUsers = () => dispatch => {
+
+  axios
+    .get('/users')
+    .then(res => {
+      dispatch({
+        type: LOAD_USERS,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}

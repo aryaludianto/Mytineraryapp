@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { FETCH_ACTIVITIES, ADD_ACTIVITY_PICT } from '../actions/actions';
 import axios from 'axios';
 
