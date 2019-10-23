@@ -12,17 +12,23 @@ import { addItinerariesReq } from '../../store/actions/itineraryActions';
 
 
 
-const formIsValid = ({ formErrors }) => {
+const formIsValid = ({ formErrors, ...rest }) => {
   let valid = true;
+  console.log(rest)
   Object.values(formErrors).forEach(val => {
-   console.log(val)  
-    
+
     val.length > 1 && (valid = false)
-  
+
   });
-  // Object.values(rest).forEach(val => {
-  //   val === null && (valid = false);
-  // });
+  Object.values(rest).forEach(val => {
+    console.log(val)
+    val === null && (valid = false)
+    // val.activities.length > 0 && (valid = true)
+
+  });
+
+  if (rest.activities.length >= 1 && rest.title !== '') (valid = true)
+
   console.log('valid is :' + valid)
 
   return valid;
@@ -47,7 +53,6 @@ class AddItinerary extends Component {
       activity: {
         name: '',
         address: '',
-        img: '',
         time: '',
         cost: '',
         comments: ''
@@ -238,33 +243,45 @@ class AddItinerary extends Component {
   addActivity(e) {
     e.preventDefault();
 
-    let formData = new FormData();
+    let valid = true;
 
-    formData.append('file', this.state.selectedFile);
+    Object.values(this.state.formErrors.activity[0]).forEach(val => {
+      val.length > 1 && (valid = false)
+    });
 
-    let tempData = {
-      formData,
-      data: this.state.activity
-    }
+    Object.values(this.state.activity).forEach(val => {
+      val === '' && (valid = false)
+    });
 
-    this.props.addActivityPict(tempData);
 
-    let act = this.state.activity,
-      prev = this.state.activities.filter(act => act.name !== '');
-
-    this.setState({
-      profileId: this.props.profile[0]._id,
-      activities: [act, ...prev,],
-      selectedFile: null,
-      activity: {
-        name: '',
-        address: '',
-        img: '',
-        time: '',
-        cost: '',
-        comment: ''
+    if (valid) {
+      let formData = new FormData();
+      formData.append('file', this.state.selectedFile);
+      let tempData = {
+        formData,
+        data: this.state.activity
       }
-    })
+
+      this.props.addActivityPict(tempData);
+
+      let act = this.state.activity,
+        prev = this.state.activities.filter(act => act.name !== '');
+
+      this.setState({
+        profileId: this.props.profile[0]._id,
+        activities: [act, ...prev,],
+        selectedFile: null,
+        activity: {
+          name: '',
+          address: '',
+          time: '',
+          cost: '',
+          comments: ''
+        }
+      })
+    } else {
+      console.log('valid : ', valid)
+    }
 
   }
 
@@ -332,7 +349,7 @@ class AddItinerary extends Component {
                       <p>Cost :    </p> {activity.cost}
                     </label>
                     <label>
-                      <p>Comment :  </p> {activity.comment}
+                      <p>Comment :  </p> {activity.comments}
                     </label>
                   </div>
                 </Card.Body>
@@ -645,7 +662,7 @@ class AddItinerary extends Component {
                       type="text"
                       name="comments"
                       onChange={this.activityOnChange}
-                      value={this.state.activity.comment}
+                      value={this.state.activity.comments}
 
                       className={
                         formErrors.activity[0].comment.length > 0

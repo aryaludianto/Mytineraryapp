@@ -20,22 +20,32 @@ export const fetchActivities = itinerariesArray => dispatch => {
 
 export const addActivityPict = tempData => dispatch => {
 
-  let { formData, data } = tempData
+  let { formData, data } = tempData, imgIsLoaded;
 
-  console.log(data)
+  imgIsLoaded = formData.get('file')
 
-  axios.post('/itineraries/uploads', formData)
-    .then(res => {
-      console.log(res);
-      
-      data.img = res.data
+  console.log(imgIsLoaded)
 
-      dispatch({
-        type: ADD_ACTIVITY_PICT,
-        payload: data
+  if (imgIsLoaded !== 'null') {
+    axios.post('/itineraries/uploads', formData)
+      .then(res => {
+        data.img = res.data
+        dispatch({
+          type: ADD_ACTIVITY_PICT,
+          payload: data
+        })
       })
+      .catch(err => {
+        console.log(err)
+      });
+  } else {
+    data.img = 'uploads/activities/no_preview.jpg'
+    dispatch({
+      type: ADD_ACTIVITY_PICT,
+      payload: data
     })
-    .catch(err=>{
-      console.log(err)
-    });
+  }
+
+
+
 }
