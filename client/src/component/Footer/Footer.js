@@ -2,33 +2,89 @@ import React, { Component } from 'react';
 import homeIcon from '../img/homeIcon.png';
 import './Footer.css';
 import { connect } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import ArrowLeft from '@material-ui/icons/ArrowLeft';
+import IconButton from '@material-ui/core/IconButton';
+
 
 
 class Footer extends Component {
-  state = {
-    // isActive: true
+
+  constructor(props) {
+    super(props)
+
   }
 
   render() {
-
     let isAuthenticated = this.props.login.isLoggedIn
+    const history = createBrowserHistory();
+
+
+
 
     return (
       <div className="Footer">
         <div className="imgWrapper">
+
           {isAuthenticated ?
-            <NavLink to="/">
-            <img className="homeIcon" src={homeIcon} alt="homeIcon"></img>
-            </NavLink>
+
+            history.location.pathname === '/' ?
+
+              (
+                <div className='footerBar'>
+                  <div className='homeIcon'>
+                    <NavLink to='/'>
+                      <img className="homeI" src={homeIcon} alt="homeIcon"></img>
+                    </NavLink>
+                  </div>
+                </div>
+
+              )
+
+              :
+
+              (<div className='footerBar'>
+                <IconButton
+                  id='leftArr'
+                  className='leftArrow'
+                  onClick={() => {
+                    history.goBack();
+                  }}
+                >
+                  <ArrowLeft style={{ fontSize: 100, color: '#484848', height: '35px', display: 'grid' }} />
+                </IconButton>
+                <NavLink to="/" className='homeIcon'>
+                  <img className="homeI" src={homeIcon} alt="homeIcon"></img>
+                </NavLink>
+              </div>)
+
             :
-            <img className="homeIconNotActive" src={homeIcon} alt="homeIcon"></img>
+
+            (<div className='footerBar'>
+              {history.location.pathname !== '/' &&
+                (<IconButton
+                  id='leftArr'
+                  className='leftArrow'
+                  onClick={() => {
+                    history.goBack();
+                  }}
+                >
+                  <ArrowLeft className='arrowLeftIcon' style={{ color: '#484848' }} />
+                </IconButton>)}
+
+              <img className="homeIconNotActive" src={homeIcon} alt="homeIcon"></img>
+            </div>
+            )
           }
         </div>
+
       </div>
     );
   }
 }
+
+
 
 
 function mapStateToProps(state) {

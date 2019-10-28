@@ -1,5 +1,5 @@
 div.Header {
-  display: grid;
+  display: none;
   grid-auto-flow: column;
   margin-top: 2%;
   grid-template-columns: 1fr 1fr;
@@ -7,6 +7,7 @@ div.Header {
   background-color: #db2f00;
   z-index: 1;
 }
+
 
 a.userIcon {
   display: grid;

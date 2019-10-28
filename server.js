@@ -23,6 +23,8 @@ app.use(express.static('client'))
 //Midware for image
 app.use(express.static('uploads'))
 app.use('/uploads', express.static('uploads'))
+// app.use('/Itineraries', express.static('uploads'))
+
 
 
 //body parsers used

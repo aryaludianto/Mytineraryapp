@@ -5,15 +5,21 @@ import { fetchItineraries } from '../../store/actions/itineraryActions'
 import { fetchCities } from '../../store/actions/citiesActions'
 import { getUsers } from '../../store/actions/profileAction'
 import './Itinerary.css';
-import Activities from '../Activities/Activities';
+// eslint-disable-next-line no-unused-vars
+import ActivitiesCont from '../Activities/ActivitiesCont';
 import { isLoggedIn } from '../../store/actions/loginActions';
-import { NavLink } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import { NavLink } from 'react-router-dom';
 
 
 
 class Itineraries extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = { isOpen: {} }
 
+  }
 
   componentDidMount() {
     this.props.fetchItineraries(window.location.href.split('/').splice(-1)[0]);
@@ -22,8 +28,14 @@ class Itineraries extends Component {
     this.props.getUsers()
   }
 
+  generateImageURL(fileLocation) {
+    if (fileLocation[0] === 'u')
+      return `/${fileLocation}`
+    else
+      return fileLocation
+  }
 
-  state = { isOpen: {} }
+
 
   render() {
     const { itineraries, cities } = this.props;
@@ -66,12 +78,13 @@ class Itineraries extends Component {
         <div className="itinerariesDisp" key={itinerary._id}>
           <div className="itiCard" key={itinerary._id}>
             <div className="profile" >
+
               <img
-                src={itinerary.profilePic}
-              
+                src={this.generateImageURL(itinerary.profilePic)}
                 className='profPic'
                 alt={itinerary.profileName}
                 key={itinerary._id} />
+
               <p>{itinerary.profileName}</p>
             </div>
             <div className="titContainer" key={itinerary._id}>
@@ -84,7 +97,7 @@ class Itineraries extends Component {
               <div className="tags">{tag}</div>
             </div>
           </div>
-          {this.state.isOpen[itinerary._id] && <Activities itinerary={itinerary}></Activities>}
+          {this.state.isOpen[itinerary._id] && <ActivitiesCont itinerary={itinerary}></ActivitiesCont>}
           <div className="viewAll" onClick={() => drop(itinerary._id)}>
             {!this.state.isOpen[itinerary._id] ? <p>View All</p> : <p>Close</p>}
           </div>

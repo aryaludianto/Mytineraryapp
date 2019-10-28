@@ -12,7 +12,6 @@
 
 .itineraries {
   overflow:scroll;
-  /* background-color: white; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,9 +30,10 @@
 }
 
 .profile p {
-  font-size: 80%;
+  font-size: 90%;
   margin: auto;
   text-align: center;
+  font-weight: bold;
 }
 
 .titContainer{
@@ -56,6 +56,7 @@
   font-size: 80%;
   margin: 0 5% 0;
 }
+
 
 .ratings p {
   margin:auto;
@@ -100,8 +101,9 @@
 .profPic {
   display: flex;
   border-radius: 50%;
-  width: 70%;
-  margin: 5% auto;
+  width: 60px;
+  height: 60px;
+  margin: 5%;
 }
 
 .cardT {

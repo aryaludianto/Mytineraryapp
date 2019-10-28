@@ -16,13 +16,13 @@ h3 {
 }
 
 a{
-  display: grid;
+  display: none;
   height: 100%;
 }
 
 img.CircleRight {
   height: 85%;
-  display: flex;
+  display: none;
   margin: auto;
   background-color: #3c4f57;
   border-radius: 50%;
@@ -35,14 +35,17 @@ img.CircleRight:hover {
 img.LandingImg {
   margin: auto ;
   background-color: white;
+  margin-top:10%;
+  width: 80%;
 }
 
 h3 {
-  font-size: 160%;
+  font-size: 110%;
+  display: none;
 }
 
 .acc {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-content: center;
   align-self: end;
@@ -52,6 +55,7 @@ h3 {
   margin: auto;
   font-size: 200%;
   text-decoration: underline;
+
 }
 
 .acc p:hover{
@@ -65,8 +69,9 @@ h3 {
 
 .textIns {
   font-size: 200%;
-  margin: 0 5% 0 5%;
+  margin: 10% 5% 0 5%;
   align-self: end;
+  display: none;
 }
 
 .acc a {
@@ -75,7 +80,10 @@ h3 {
   text-decoration: underline;
 }
 
-
+.notifSize{
+  display: inline;
+  font-size: 150%;
+}
 
 
 
@@ -105,9 +113,9 @@ a{
 }
 
 img.CircleRight {
-  height: 85%;
+  height: 150%;
   display: flex;
-  margin: auto;
+  margin: 10% auto;
   background-color: #3c4f57;
   border-radius: 50%;
 }
@@ -153,6 +161,7 @@ h3 {
   font-size: 125%;
   margin: 0 5% 0 5%;
   align-self: end;
+  display: inline;
 }
 
 .acc a {
@@ -161,8 +170,9 @@ h3 {
   text-decoration: underline;
 }
 
-
-
+.notifSize{
+  display: none;
+}
 
 }
 

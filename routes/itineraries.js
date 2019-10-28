@@ -60,6 +60,16 @@ router.get("/:city", (req, res, next) => {
   })
 })
 
+
+router.get("/activity/:activityId", (req, res, next) => {
+  var id = req.params.activityId
+  console.log(id)
+  Itinerary.find({ _id:id }).then((itinerary) => {
+    console.log(itinerary)
+    res.send(itinerary);
+  })
+})
+
 //add a new record
 router.post("/", (req, res, next) => {
   Itinerary.create(req.body).then((itinerary) => {

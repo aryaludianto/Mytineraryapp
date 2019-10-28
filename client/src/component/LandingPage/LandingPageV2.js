@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 
 class LandingPage extends React.Component {
 
-  componentDidMount() { 
+  componentDidMount() {
     if (localStorage.getItem('user') != null) {
       this.props.getProfile();
     }
@@ -40,7 +40,7 @@ class LandingPage extends React.Component {
 
 
       <LandingButton key={profile.id} profile={profile} isAuthenticated={isAuthenticated} />
-
+      <p className='notifSize'>Mytinerary only Works on your phone, please adjust your screen size.</p>
 
       {/* {isAuthenticated ? ( <p> Welcome </p>) : (
         <div className="acc">

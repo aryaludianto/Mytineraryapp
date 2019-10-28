@@ -10,7 +10,6 @@ export function setItineraries(itineraries) {
   }
 }
 
-
 export function fetchItineraries(city) {
   return dispatch => {
     // eslint-disable-next-line quotes
