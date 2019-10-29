@@ -8,6 +8,7 @@ import './Cities.css';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { isLoggedIn } from '../../store/actions/loginActions';
+import { getProfile} from '../../store/actions/profileAction'
 
 
 
@@ -22,6 +23,7 @@ class Cities extends Component {
   componentDidMount() {
     this.props.fetchCities()
     this.props.isLoggedIn()
+    this.props.getProfile()
 
   }
 
@@ -90,4 +92,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchCities, isLoggedIn })(Cities);
+export default connect(mapStateToProps, { fetchCities, isLoggedIn, getProfile })(Cities);

@@ -9,27 +9,29 @@ import Itineraries from '../Itineraries/Itineraries';
 import { fetchActivities } from '../../store/actions/activityActions';
 import { postComment } from '../../store/actions/commentActions';
 
+
+
 class Favourite extends Component {
-  async fetchEverything() {
-    let itinerariesArray = [];
+  // async fetchEverything() {
+  //   let itinerariesArray = [];
 
-    console.log(this.props.profile[0]);
-    var user = this.props.profile[0].email;
-    console.log('user', user);
+  //   console.log(this.props.profile[0]);
+  //   var user = this.props.profile[0].email;
+  //   console.log('user', user);
 
-    this.props.favourites.map(itinerary =>
-      itinerariesArray.push(itinerary._id)
-    );
+  //   this.props.favourites.map(itinerary =>
+  //     itinerariesArray.push(itinerary._id)
+  //   );
 
-    this.props.fetchActivities(itinerariesArray);
-    this.props.postComment(itinerariesArray);
-  }
+  //   this.props.fetchActivities(itinerariesArray);
+  //   this.props.postComment(itinerariesArray);
+  // }
 
   componentDidMount() {
     let user = localStorage.getItem('user');
     if (user) {
       this.setState({ isLoggedIn: true });
-      this.fetchEverything();
+      // this.fetchEverything();
     } else {
       this.setState({ isLoggedIn: false });
     }
@@ -42,6 +44,8 @@ class Favourite extends Component {
     };
   }
   render() {
+
+
     return (
       <div
         className="container"

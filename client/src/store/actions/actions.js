@@ -44,6 +44,10 @@ export const ADD_ACTIVITY_PICT = 'ADD_ACTIVITY_PICT'
 export const POST_COMMENT = 'POST_COMMENT'
 
 
+//Like action
+export const LIKE_ITINERARY = 'LIKE_ITINERARY'
+
+
 
 
 

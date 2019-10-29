@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { fetchItineraries } from '../../store/actions/itineraryActions'
 import { fetchCities } from '../../store/actions/citiesActions'
 import { getUsers } from '../../store/actions/profileAction'
+import { getProfile } from '../../store/actions/profileAction'
 import './Itinerary.css';
 // eslint-disable-next-line no-unused-vars
 import ActivitiesCont from '../Activities/ActivitiesCont';
 import { isLoggedIn } from '../../store/actions/loginActions';
 // eslint-disable-next-line no-unused-vars
 import { NavLink } from 'react-router-dom';
+import LikeButton from '../Like/LikeButton'
 
 
 
@@ -26,6 +28,7 @@ class Itineraries extends Component {
     this.props.fetchCities(window.location.href.split('/').splice(-1)[0]);
     this.props.isLoggedIn()
     this.props.getUsers()
+    this.props.getProfile()
   }
 
   generateImageURL(fileLocation) {
@@ -84,15 +87,17 @@ class Itineraries extends Component {
                 className='profPic'
                 alt={itinerary.profileName}
                 key={itinerary._id} />
-
               <p>{itinerary.profileName}</p>
             </div>
             <div className="titContainer" key={itinerary._id}>
+              <LikeButton props={itinerary} />
+
               <h1 className="itiTitle">{itinerary.title}</h1>
+
               <div className='ratings'>
                 <p>Likes: {itinerary.rating}</p>
                 <p>{itinerary.duration} Hours</p>
-                <p>{itinerary.price}</p>
+                <p>{itinerary.price} </p>
               </div>
               <div className="tags">{tag}</div>
             </div>
@@ -144,4 +149,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn, getUsers })(Itineraries);
+export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn, getUsers, getProfile })(Itineraries);

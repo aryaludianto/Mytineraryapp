@@ -1,4 +1,4 @@
-import { GET_PROFILE, LOAD_USERS } from '../actions/actions';
+import { LIKE_ITINERARY } from '../actions/actions';
 
 const initialState = {
   profile: []
@@ -6,16 +6,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-  case GET_PROFILE:
+  case LIKE_ITINERARY
     return {
       ...state,
       profile: action.payload
     };
-  case LOAD_USERS:
-    return {
-      ...state,
-      users: action.payload
-    }
   default:
     return state;
   }

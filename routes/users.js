@@ -251,6 +251,19 @@ router.put("/:id", (req, res, next) => {
 
 });
 
+
+router.put("/like/:id", (req, res, next) => {
+  Users.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
+    Users.findOne({ _id: req.params.id }).then((users) => {
+      res.send(users)
+    })
+  })
+
+});
+
+
+
+
 //delete a record
 router.delete("/:id", (req, res, next) => {
   Cities.findByIdAndRemove({ _id: req.params.id }).then((users) => {

@@ -37,6 +37,8 @@ app.use('/users', require('./routes/users'))
 app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
 
+
+
 //auth
 app.use('/auth', require('./routes/auth-routes'))
 app.use('/log', require('./routes/login'))
