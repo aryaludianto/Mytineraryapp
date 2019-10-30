@@ -5,13 +5,21 @@ import { getFavourites } from '../../store/actions/favouriteActions';
 import { getProfile } from '../../store/actions/profileAction';
 import PropTypes from 'prop-types';
 
-import Itineraries from '../Itineraries/Itineraries';
 import { fetchActivities } from '../../store/actions/activityActions';
 import { postComment } from '../../store/actions/commentActions';
 
 
+import ItinerariesDisp from '../Itineraries/itinerariesDisp'
+
 
 class Favourite extends Component {
+
+  getProfileAndFavourites (callback) {
+    this.props.getProfile();
+    var user = this.props.profile[0];
+    callback(user);
+  }
+
   // async fetchEverything() {
   //   let itinerariesArray = [];
 
@@ -28,13 +36,17 @@ class Favourite extends Component {
   // }
 
   componentDidMount() {
-    let user = localStorage.getItem('user');
-    if (user) {
-      this.setState({ isLoggedIn: true });
-      // this.fetchEverything();
-    } else {
-      this.setState({ isLoggedIn: false });
-    }
+
+    // this.props.getFavourites(this.props.profile[0]._id)
+    // this.props.getProfile()
+    this.getProfileAndFavourites(() => {
+      var user = this.props.profile[0] && this.props.profile[0]._id;
+      console.log("this should be user", user);
+      this.props.getFavourites(user);
+      console.log(this.props);
+    });
+
+
   }
 
   constructor(props) {
@@ -45,6 +57,8 @@ class Favourite extends Component {
   }
   render() {
 
+    let { isLoggedIn } = this.props.login
+    console.log(this.props.profile[0])
 
     return (
       <div
@@ -53,7 +67,7 @@ class Favourite extends Component {
       >
         <h1>Favourites</h1>
         <div className="favouriteContent">
-          {!this.state.isLoggedIn ? (
+          { this.props.login.isLoggedIn ? (
             <div className="noLoginFavourites">
               {' '}
               You have to Log in!
@@ -69,14 +83,9 @@ class Favourite extends Component {
               </span>
             </div>
           ) : this.props.favourites.length !== 0 ? (
-            this.props.favourites.map(favourite => (
-              <Itineraries
-                key={favourite._id}
-                useCase="favourite"
-                itinerary={favourite}
-                favourites={this.props.favourites}
-              />
-            ))
+            
+            <ItinerariesDisp props={this.props.favourites}/>
+           
           ) : (
             <div className="noLoginFavourites">
               {' '}
@@ -105,7 +114,8 @@ Favourite.propTypes = {
 
 const mapStateToProps = state => ({
   favourites: state.favourites.favourites,
-  profile: state.profile.profile
+  profile: state.profile.profile,
+  login: state.login
 });
 
 export default connect(

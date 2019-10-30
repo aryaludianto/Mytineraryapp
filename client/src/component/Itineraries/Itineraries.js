@@ -12,6 +12,8 @@ import { isLoggedIn } from '../../store/actions/loginActions';
 // eslint-disable-next-line no-unused-vars
 import { NavLink } from 'react-router-dom';
 import LikeButton from '../Like/LikeButton'
+import { getFavourites } from '../../store/actions/favouriteActions'
+import ItinerariesDisp from './itinerariesDisp'
 
 
 
@@ -21,6 +23,8 @@ class Itineraries extends Component {
     super(props)
     this.state = { isOpen: {} }
 
+    this.drop = this.drop.bind(this)
+
   }
 
   componentDidMount() {
@@ -29,6 +33,8 @@ class Itineraries extends Component {
     this.props.isLoggedIn()
     this.props.getUsers()
     this.props.getProfile()
+    this.props.getFavourites(this.props.profile[0]._id)
+
   }
 
   generateImageURL(fileLocation) {
@@ -38,21 +44,20 @@ class Itineraries extends Component {
       return fileLocation
   }
 
+  drop(e) {
+    this.setState({
+      isOpen: {
+        ...this.state.isOpen,
+        [e]: !this.state.isOpen[e]
+      }
+    })
+  }
 
 
   render() {
+
     const { itineraries, cities } = this.props;
-
     itineraries.forEach(iti => iti.isOpen = false)
-
-    let drop = (e) => {
-      this.setState({
-        isOpen: {
-          ...this.state.isOpen,
-          [e]: !this.state.isOpen[e]
-        }
-      })
-    }
 
     const citiesDisp = cities.map((city) => {
       return (
@@ -71,44 +76,44 @@ class Itineraries extends Component {
       )
     })
 
-    const itinerariesDisp = itineraries.map((itinerary) => {
+    // const itinerariesDisp = itineraries.map((itinerary) => {
 
-      let tag = itinerary.hashtags.map(hashtag => {
-        return <p key={hashtag}>#{hashtag}</p>
-      })
+    //   let tag = itinerary.hashtags.map(hashtag => {
+    //     return <p key={hashtag}>#{hashtag}</p>
+    //   })
 
-      return (
-        <div className="itinerariesDisp" key={itinerary._id}>
-          <div className="itiCard" key={itinerary._id}>
-            <div className="profile" >
+    //   return (
+    //     <div className="itinerariesDisp" key={itinerary._id}>
+    //       <div className="itiCard" key={itinerary._id}>
+    //         <div className="profile" >
 
-              <img
-                src={this.generateImageURL(itinerary.profilePic)}
-                className='profPic'
-                alt={itinerary.profileName}
-                key={itinerary._id} />
-              <p>{itinerary.profileName}</p>
-            </div>
-            <div className="titContainer" key={itinerary._id}>
-              <LikeButton props={itinerary} />
+    //           <img
+    //             src={this.generateImageURL(itinerary.profilePic)}
+    //             className='profPic'
+    //             alt={itinerary.profileName}
+    //             key={itinerary._id} />
+    //           <p>{itinerary.profileName}</p>
+    //         </div>
+    //         <div className="titContainer" key={itinerary._id}>
+    //           <LikeButton props={itinerary} />
 
-              <h1 className="itiTitle">{itinerary.title}</h1>
+    //           <h1 className="itiTitle">{itinerary.title}</h1>
 
-              <div className='ratings'>
-                <p>Likes: {itinerary.rating}</p>
-                <p>{itinerary.duration} Hours</p>
-                <p>{itinerary.price} </p>
-              </div>
-              <div className="tags">{tag}</div>
-            </div>
-          </div>
-          {this.state.isOpen[itinerary._id] && <ActivitiesCont itinerary={itinerary}></ActivitiesCont>}
-          <div className="viewAll" onClick={() => drop(itinerary._id)}>
-            {!this.state.isOpen[itinerary._id] ? <p>View All</p> : <p>Close</p>}
-          </div>
-        </div>
-      )
-    })
+    //           <div className='ratings'>
+    //             <p>Likes: {itinerary.rating}</p>
+    //             <p>{itinerary.duration} Hours</p>
+    //             <p>{itinerary.price} </p>
+    //           </div>
+    //           <div className="tags">{tag}</div>
+    //         </div>
+    //       </div>
+    //       {this.state.isOpen[itinerary._id] && <ActivitiesCont itinerary={itinerary}></ActivitiesCont>}
+    //       <div className="viewAll" onClick={() => this.drop(itinerary._id)}>
+    //         {!this.state.isOpen[itinerary._id] ? <p>View All</p> : <p>Close</p>}
+    //       </div>
+    //     </div>
+    //   )
+    // })
 
     return (
       <div className="itinerariesBody">
@@ -116,10 +121,12 @@ class Itineraries extends Component {
           <div className="cityDisplay">
             {citiesDisp}
           </div>
-          {itinerariesDisp.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}
+          {itineraries.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}
         </div>
         <div className="itineraries">
-          {itinerariesDisp}
+          {/* {itinerariesDisp} */}
+
+          <ItinerariesDisp props={itineraries}/>
 
           {this.props.login.isLoggedIn && (<div className="addItinerary">
             <NavLink to='/add'> <button>Add Your Own Itinerary</button>
@@ -149,4 +156,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn, getUsers, getProfile })(Itineraries);
+export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn, getUsers, getProfile, getFavourites })(Itineraries);

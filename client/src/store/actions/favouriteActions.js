@@ -4,7 +4,7 @@ import axios from 'axios';
 export const addToFavourites = (itineraryFavourite, user) => dispatch => {
   console.log('user', user, 'itineraryFavourite', itineraryFavourite);
   axios
-    .post('/testItinerary/itineraries/favourite', {
+    .put('/itineraries/itineraries/favourite', {
       itineraryFavourite: itineraryFavourite,
       user: user
     })
@@ -20,17 +20,18 @@ export const addToFavourites = (itineraryFavourite, user) => dispatch => {
     });
 };
 
+
 export const getFavourites = user => dispatch => {
-  console.log('let this be user of getfavourites action creator', user);
+  console.log('the user of get favourites action', user);
   axios
     .post('/favourite/getfavourites', {
       user: user
     })
     .then(res => {
-      console.log(
-        'I pwetty pwetty pwease want this to be the array with the itinerarieis objects',
-        res.data
-      );
+      // console.log(
+      //   'Itineraries --> ',
+      //   res.data
+      // );
       dispatch({
         type: GET_FAVOURITES,
         payload: res.data
@@ -40,6 +41,10 @@ export const getFavourites = user => dispatch => {
       console.log(error.response);
     });
 };
+
+
+
+
 
 export const removeFavourite = (id, user) => dispatch => {
   axios

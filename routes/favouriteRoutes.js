@@ -4,10 +4,10 @@ const Users = require('../models/users');
 const Itinerary = require("../models/Itineraries");
 
 router.post("/getfavourites", (req, res) => {
-  let user = req.body.user.email;
-  console.log("let this be user of getfavourites back end", user);
+  let user = req.body.user;
+  console.log("let this be user of ", user);
 
-  Users.findOne({ email: user })
+  Users.findOne({ _id: user })
     .then(Users => {
       let itineraries = Users.favourite;
 
@@ -15,6 +15,7 @@ router.post("/getfavourites", (req, res) => {
     })
     .then(itineraries => {
       Itinerary.find({ _id: { $in: itineraries } }).then(itinerariesFull => {
+
         res.status(200).send(itinerariesFull);
         return itinerariesFull;
       });
@@ -26,13 +27,14 @@ router.post("/getfavourites", (req, res) => {
     });
 });
 
+
+
 router.post("/deleteFavourite", (req, res) => {
-  Users.findOneAndUpdate(
-    { email: req.body.user.email },
+  Users.findByIdAndUpdate(
+    { _id: req.body.user },
     { $pull: { favourite: req.body.id } },
     { upsert: true }
   )
-
     .then(Users => {
       let favouriteArray = [];
       let oldArray = Users.favourite;

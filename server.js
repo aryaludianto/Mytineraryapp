@@ -38,19 +38,15 @@ app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
 
 
-
 //auth
 app.use('/auth', require('./routes/auth-routes'))
 app.use('/log', require('./routes/login'))
 
-
-
 //profile
 app.use("/profile", require("./routes/profileRoutes"));
 
-
 //favourites
-// app.use("/favourite", require("./routes/favouriteRoutes"));
+app.use("/favourite", require("./routes/favouriteRoutes"));
 
 
 

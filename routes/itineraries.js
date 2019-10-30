@@ -2,6 +2,7 @@ const express = require('express');
 // get an instance of router
 var router = express.Router();
 const Itinerary = require('../models/Itineraries');
+const Users = require('../models/users')
 const multer = require('multer');
 
 
@@ -102,6 +103,41 @@ router.delete("/:id", (req, res, next) => {
 router.post("/uploads", upload.single("file"), (req, res) => {
   console.log("this is req.file", req.file);
   res.send(req.file.path);
+});
+
+
+
+//adding favorite
+router.put("/itineraries/favourite", (req, res) => {
+  console.log("req.body for adding favourite", req.body);
+  
+  Users.findByIdAndUpdate(
+    { _id: req.body.user },
+    { $push: { favourite: req.body.itineraryFavourite } },
+    { upsert: true }
+  )
+
+    .then(Users => {
+      console.log("Users", Users);
+      let favouriteArray = Users.favourite;
+      console.log("favouriteArray before", favouriteArray);
+      favouriteArray.push(req.body.itineraryFavourite);
+      console.log("favouriteArray after", favouriteArray);
+      return favouriteArray;
+
+    })
+    .then(favouriteArray => {
+      Itinerary.find({ _id: { $in: favouriteArray } }).then(itinerariesFull => {
+        res.status(200).send(itinerariesFull);
+        return itinerariesFull;
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
 });
 
 module.exports = router
