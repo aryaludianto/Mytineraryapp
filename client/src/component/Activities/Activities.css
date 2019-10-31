@@ -8,9 +8,9 @@
   display: flex;
   /* overflow: scroll; */
   flex-direction: row;
+  width: 95vw;
   overflow-x: scroll;
   overflow-y: hidden;
-  width: 100%;
 }
 
 .activitesContainer {
@@ -18,10 +18,16 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  
 }
 
 .actv {
   display: flex;
+}
+
+.Actv{
+  margin-left: 5%;
+  font-weight: bold;
 }
 
 .imageContainer {
@@ -30,6 +36,7 @@
   width: 150px;
   margin: 5px;
   text-align: center;
+  z-index: 1;
 }
 
 .activityName {

@@ -2,8 +2,8 @@
 .App{
   background-color:#db2f00;
   display: grid;
-  grid-template-rows: 6% 80% 7%;
+  grid-template-rows: 6% 88% 6%;
   /* grid-auto-columns: auto; */
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }

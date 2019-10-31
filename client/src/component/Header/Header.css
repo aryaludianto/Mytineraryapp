@@ -1,16 +1,19 @@
 div.Header {
-  display: grid;
+  display: none;
   grid-auto-flow: column;
   margin-top: 2%;
   grid-template-columns: 1fr 1fr;
   width: 100%;
   background-color: #db2f00;
+  z-index: 1;
 }
+
 
 a.userIcon {
   display: grid;
   margin-left: 40%;
-  height: 150%;
+  height: 100%;
+  background-color: #db2f00;
 }
 
 a.navIcon {
@@ -18,6 +21,7 @@ a.navIcon {
   justify-self: end;
   margin-right: 40%;
   height: 150%;
+  background-color: #db2f00;
 }
 
 .userIcon:hover,
@@ -28,12 +32,91 @@ a.navIcon {
 .userIconA {
   display: grid;
   height: 100%;
+  background-color: #db2f00;
+
 }
 
 .navIconA {
   display: grid;
   height: 100%;
+  background-color: #db2f00;
+
 }
+
+
+
+/* .header {
+  display: flex;
+} */
+
+
+/* .header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d8d8d8;
+  margin-bottom: 10px;
+}
+
+
+.headerContainer {
+  display: block;
+  background: white;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+} */
+
+
+.profile {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  padding: 12px;
+  background: white;
+}
+
+
+/* .menu {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  background: white;
+} */
+
+.menu {
+  display: grid;
+  justify-self: end;  
+  background-color: #db2f00;
+
+}
+
+
+.menuIn {
+  display: grid;
+  background-color: #db2f00;
+
+}
+
+#lost {
+  padding: 0;
+  justify-self: end;  
+margin-right: 10%;
+background-color: #db2f00;
+
+}
+
+
+.Head{
+  display: grid;
+  background-color: #db2f00;
+
+}
+
+
+
+
+
 
 
 @media (max-height:812px){
@@ -41,24 +124,27 @@ a.navIcon {
   div.Header {
     display: grid;
     grid-auto-flow: column;
-    margin-top: 2%;
+    /* margin-top: 2%; */
     grid-template-columns: 1fr 1fr;
     width: 100vw;
     background-color: #db2f00;
+    height: 100%;
   }
   
   a.userIcon {
     display: grid;
     margin-left: 10%;
     height: 100%;
+    background-color: #db2f00;
   }
   
   a.navIcon {
     display: grid;
-  
     justify-self: end;
-    margin-right: 10%;
-    height: 100%;
+    /* margin-right: 10%;
+    height: 100%; */
+    background-color: #db2f00;
+
   }
   
   .userIcon:hover,
@@ -69,12 +155,15 @@ a.navIcon {
   .userIconA {
     display: grid;
     height: 100%;
+    background-color: #db2f00;
+
   }
   
   .navIconA {
     display: grid;
-  
     height: 100%;
+    background-color: #db2f00;
+  
   }
 
 }

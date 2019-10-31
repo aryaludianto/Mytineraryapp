@@ -11,21 +11,32 @@
 }
 
 .addPhoto{
-  border: 1px solid black;
-  border-radius: 50%;
-  height: 15vh;
-  width: 25vw;
   margin: auto;
+  border: 0;
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+
 }
 
 .addPhoto p {
   margin: auto;
-  text-align: center;
+  margin-left: 2%;
+  margin-right: 0;
+  text-align: left;
+  width: 50%;
 }
 
-form {
+.addPhoto input {
+  margin: auto 10% auto 0;
+  text-align: center;
+  width: 100%;
+}
+
+.CreateAccount form {
   display: grid;
+  height: 90%;
 }
 
 .formInp{
@@ -57,4 +68,52 @@ label{
 .submt{
   width: 40%;
   margin: 2% auto;
+}
+
+
+
+/* redesign starts here */
+
+.input {
+  display: flex;
+  margin: 10px;
+}
+
+.form-label {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  color: #484848;
+}
+
+.error {
+  background: pink;
+}
+
+.errorForm{
+  display: grid;
+  width: 100%;
+  font-size: 100%;
+  margin-left: 33%;
+}
+
+.password {
+  display: flex;
+  margin: 10px;
+}
+
+.psswd {
+  margin-left:10%;
+}
+
+.eml {
+  margin-left:19%;
+}
+
+.chk{
+  margin-left: 10%;
+}
+
+.chkd {
+  margin:auto 15% auto;
 }

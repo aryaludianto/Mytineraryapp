@@ -1,0 +1,10 @@
+{
+  "secret": "supersecret",
+  "google":{
+    "clientID":"777898629223-qp96oar2mh7e92jf19gmhuv2kb9cepne.apps.googleusercontent.com",
+    "clientSecret":"R-2uKz67B9wWUQiQ6QDjLYLa"
+    },
+    "mongoDB":{
+      "uri": "mongodb+srv://arya123:arya123@clustermytinerary-wulcn.gcp.mongodb.net/mytinerary?retryWrites=true&w=majority"
+    }
+}

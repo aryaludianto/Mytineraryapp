@@ -53,7 +53,6 @@ router
           expiresIn: "24h"
         }
       );
-
       console.log("this is user", user);
       res.status(200).json({ user: user, token: token });
     }

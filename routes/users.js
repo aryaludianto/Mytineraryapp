@@ -7,7 +7,39 @@ const Users = require('../models/users');
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require('../keys/authConfig');
-var VerifyToken = require('../keys/verifyToken')
+var VerifyToken = require('../keys/verifyToken');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb){
+    cb(null, new Date().toISOString() + file.originalname)
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype ==='image/jpeg' ||
+    file.mimetype ==='image/png' ||
+    file.mimetype ==='image/jpg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 10
+  },
+  fileFilter: fileFilter
+});
+
+
 
 // ROUTES
 // ==============================================
@@ -33,38 +65,135 @@ router.get("/:user", (req, res, next) => {
 //   }).catch(next)
 // });
 
+
+
+//adding file upload
+// router.post('/', upload.single('file'), function(req, res, next) {
+//   Users.findOne(
+//     {
+//       email: req.body.email
+//     }
+//   ),
+//   function(err, accountExist){
+//     console.log(accountExist);
+//     if(err) throw err;
+//     if (accountExist == null){
+//       console.log("this is new account");
+//       var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+//       Users.create({
+//         profilePhoto: req.file.path,
+//         username : req.body.username,
+//         password : hashedPassword,
+//         email : req.body.email,
+//         firstName: req.body.firstName,
+//         lastName: req.body.lastName,
+//         country: req.body.country
+//       },
+//       function (err, user) {
+//         if (err) return res.status(500).send("There was a problem registering the user.")
+//         // create a token
+//         var token = jwt.sign({ id: user._id }, config.secret, {
+//           expiresIn: 86400 // expires in 24 hours
+//         });
+//         res.status(200).send({ auth: true, token: token });
+//       }).then(function(user){
+//         res.send(user)
+//       }); 
+      
+//     } else {
+//       console.log("account exists");
+//       res.json(null);
+//     }
+//     }
+
+// });
+
+
+
+router.post("/", upload.single("file"), (req, res, next) => {
+  Users.findOne(
+    {
+      email: req.body.email
+    },
+    function(err, existingAccount) {
+      console.log(existingAccount);
+      if (err) throw err;
+      if (existingAccount == null) {
+        console.log("this is a new account, I will add it");
+        bcrypt.hash(req.body.password, 8, (err, hash) => {
+          if (err) {
+            return res.status(500).json({ error: err });
+          } else {
+            const user = new Users({
+              profilePhoto: req.file.path,
+              username: req.body.username,
+              password: hash,
+              email: req.body.email,
+              firstName: req.body.firstName,
+              lastName: req.body.lastName,
+              country: req.body.country
+            });
+            Users.create(user).then(function(account) {
+              res.send(account);
+            });
+          }
+        });
+      } else {
+        console.log("account exists");
+        res.json(null);
+      }
+    }
+  );
+});
+
+router.post("/uploads", upload.single("profile"), (req, res) => {
+  console.log("this is req.file", req.file);
+
+  res.send("sending something back to say we reach upload path");
+});
+
+
+
+
+
+
+
+
 //auth starts
 
-router.post('/', function(req, res, next) {
+// router.post('/', function(req, res, next) {
   
-  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+//   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
   
-  console.log({
-    username : req.body.username,
-    password : hashedPassword,
-    email : req.body.email,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    country: req.body.country
-  })
+//   console.log({
+//     username : req.body.username,
+//     password : hashedPassword,
+//     email : req.body.email,
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     country: req.body.country
+//   })
 
-  Users.create({
-    username : req.body.username,
-    password : hashedPassword,
-    email : req.body.email,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    country: req.body.country
-  },
-  function (err, user) {
-    if (err) return res.status(500).send("There was a problem registering the user.")
-    // create a token
-    var token = jwt.sign({ id: user._id }, config.secret, {
-      expiresIn: 86400 // expires in 24 hours
-    });
-    res.status(200).send({ auth: true, token: token });
-  }); 
-});
+//   Users.create({
+//     username : req.body.username,
+//     password : hashedPassword,
+//     email : req.body.email,
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     country: req.body.country
+//   },
+//   function (err, user) {
+//     if (err) return res.status(500).send("There was a problem registering the user.")
+//     // create a token
+//     var token = jwt.sign({ id: user._id }, config.secret, {
+//       expiresIn: 86400 // expires in 24 hours
+//     });
+//     res.status(200).send({ auth: true, token: token });
+//   }); 
+// });
+
+
+
 
 
 
@@ -121,6 +250,19 @@ router.put("/:id", (req, res, next) => {
   })
 
 });
+
+
+router.put("/like/:id", (req, res, next) => {
+  Users.findByIdAndUpdate({ _id: req.params.id }, req.body).then(() => {
+    Users.findOne({ _id: req.params.id }).then((users) => {
+      res.send(users)
+    })
+  })
+
+});
+
+
+
 
 //delete a record
 router.delete("/:id", (req, res, next) => {
