@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
+
 const bodyParser = require('body-parser'); //Body parser
 const mongoose = require('mongoose')
 const keys = require('./keys/mongoKey')
@@ -12,6 +13,8 @@ const GridFsStorage = require('multer-gridfs-storage')
 const multer = require('multer')
 const Grid = require("gridfs-stream");
 const crypto = require('crypto');
+
+const path = require('path')
 
 
 
@@ -72,7 +75,7 @@ const uri = keys.mongoDB.uri;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useUnifiedTopology: true 
+  useUnifiedTopology: true
 });
 // mongoose.Promise = global.Promise;
 
@@ -117,16 +120,31 @@ app.post("/uploads", upload.single("file"), (req, res) => {
 app.use("/itinerary/uploads", express.static("uploads"));
 app.use("/activity/uploads", express.static("uploads"));
 
+
+//Serve static assets
+if (process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+
+}
+
+
+
 mongoose.connection
   .once("open", () => {
     console.log("Connection has been made, now make fireworks...");
   })
-  .on("error", function(error) {
+  .on("error", function (error) {
     console.log("Connection error:", error);
   });
 
 
 mongoose.Promise = global.Promise;
-app.listen(port, () => {
-  console.log(`app working on ${port}`)
-})
+
+// app.listen(port, () => {
+//   console.log(`app working on ${port}`)
+// })
