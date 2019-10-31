@@ -23,7 +23,7 @@ class FavouritesContainer extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="itinerariesBody">
         <Favourite
           profile={this.props.profile[0]}
           favourites={this.props.favourites}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ActivitiesCont from '../Activities/ActivitiesCont';
-import LikeButton from '../Like/LikeButton'
+import LikeButton from '../Like/LikeButton';
+import { connect } from 'react-redux';
+
 
 
 export class ItinerariesDisp extends Component {
@@ -31,8 +33,8 @@ export class ItinerariesDisp extends Component {
   }
 
   render() {
-    
-console.log(this.props)
+
+    console.log(this.props)
 
     const itinerariesDisp = this.props.props && this.props.props.map((itinerary) => {
 
@@ -53,7 +55,8 @@ console.log(this.props)
               <p>{itinerary.profileName}</p>
             </div>
             <div className="titContainer" key={itinerary._id}>
-              <LikeButton props={itinerary} />
+              {this.props.login.isLoggedIn && <LikeButton props={itinerary} />
+              }
 
               <h1 className="itiTitle">{itinerary.title}</h1>
 
@@ -82,4 +85,12 @@ console.log(this.props)
   }
 }
 
-export default ItinerariesDisp;
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+
+
+export default connect(mapStateToProps)(ItinerariesDisp);
+

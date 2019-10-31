@@ -14,61 +14,28 @@ import ItinerariesDisp from '../Itineraries/itinerariesDisp'
 
 class Favourite extends Component {
 
-  getProfileAndFavourites (callback) {
-    this.props.getProfile();
-    var user = this.props.profile[0];
-    callback(user);
-  }
-
-  // async fetchEverything() {
-  //   let itinerariesArray = [];
-
-  //   console.log(this.props.profile[0]);
-  //   var user = this.props.profile[0].email;
-  //   console.log('user', user);
-
-  //   this.props.favourites.map(itinerary =>
-  //     itinerariesArray.push(itinerary._id)
-  //   );
-
-  //   this.props.fetchActivities(itinerariesArray);
-  //   this.props.postComment(itinerariesArray);
-  // }
-
   componentDidMount() {
-
-    // this.props.getFavourites(this.props.profile[0]._id)
-    // this.props.getProfile()
-    this.getProfileAndFavourites(() => {
-      var user = this.props.profile[0] && this.props.profile[0]._id;
-      console.log("this should be user", user);
-      this.props.getFavourites(user);
-      console.log(this.props);
-    });
-
-
+    
   }
 
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false
-    };
+   
   }
   render() {
 
     let { isLoggedIn } = this.props.login
-    console.log(this.props.profile[0])
+
+    console.log('isLoggedIn is :', isLoggedIn)
 
     return (
-      <div
-        className="container"
-        style={{ marginBottom: '70px', marginTop: '70px' }}
-      >
-        <h1>Favourites</h1>
-        <div className="favouriteContent">
-          { this.props.login.isLoggedIn ? (
-            <div className="noLoginFavourites">
+      <div className="itineraries">
+        <h1 style={{'margin-top': '5%'}}>Favourites</h1>
+
+
+        <div className="itineraries">
+          { !isLoggedIn ? (
+            <div >
               {' '}
               You have to Log in!
               <span
@@ -83,9 +50,7 @@ class Favourite extends Component {
               </span>
             </div>
           ) : this.props.favourites.length !== 0 ? (
-            
-            <ItinerariesDisp props={this.props.favourites}/>
-           
+            <ItinerariesDisp props={this.props.favourites} />
           ) : (
             <div className="noLoginFavourites">
               {' '}

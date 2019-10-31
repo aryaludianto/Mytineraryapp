@@ -32,8 +32,8 @@ class Itineraries extends Component {
     this.props.fetchCities(window.location.href.split('/').splice(-1)[0]);
     this.props.isLoggedIn()
     this.props.getUsers()
-    this.props.getProfile()
-    this.props.getFavourites(this.props.profile[0]._id)
+    this.props.getProfile() 
+    this.props.profile[0] && this.props.getFavourites(this.props.profile[0]._id)
 
   }
 

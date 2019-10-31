@@ -46,6 +46,9 @@ export const getFavourites = user => dispatch => {
 
 
 
+
+
+
 export const removeFavourite = (id, user) => dispatch => {
   axios
     .post('/favourite/deleteFavourite', { id: id, user: user })
