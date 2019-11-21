@@ -7,6 +7,7 @@ import { isLoggedIn } from '../../store/actions/loginActions';
 import { getProfile } from '../../store/actions/profileAction'
 import { connect } from 'react-redux';
 import LandingButton from './LandingButton'
+import { NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 
@@ -34,7 +35,9 @@ class LandingPage extends React.Component {
       <p className="textIns">Find your perfect trip, designed by insiders who knows and love their cities.</p>
 
       <h3>Start Browsing</h3>
-      <a href="/Cities"><img className="CircleRight" src={circledright2} alt="homeLogo"></img></a>
+      <NavLink to="/Cities">
+        <img className="CircleRight" src={circledright2} alt="homeLogo"></img>
+      </NavLink>
 
       <p className="textIns">Want to build your own MYtinerary?</p>
 
