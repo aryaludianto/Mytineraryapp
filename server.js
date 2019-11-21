@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 5000;
 
 const bodyParser = require('body-parser'); //Body parser
 const mongoose = require('mongoose')
@@ -143,6 +142,9 @@ mongoose.connection
 
 mongoose.Promise = global.Promise;
 
-// app.listen(port, () => {
-//   console.log(`app working on ${port}`)
-// })
+const port = process.env.PORT || 5000;
+
+
+app.listen(port, () => {
+  console.log(`app working on ${port}`)
+})
