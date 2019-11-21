@@ -11,8 +11,9 @@ import ActivitiesCont from '../Activities/ActivitiesCont';
 import { isLoggedIn } from '../../store/actions/loginActions';
 // eslint-disable-next-line no-unused-vars
 import { NavLink } from 'react-router-dom';
-import LikeButton from '../Like/LikeButton'
+// import LikeButton from '../Like/LikeButton'
 import { getFavourites } from '../../store/actions/favouriteActions'
+// eslint-disable-next-line no-unused-vars
 import ItinerariesDisp from './itinerariesDisp'
 
 
@@ -32,7 +33,7 @@ class Itineraries extends Component {
     this.props.fetchCities(window.location.href.split('/').splice(-1)[0]);
     this.props.isLoggedIn()
     this.props.getUsers()
-    this.props.getProfile() 
+    this.props.getProfile()
     this.props.profile[0] && this.props.getFavourites(this.props.profile[0]._id)
 
   }
@@ -126,13 +127,17 @@ class Itineraries extends Component {
         <div className="itineraries">
           {/* {itinerariesDisp} */}
 
-          <ItinerariesDisp props={itineraries}/>
+          <ItinerariesDisp props={itineraries} />
 
           {this.props.login.isLoggedIn && (<div className="addItinerary">
             <NavLink to='/add'> <button>Add Your Own Itinerary</button>
             </NavLink>
           </div>)}
-          <div className="anotherCity"> <a href="/Cities">Choose Another City ⤶ </a></div>
+          <div className="anotherCity">
+            <NavLink to="/Cities">
+              <p>Choose Another City ⤶ </p>
+            </NavLink>
+          </div>
         </div>
       </div>
     )
