@@ -131,9 +131,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 
 }
-
-
-
+   
 mongoose.connection
   .once("open", () => {
     console.log("Connection has been made, now make fireworks...");
