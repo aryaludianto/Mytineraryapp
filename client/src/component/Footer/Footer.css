@@ -32,7 +32,6 @@
 
 @media (max-height: 812px) {
   .homeIconNotActive {
-    height: 100%;
     opacity: 0;
   }
 
@@ -40,11 +39,9 @@
     text-align: center;
     width: 100vw;
     background-color: #db2f00;
-    display: grid;
   }
 
   .footerBar {
-    height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
