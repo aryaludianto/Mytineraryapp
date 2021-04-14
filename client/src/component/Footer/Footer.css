@@ -1,90 +1,84 @@
-
-
-
-.footerBar{
+.footerBar {
   height: 100%;
   width: 100%;
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.Footer{
+.Footer {
   text-align: center;
   width: 100vw;
-  height: 100%;;
+  height: 100%;
   background-color: #db2f00;
 }
 
-.Footer img:hover{
+.Footer img:hover {
   opacity: 0.5;
 }
 
-.imgWrapper{
+.imgWrapper {
   height: 100%;
 }
 
-.homeIcon{
+.homeIcon {
   height: 100%;
   display: none;
 }
 
-.homeIconNotActive{
+.homeIconNotActive {
   height: 100%;
   opacity: 0;
 }
 
-
-@media (max-height:812px){
-
-  .homeIconNotActive{
+@media (max-height: 812px) {
+  .homeIconNotActive {
     height: 100%;
     opacity: 0;
   }
 
-  .Footer{
+  .Footer {
     text-align: center;
     width: 100vw;
     background-color: #db2f00;
     display: grid;
   }
 
-  .footerBar{
+  .footerBar {
     height: 100%;
     width: 100%;
-    display:grid;
-    grid-template-columns: repeat(9, 1fr)
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
   }
-  
-  .Footer img:hover{
+
+  .Footer img:hover {
     opacity: 0.5;
   }
-  
-  .homeIcon{
+
+  .homeIcon {
     height: 100%;
     display: grid;
     grid-column-start: 5;
   }
 
-  .homeI{
+  .homeI {
     height: 35px;
   }
 
-  .leftArrow{
-    display:grid;
+  .leftArrow {
+    display: grid;
     grid-column-start: 1;
-    grid-column-end:3;
+    grid-column-end: 3;
     padding: 0px;
     margin: 0;
   }
 
-  .arrowLeftIcon{
+  .arrowLeftIcon {
     display: grid;
     padding: 0;
   }
-  
-  #leftArr{
+
+  #leftArr {
     padding: 0;
     font-size: 90px;
   }
-
 }

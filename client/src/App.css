@@ -1,9 +1,8 @@
-
-.App{
-  background-color:#db2f00;
+.App {
+  background-color: #db2f00;
   display: grid;
   grid-template-rows: 6% 88% 6%;
   /* grid-auto-columns: auto; */
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }

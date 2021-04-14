@@ -2,13 +2,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchCities } from '../../store/actions/citiesActions'
+// eslint-disable-next-line no-unused-vars
 import { Link } from 'react-router-dom'
 // import {fetchItineraries} from '../../store/actions/itineraryActions'
 import './Cities.css';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { isLoggedIn } from '../../store/actions/loginActions';
-import { getProfile} from '../../store/actions/profileAction'
+import { getProfile } from '../../store/actions/profileAction'
 
 
 
@@ -16,7 +17,7 @@ class Cities extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      citiesFilter: "",
+      citiesFilter: '',
     }
   }
 
@@ -27,7 +28,7 @@ class Cities extends Component {
 
   }
 
-  handleChange = e => {
+  handleChange(e) {
     this.setState({
       citiesFilter: e.target.value
     })
@@ -38,7 +39,7 @@ class Cities extends Component {
 
     const { cities } = this.props;
     const filteredCity = cities.filter(city => {
-      if (this.state.citiesFilter === "") {
+      if (this.state.citiesFilter === '') {
         return true;
       }
       return city.name.toLowerCase().includes(this.state.citiesFilter);

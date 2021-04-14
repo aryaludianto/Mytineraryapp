@@ -65,8 +65,6 @@ router.get("/:user", (req, res, next) => {
 //   }).catch(next)
 // });
 
-
-
 //adding file upload
 // router.post('/', upload.single('file'), function(req, res, next) {
 //   Users.findOne(

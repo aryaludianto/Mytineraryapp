@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
 import './Cities.css';
 
@@ -9,7 +10,7 @@ export class CitiesFilter extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange (e) {
     this.setState({
       citiesFilter: e.target.value
     })
