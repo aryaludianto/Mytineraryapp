@@ -1,2 +1,4 @@
 node_modules
-./keys
+.env
+keys/keys.js
+keys/mongoKey.js
