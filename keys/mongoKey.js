@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 module.exports = {
-  mongoDB:{
-    uri:'mongodb+srv://arya123:arya123@clustermytinerary-wulcn.gcp.mongodb.net/mytinerary?retryWrites=true&w=majority'
+  mongoDB: {
+    uri: process.env.MONGGO_DB_URI
   }
 }

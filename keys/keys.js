@@ -1,8 +1,8 @@
-// add this to git ignore
+require('dotenv').config();
 
 module.exports = {
-  google:{
-    clientID:'777898629223-qp96oar2mh7e92jf19gmhuv2kb9cepne.apps.googleusercontent.com',
-    clientSecret:'R-2uKz67B9wWUQiQ6QDjLYLa'
+  google: {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET
   }
 }

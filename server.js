@@ -81,7 +81,6 @@ mongoose.connect(uri, {
 
 
 //Change for uploading images
-
 let gfs;
 var conn = mongoose.createConnection(uri);
 conn.once("open", () => {
