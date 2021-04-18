@@ -14,16 +14,16 @@ class Header extends Component {
   render() {
 
 
-    let isAuthenticated  = this.props.login.isLoggedIn
+    let isAuthenticated = this.props.login.isLoggedIn
 
     console.log(this.props.login.isLoggedIn)
 
-    isAuthenticated ? console.log("logged in " + isAuthenticated) : console.log("Logged out " + isAuthenticated)
+    isAuthenticated ? console.log('logged in ' + isAuthenticated) : console.log('Logged out ' + isAuthenticated)
 
     const guestLink = (
       <div className="Header">
         <NavLink to="/login" className="userIcon">
-          <AccountCircle style={{ fontSize: 36, color: "#484848" }} />
+          <AccountCircle style={{ fontSize: 36, color: '#484848' }} />
         </NavLink>
         <div className="navIcon" >
           <Menu />
@@ -35,7 +35,7 @@ class Header extends Component {
     const userLink = (
       <div className="Header">
         <NavLink to="/ProfilePageCont" className="userIcon">
-          <AccountCircle style={{ fontSize: 36, color: "#D8D8D8" }} />
+          <AccountCircle style={{ fontSize: 36, color: '#D8D8D8' }} />
         </NavLink>
         <div className="navIcon" >
           <Menu />
@@ -46,9 +46,9 @@ class Header extends Component {
 
 
     return (
-      <div className="Head">
+      <>
         { isAuthenticated ? userLink : guestLink}
-      </div>
+      </ >
     );
   }
 }

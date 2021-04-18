@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
 const auth = require('../auth/AuthController');
-
 const Users = require('../models/users');
 
 router.post("/profiles", auth, (req, res) => {

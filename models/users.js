@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create cities schema and model
-
 const UserSchema = new Schema({
   profilePhoto: {
     type: String
@@ -13,26 +12,25 @@ const UserSchema = new Schema({
   password: {
     type: String,
   },
-  email:{
+  email: {
     type: String,
   },
-  firstName:{
+  firstName: {
     type: String,
   },
-  lastName:{
+  lastName: {
     type: String,
   },
-  country:{
+  country: {
     type: String,
   },
-  googleId:{
+  googleId: {
     type: String
   },
-  favourite: {
+  favorite: {
     type: Array
   }
 })
-
 
 const Users = mongoose.model('users', UserSchema);
 

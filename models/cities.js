@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create cities schema and model
-
 const CitiesSchema = new Schema({
   country: {
     type: String,
@@ -12,12 +11,11 @@ const CitiesSchema = new Schema({
     type: String,
     required: [true, 'city name field is required']
   },
-  img:{
+  img: {
     type: String,
     required: [false]
   }
 })
-
 
 const Cities = mongoose.model('cities', CitiesSchema);
 

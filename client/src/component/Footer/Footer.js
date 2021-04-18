@@ -20,8 +20,31 @@ class Footer extends Component {
     let isAuthenticated = this.props.login.isLoggedIn
     const history = createBrowserHistory();
 
+    let homeButtonActive = (
+      <div className='footerBar'>
+        <div className='homeIcon'>
+          <NavLink to='/'>
+            <img className="homeI" src={homeIcon} alt="homeIcon"></img>
+          </NavLink>
+        </div>
+      </div>
+    )
 
+    let homeButtonNonActive = (<div className='footerBar'>
+      {history.location.pathname !== '/' &&
+        (<IconButton
+          id='leftArr'
+          className='leftArrow'
+          onClick={() => {
+            history.goBack();
+          }}
+        >
+          <ArrowLeft className='arrowLeftIcon' style={{ color: '#484848' }} />
+        </IconButton>)}
 
+      <img className="homeIconNotActive" src={homeIcon} alt="homeIcon"></img>
+    </div>
+    )
 
     return (
       <div className="Footer">
@@ -31,16 +54,7 @@ class Footer extends Component {
 
             history.location.pathname === '/' ?
 
-              (
-                <div className='footerBar'>
-                  <div className='homeIcon'>
-                    <NavLink to='/'>
-                      <img className="homeI" src={homeIcon} alt="homeIcon"></img>
-                    </NavLink>
-                  </div>
-                </div>
-
-              )
+              homeButtonActive
 
               :
 
@@ -59,23 +73,9 @@ class Footer extends Component {
                 </NavLink>
               </div>)
 
-            :
+            : homeButtonNonActive
 
-            (<div className='footerBar'>
-              {history.location.pathname !== '/' &&
-                (<IconButton
-                  id='leftArr'
-                  className='leftArrow'
-                  onClick={() => {
-                    history.goBack();
-                  }}
-                >
-                  <ArrowLeft className='arrowLeftIcon' style={{ color: '#484848' }} />
-                </IconButton>)}
 
-              <img className="homeIconNotActive" src={homeIcon} alt="homeIcon"></img>
-            </div>
-            )
           }
         </div>
 
