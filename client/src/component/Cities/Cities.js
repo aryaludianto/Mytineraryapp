@@ -19,13 +19,13 @@ class Cities extends Component {
     this.state = {
       citiesFilter: '',
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchCities()
     this.props.isLoggedIn()
     this.props.getProfile()
-
   }
 
   handleChange(e) {
@@ -34,8 +34,9 @@ class Cities extends Component {
     })
   }
 
-  render() {
 
+
+  render() {
 
     const { cities } = this.props;
     const filteredCity = cities.filter(city => {
@@ -80,10 +81,6 @@ class Cities extends Component {
   }
 }
 
-Cities.propTypes = {
-  cities: PropTypes.array.isRequired,
-  fetchCities: PropTypes.func.isRequired
-}
 
 
 

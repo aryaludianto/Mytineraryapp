@@ -6,11 +6,11 @@ export class CitiesFilter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      citiesFilter: ""
+      citiesFilter: ''
     }
   }
 
-  handleChange (e) {
+  handleChange(e) {
     this.setState({
       citiesFilter: e.target.value
     })
