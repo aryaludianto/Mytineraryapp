@@ -1,44 +1,31 @@
 const express = require("express");
 const app = express();
-
 const bodyParser = require('body-parser'); //Body parser
 const mongoose = require('mongoose')
-const keys = require('./keys/mongoKey')
 const passportSetup = require('./config/passport-setup')
-
 
 //initialize multer
 const GridFsStorage = require('multer-gridfs-storage')
 const multer = require('multer')
 const Grid = require("gridfs-stream");
 const crypto = require('crypto');
-
 const path = require('path')
-
-
-
-
 
 // ---- THIS IS MIDDLEWARE ----------
 app.use(express.static('client'))
 
-//Midware for image
+//Middleware for images
 app.use(express.static('uploads'))
 app.use('/uploads', express.static('uploads'))
-// app.use('/Itineraries', express.static('uploads'))
 
-
-
-//body parsers used
+//body parsers 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 //initialized routes
 app.use('/users', require('./routes/users'))
 app.use('/cities', require('./routes/cities'))
 app.use('/itineraries', require('./routes/itineraries'))
-
 
 //auth
 app.use('/auth', require('./routes/auth-routes'))
@@ -50,39 +37,24 @@ app.use("/profile", require("./routes/profileRoutes"));
 //favourites
 app.use("/favourite", require("./routes/favouriteRoutes"));
 
-
-
 //error handling middleware
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.mesage })
 })
 
 
-
-
-
-
-
 //---- THE END OF MIDDLEWARE ------
-
-// const uri = keys.mongoDB.uri;
-// mongoose.connect(uri, { useNewUrlParser: true });
-// mongoose.Promise = global.Promise;
-
-
-const uri = keys.mongoDB.uri;
+const uri = config.mongoDB.uri;
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
 });
-// mongoose.Promise = global.Promise;
-
 
 
 //Change for uploading images
 let gfs;
-var conn = mongoose.createConnection(uri);
+let conn = mongoose.createConnection(uri);
 conn.once("open", () => {
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection("uploads");
@@ -137,7 +109,6 @@ mongoose.connection
   .on("error", function (error) {
     console.log("Connection error:", error);
   });
-
 
 mongoose.Promise = global.Promise;
 

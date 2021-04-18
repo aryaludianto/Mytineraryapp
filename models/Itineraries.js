@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create Itinerary schema and model
-
 const ItinerarySchema = new Schema({
   profileId: {
     type: String

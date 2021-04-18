@@ -1,14 +1,8 @@
 const express = require('express');
-// get an instance of router
-var router = express.Router();
+const router = express.Router();
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
-var config = require('../keys/authConfig');
-
-
-
-// ROUTES
-// ==============================================
+const config = require('../config/config');
 
 // auth login
 router.get('/login', (req, res) => {
@@ -35,8 +29,6 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   res.send('you have reach the callback URI')
 })
 
-
-
 router
   .route("/googlelogin")
   .post(
@@ -57,10 +49,5 @@ router
       res.status(200).json({ user: user, token: token });
     }
   );
-
-
-
-
-
 
 module.exports = router

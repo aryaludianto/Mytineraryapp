@@ -4,9 +4,7 @@ const Users = require('../models/users');
 const Itinerary = require("../models/Itineraries");
 
 router.post("/getfavourites", (req, res) => {
-  let user = req.body.user;
-  console.log("let this be user of ", user);
-
+  const user = req.body.user;
   Users.findOne({ _id: user })
     .then(Users => {
       let itineraries = Users.favourite;
