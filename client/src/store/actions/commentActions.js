@@ -1,11 +1,7 @@
-// add comment
-
 import { POST_COMMENT } from '../actions/actions';
 import axios from 'axios';
 
 export const postComment = itinerariesArray => dispatch => {
-  console.log('axiosing');
-
   axios
     .post('/testComment/commentsAll', {
       itinerariesArray: itinerariesArray

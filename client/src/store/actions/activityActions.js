@@ -20,11 +20,8 @@ export const fetchActivities = itinerariesArray => dispatch => {
 
 export const addActivityPict = tempData => dispatch => {
 
-  let { formData, data } = tempData, imgIsLoaded;
-
-  imgIsLoaded = formData.get('file')
-
-  console.log(imgIsLoaded)
+  const { formData, data } = tempData;
+  const imgIsLoaded = formData.get('file')
 
   if (imgIsLoaded !== 'null') {
     axios.post('/itineraries/uploads', formData)

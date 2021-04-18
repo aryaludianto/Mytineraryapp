@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import homeIcon from '../img/homeIcon.png';
 import './Footer.css';
@@ -8,13 +9,12 @@ import ArrowLeft from '@material-ui/icons/ArrowLeft';
 import IconButton from '@material-ui/core/IconButton';
 
 
-
 class Footer extends Component {
 
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-  }
+  // }
 
   render() {
     let isAuthenticated = this.props.login.isLoggedIn

@@ -1,8 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import './Login.css';
 import { connect } from 'react-redux';
-// import GoogleLogin from '../googleLogin/googleLogin'
-
 import GoogleLogin from 'react-google-login';
 import google from '../img/google_logo.png';
 import PropTypes from 'prop-types';
@@ -10,7 +9,7 @@ import {
   checkAccount,
   oauthGoogle
 } from '../../store/actions/loginActions'
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -24,7 +23,6 @@ class Login extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.responseGoogle = this.responseGoogle.bind(this);
-
   }
 
   onChange(e) {
@@ -33,7 +31,7 @@ class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     const email = this.state.email;
     const password = this.state.password;
     this.props.checkAccount(email, password);
@@ -41,7 +39,7 @@ class Login extends React.Component {
   }
 
   async responseGoogle(res) {
-    console.log('response google', res);
+    // console.log('response google', res);
     await this.props.oauthGoogle(res.accessToken);
     if (!this.props.errorMessage) {
       this.props.history.push('/');
@@ -51,7 +49,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <div className="Login">
           <h1 className="createHeadLog">Login</h1>
           <form onSubmit={this.onSubmit}>
@@ -76,9 +74,9 @@ class Login extends React.Component {
 
 
             <div className="userAgree">
-              <label>
-                {/* <input type="checkbox" value="remember" /> Remember Me */}
-              </label>
+              {/* <label>
+                <input type="checkbox" value="remember" /> Remember Me
+              </label> */}
             </div>
             <input className="submtLog" type="submit" value="OK" />
           </form>
@@ -106,11 +104,7 @@ class Login extends React.Component {
               onFailure={this.responseGoogle}
             />
           </div>
-
-
           <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
-
-
           <div className="createAcc">
             <NavLink to='CreateAccount'>
               <button
@@ -122,13 +116,12 @@ class Login extends React.Component {
                     alt="accountImg"
                   />
                   Create Account
-              </div>
+                </div>
               </button>
             </NavLink>
           </div>
-          {/* <a href="/CreateAccount"> <p>CreateAccount</p> </a> */}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

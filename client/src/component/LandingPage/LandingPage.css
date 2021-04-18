@@ -16,33 +16,19 @@ h3 {
   padding: 0;
 }
 
-/* div.content {
-  display: grid;
-  width: 100%;
-} */
-
 a {
   display: none;
   height: 100%;
 }
 
 img.CircleRight {
-  height: 85%;
   display: none;
-  margin: auto;
-  background-color: #3c4f57;
-  border-radius: 50%;
-}
-
-img.CircleRight:hover {
-  opacity: 0.5;
 }
 
 img.LandingImg {
-  margin: auto;
   background-color: white;
-  margin-top: 10%;
-  width: 80%;
+  margin: 100px auto;
+  width: 500px;
 }
 
 h3 {
@@ -90,11 +76,7 @@ h3 {
   font-size: 150%;
 }
 
-@media (max-height: 812px) {
-  p,
-  h3 {
-    font-family: "DM Serif Text", serif;
-  }
+@media (max-width: 768px) {
   .landingPage {
     background-color: white;
     display: grid;
@@ -167,10 +149,10 @@ h3 {
   }
 
   .textIns {
-    font-size: 125%;
+    font-size: 100%;
     margin: 0 5% 0 5%;
-    align-self: end;
     display: inline;
+    align-self: end;
   }
 
   .acc a {
@@ -181,13 +163,5 @@ h3 {
 
   .notifSize {
     display: none;
-  }
-}
-
-@media (max-height: 667px) {
-  .textIns {
-    font-size: 100%;
-    margin: 0 5% 0 5%;
-    align-self: end;
   }
 }
