@@ -11,11 +11,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 class Footer extends Component {
 
-  // constructor(props) {
-  //   super(props)
-
-  // }
-
   render() {
     let isAuthenticated = this.props.login.isLoggedIn
     const history = createBrowserHistory();
@@ -41,51 +36,35 @@ class Footer extends Component {
         >
           <ArrowLeft className='arrowLeftIcon' style={{ color: '#484848' }} />
         </IconButton>)}
-
-      <img className="homeIconNotActive" src={homeIcon} alt="homeIcon"></img>
     </div>
     )
+
+    const activeNonHome = (<div className='footerBar'>
+      <IconButton
+        id='leftArr'
+        className='leftArrow'
+        onClick={() => {
+          history.goBack();
+        }}
+      >
+        <ArrowLeft style={{ fontSize: 100, color: '#484848', height: '35px', display: 'grid' }} />
+      </IconButton>
+      <NavLink to="/" className='homeIcon'>
+        <img className="homeI" src={homeIcon} alt="homeIcon"></img>
+      </NavLink>
+    </div>)
+
+    const isHome = history.location.pathname === '/';
 
     return (
       <div className="Footer">
         <div className="imgWrapper">
-
-          {isAuthenticated ?
-
-            history.location.pathname === '/' ?
-
-              homeButtonActive
-
-              :
-
-              (<div className='footerBar'>
-                <IconButton
-                  id='leftArr'
-                  className='leftArrow'
-                  onClick={() => {
-                    history.goBack();
-                  }}
-                >
-                  <ArrowLeft style={{ fontSize: 100, color: '#484848', height: '35px', display: 'grid' }} />
-                </IconButton>
-                <NavLink to="/" className='homeIcon'>
-                  <img className="homeI" src={homeIcon} alt="homeIcon"></img>
-                </NavLink>
-              </div>)
-
-            : homeButtonNonActive
-
-
-          }
+          {isAuthenticated ? isHome ? homeButtonActive : activeNonHome : homeButtonNonActive}
         </div>
-
       </div>
     );
   }
 }
-
-
-
 
 function mapStateToProps(state) {
   return {
