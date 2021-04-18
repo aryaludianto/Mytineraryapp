@@ -40,7 +40,4 @@ const ItinerarySchema = new Schema({
   }]
 })
 
-
 module.exports = Itinerary = mongoose.model('itinerary', ItinerarySchema);
-
-
