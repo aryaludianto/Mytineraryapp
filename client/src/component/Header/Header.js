@@ -1,9 +1,8 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react';
 import './Header.css';
 import { connect } from 'react-redux';
-
-//new way
 import Menu from './Menu';
 import { NavLink } from 'react-router-dom';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -13,13 +12,7 @@ class Header extends Component {
 
   render() {
 
-
-    let isAuthenticated = this.props.login.isLoggedIn
-
-    console.log(this.props.login.isLoggedIn)
-
-    isAuthenticated ? console.log('logged in ' + isAuthenticated) : console.log('Logged out ' + isAuthenticated)
-
+    const isAuthenticated = this.props.login.isLoggedIn;
     const guestLink = (
       <div className="Header">
         <NavLink to="/login" className="userIcon">
@@ -29,8 +22,7 @@ class Header extends Component {
           <Menu />
         </div>
       </div>
-
-    )
+    );
 
     const userLink = (
       <div className="Header">
@@ -41,21 +33,15 @@ class Header extends Component {
           <Menu />
         </div>
       </div>
-    )
-
-
+    );
 
     return (
       <>
         { isAuthenticated ? userLink : guestLink}
-      </ >
+      </>
     );
   }
 }
-
-// Header.propTypes = {
-//   auth: React.propTypes.object.isRequired
-// }
 
 function mapStateToProps(state) {
   return {

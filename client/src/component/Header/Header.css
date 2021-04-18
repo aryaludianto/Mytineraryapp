@@ -1,5 +1,5 @@
 div.Header {
-  display: none;
+  display: grid;
   grid-auto-flow: column;
   margin-top: 2%;
   grid-template-columns: 1fr 1fr;
@@ -9,10 +9,7 @@ div.Header {
 }
 
 a.userIcon {
-  display: grid;
-  margin-left: 40%;
-  height: 100%;
-  background-color: #db2f00;
+  display: none;
 }
 
 a.navIcon {
@@ -55,8 +52,7 @@ a.navIcon {
 }
 
 .menuIn {
-  display: grid;
-  background-color: #db2f00;
+  display: none;
 }
 
 #lost {
@@ -81,6 +77,11 @@ a.navIcon {
     display: grid;
     margin-left: 10%;
     height: 100%;
+    background-color: #db2f00;
+  }
+
+  .menuIn {
+    display: grid;
     background-color: #db2f00;
   }
 
