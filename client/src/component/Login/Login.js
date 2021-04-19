@@ -31,7 +31,6 @@ class Login extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    // console.log(this.state);
     const email = this.state.email;
     const password = this.state.password;
     this.props.checkAccount(email, password);
@@ -39,7 +38,6 @@ class Login extends React.Component {
   }
 
   async responseGoogle(res) {
-    // console.log('response google', res);
     await this.props.oauthGoogle(res.accessToken);
     if (!this.props.errorMessage) {
       this.props.history.push('/');
