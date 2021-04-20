@@ -22,13 +22,13 @@ export const oauthGoogle = accessToken => {
     const res = await axios.post('/auth/googlelogin', {
       access_token: accessToken
     });
-
+    localStorage.setItem('user', res.data.token);
+    localStorage.setItem('email', res.data.user.email);
     dispatch({
       type: AUTH_SIGN_UP,
       payload: res.data
     });
-    localStorage.setItem('user', res.data.token);
-    localStorage.setItem('email', res.data.user.email);
+
   };
 };
 
