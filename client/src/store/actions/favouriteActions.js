@@ -1,15 +1,13 @@
 import { GET_FAVOURITES } from '../actions/actions';
 import axios from 'axios';
 
-export const addToFavourites = (itineraryFavourite, user) => dispatch => {
-  console.log('user', user, 'itineraryFavourite', itineraryFavourite);
+export const addToFavourites = (itineraryFavorite, user) => dispatch => {
   axios
-    .put('/itineraries/itineraries/favourite', {
-      itineraryFavourite: itineraryFavourite,
+    .put('/itineraries/itineraries/favorite', {
+      itineraryFavorite: itineraryFavorite,
       user: user
     })
     .then(res => {
-      console.log(res);
       dispatch({
         type: GET_FAVOURITES,
         payload: res.data
@@ -24,14 +22,10 @@ export const addToFavourites = (itineraryFavourite, user) => dispatch => {
 export const getFavourites = user => dispatch => {
   console.log('the user of get favourites action', user);
   axios
-    .post('/favourite/getfavourites', {
+    .post('/favorite/getfavorites', {
       user: user
     })
     .then(res => {
-      // console.log(
-      //   'Itineraries --> ',
-      //   res.data
-      // );
       dispatch({
         type: GET_FAVOURITES,
         payload: res.data
@@ -44,16 +38,10 @@ export const getFavourites = user => dispatch => {
 
 
 
-
-
-
-
-
 export const removeFavourite = (id, user) => dispatch => {
   axios
-    .post('/favourite/deleteFavourite', { id: id, user: user })
+    .post('/favorite/deleteFavorite', { id: id, user: user })
     .then(res => {
-      console.log('this should be the itineraries after deleting', res.data);
       dispatch({
         type: GET_FAVOURITES,
         payload: res.data

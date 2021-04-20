@@ -3,17 +3,16 @@ const router = express.Router();
 const Users = require('../models/users');
 const Itinerary = require("../models/Itineraries");
 
-router.post("/getfavourites", (req, res) => {
+router.post("/getfavorites", (req, res) => {
   const user = req.body.user;
   Users.findOne({ _id: user })
     .then(Users => {
-      let itineraries = Users.favourite;
+      let itineraries = Users.favorite;
 
       return itineraries;
     })
     .then(itineraries => {
       Itinerary.find({ _id: { $in: itineraries } }).then(itinerariesFull => {
-
         res.status(200).send(itinerariesFull);
         return itinerariesFull;
       });
@@ -27,25 +26,25 @@ router.post("/getfavourites", (req, res) => {
 
 
 
-router.post("/deleteFavourite", (req, res) => {
+router.post("/deleteFavorite", (req, res) => {
   Users.findByIdAndUpdate(
     { _id: req.body.user },
-    { $pull: { favourite: req.body.id } },
+    { $pull: { favorite: req.body.id } },
     { upsert: true }
   )
     .then(Users => {
-      let favouriteArray = [];
-      let oldArray = Users.favourite;
+      let favoriteArray = [];
+      let oldArray = Users.favorite;
       oldArray.forEach(item => {
         if (item != req.body.id) {
-          favouriteArray.push(item);
+          favoriteArray.push(item);
         }
       });
 
-      return favouriteArray;
+      return favoriteArray;
     })
-    .then(favouriteArray => {
-      Itinerary.find({ _id: { $in: favouriteArray } }).then(itinerariesFull => {
+    .then(favoriteArray => {
+      Itinerary.find({ _id: { $in: favoriteArray } }).then(itinerariesFull => {
         res.status(200).send(itinerariesFull);
         return itinerariesFull;
       });

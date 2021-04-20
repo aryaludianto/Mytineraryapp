@@ -35,7 +35,7 @@ app.use('/log', require('./routes/login'))
 app.use("/profile", require("./routes/profileRoutes"));
 
 //favourites
-app.use("/favourite", require("./routes/favouriteRoutes"));
+app.use("/favorite", require("./routes/favouriteRoutes"));
 
 //error handling middleware
 app.use((err, req, res, next) => {
@@ -46,10 +46,10 @@ app.use((err, req, res, next) => {
 //---- THE END OF MIDDLEWARE ------
 const uri = config.mongoDB.uri;
 mongoose.connect(uri, {
-  useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useNewUrlParser: true
 });
 
 

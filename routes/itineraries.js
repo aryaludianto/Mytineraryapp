@@ -84,7 +84,6 @@ router.put("/:id", (req, res, next) => {
 router.delete("/:id", (req, res, next) => {
   Itinerary.findByIdAndRemove({ _id: req.params.id }).then((itinerary) => {
     res.send(itinerary)
-
   });
 });
 
@@ -94,27 +93,19 @@ router.post("/uploads", upload.single("file"), (req, res) => {
 });
 
 //adding favorite
-router.put("/itineraries/favourite", (req, res) => {
-  // Users.findByIdAndUpdate(
-  Users.findAndModify(
+router.put("/itineraries/favorite", (req, res) => {
+
+  Users.findByIdAndUpdate(
     { _id: req.body.user },
-    { $push: { favourite: req.body.itineraryFavourite } },
+    { $push: { favorite: req.body.itineraryFavorite } },
     { upsert: true }
   ).then(Users => {
-
-    let favouriteArray = Users.favourite;
-
-    console.log("favouriteArray before", favouriteArray);
-
-    favouriteArray.push(req.body.itineraryFavourite);
-
-    console.log("favouriteArray after", favouriteArray);
-
-    return favouriteArray;
-
+    let favoriteArray = Users.favorite;
+    favoriteArray.push(req.body.itineraryFavorite);
+    return favoriteArray;
   })
-    .then(favouriteArray => {
-      Itinerary.find({ _id: { $in: favouriteArray } }).then(itinerariesFull => {
+    .then(favoriteArray => {
+      Itinerary.find({ _id: { $in: favoriteArray } }).then(itinerariesFull => {
         res.status(200).send(itinerariesFull);
         return itinerariesFull;
       });
