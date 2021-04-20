@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const config = require('../config/config');
 
 router.post("/login", (req, res, next) => {
-  console.log("Login", req.body.email);
+  // console.log("Login", req.body.email);
   Users.find({ email: req.body.email })
     .exec()
     .then(account => {
@@ -15,7 +15,7 @@ router.post("/login", (req, res, next) => {
           message: "Auth failed1"
         });
       }
-      console.log(account);
+      // console.log(account);
       bcrypt.compare(req.body.password, account[0].password, (err, resp) => {
         console.log(err);
         if (err) {

@@ -6,7 +6,7 @@ import { fetchCities } from '../../store/actions/citiesActions'
 import { Link } from 'react-router-dom'
 // import {fetchItineraries} from '../../store/actions/itineraryActions'
 import './Cities.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import { isLoggedIn } from '../../store/actions/loginActions';
 import { getProfile } from '../../store/actions/profileAction'

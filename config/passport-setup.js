@@ -10,10 +10,10 @@ passport.use(
     clientSecret: config.google.clientSecret
   }, (accessToken, refreshToken, profile, done) => {
 
-    console.log("this is profile from google", profile);
+    // console.log("this is profile from google", profile);
     Users.findOne({ email: profile.emails[0].value }).then(currentUser => {
       if (currentUser) {
-        console.log("user is", currentUser);
+        // console.log("user is", currentUser);
         let user = currentUser;
         done(null, user);
       } else {
@@ -29,7 +29,7 @@ passport.use(
         })
           .save()
           .then(newAccount => {
-            console.log("new user created:", + newAccount);
+            // console.log("new user created:", + newAccount);
             let user = newAccount;
             done(null, user);
           });

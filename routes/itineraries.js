@@ -84,6 +84,7 @@ router.put("/:id", (req, res, next) => {
 router.delete("/:id", (req, res, next) => {
   Itinerary.findByIdAndRemove({ _id: req.params.id }).then((itinerary) => {
     res.send(itinerary)
+
   });
 });
 
@@ -94,16 +95,21 @@ router.post("/uploads", upload.single("file"), (req, res) => {
 
 //adding favorite
 router.put("/itineraries/favourite", (req, res) => {
-  Users.findByIdAndUpdate(
+  // Users.findByIdAndUpdate(
+  Users.findAndModify(
     { _id: req.body.user },
     { $push: { favourite: req.body.itineraryFavourite } },
     { upsert: true }
   ).then(Users => {
-    console.log("Users", Users);
+
     let favouriteArray = Users.favourite;
+
     console.log("favouriteArray before", favouriteArray);
+
     favouriteArray.push(req.body.itineraryFavourite);
+
     console.log("favouriteArray after", favouriteArray);
+
     return favouriteArray;
 
   })
@@ -116,7 +122,7 @@ router.put("/itineraries/favourite", (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json({
-        error: err
+        error: "saving favorite error"
       });
     });
 });

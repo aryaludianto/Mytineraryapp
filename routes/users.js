@@ -105,7 +105,7 @@ router.post("/", upload.single("file"), (req, res, next) => {
       email: req.body.email
     },
     function (err, existingAccount) {
-      console.log(existingAccount);
+      // console.log(existingAccount);
       if (err) throw err;
       if (existingAccount == null) {
         console.log("this is a new account, I will add it");
@@ -128,7 +128,7 @@ router.post("/", upload.single("file"), (req, res, next) => {
           }
         });
       } else {
-        console.log("account exists");
+        // console.log("account exists");
         res.json(null);
       }
     }
@@ -136,7 +136,7 @@ router.post("/", upload.single("file"), (req, res, next) => {
 });
 
 router.post("/uploads", upload.single("profile"), (req, res) => {
-  console.log("this is req.file", req.file);
+  // console.log("this is req.file", req.file);
 
   res.send("sending something back to say we reach upload path");
 });
@@ -168,7 +168,7 @@ router.post('/login', function (req, res) {
       expiresIn: 86400 // expires in 24 hours
     });
 
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({ auth: true, token });
   });
 
 });

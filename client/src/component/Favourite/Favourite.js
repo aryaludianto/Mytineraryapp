@@ -15,13 +15,13 @@ import ItinerariesDisp from '../Itineraries/itinerariesDisp'
 class Favourite extends Component {
 
   componentDidMount() {
-    
+
   }
 
-  constructor(props) {
-    super(props);
-   
-  }
+  // constructor(props) {
+  //   super(props);
+
+  // }
   render() {
 
     let { isLoggedIn } = this.props.login
@@ -30,11 +30,11 @@ class Favourite extends Component {
 
     return (
       <div className="itineraries">
-        <h1 style={{'margin-top': '5%'}}>Favourites</h1>
+        <h1 style={{ 'margin-top': '5%' }}>Favourites</h1>
 
 
         <div className="itineraries">
-          { !isLoggedIn ? (
+          {!isLoggedIn ? (
             <div >
               {' '}
               You have to Log in!
