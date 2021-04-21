@@ -29,8 +29,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   res.send('you have reach the callback URI')
 })
 
-router
-  .route("/googlelogin")
+router.route("/googlelogin")
   .post(
     passport.authenticate("googleToken", { session: false }),
     (req, res) => {

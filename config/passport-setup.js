@@ -41,7 +41,7 @@ const config = require('./config');
 //   })
 // )
 
-const absoluteUri = 'http://grim-monster-25961.herokuapp.com'
+const absoluteUri = 'https://grim-monster-25961.herokuapp.com'
 passport.use(
   "googleToken",
   new GooglePlusTokenStrategy({
