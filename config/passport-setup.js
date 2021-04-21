@@ -47,7 +47,7 @@ passport.use(
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
     callbackURL: '/auth/google/redirect',
-    Proxy: true
+    proxy: true
   }, (accessToken, refreshToken, profile, done) => {
 
     // console.log("this is profile from google", profile);
