@@ -41,12 +41,13 @@ const config = require('./config');
 //   })
 // )
 
+const absoluteUri = 'http://grim-monster-25961.herokuapp.com'
 passport.use(
   "googleToken",
   new GooglePlusTokenStrategy({
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
-    callbackURL: '/auth/google/redirect',
+    callbackURL: absoluteUri + '/auth/google/redirect',
     proxy: true
   }, (accessToken, refreshToken, profile, done) => {
 
