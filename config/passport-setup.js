@@ -7,7 +7,8 @@ passport.use(
   "googleToken",
   new GooglePlusTokenStrategy({
     clientID: config.google.clientID,
-    clientSecret: config.google.clientSecret
+    clientSecret: config.google.clientSecret,
+    callbackURL: '/auth/google/redirect'
   }, (accessToken, refreshToken, profile, done) => {
 
     // console.log("this is profile from google", profile);

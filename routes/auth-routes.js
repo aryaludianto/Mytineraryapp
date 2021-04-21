@@ -45,15 +45,6 @@ router
           expiresIn: "24h"
         }
       );
-
-      // console.log("this is JWT from auth-routes")
-      // console.log("this is config secret : " + config.secret);
-      // console.log("this is user email : " + user.email);
-      // console.log("this is user name : " + user.firstName + "  " + user.lastName);
-      // console.log(token)
-      // console.log("this is JWT from auth-routes")
-
-      // console.log("this is user", user);
       res.status(200).json({ user: user, token: token });
     }
   );
