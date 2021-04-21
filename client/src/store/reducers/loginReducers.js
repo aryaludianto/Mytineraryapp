@@ -12,8 +12,6 @@ const initialState = {
 const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_SIGN_UP:
-      // console.log('reducer AUTH_SIGN_UP');
-      // console.log(action)
       return {
         ...state,
         token: action.payload.token,

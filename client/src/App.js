@@ -39,7 +39,6 @@ class App extends Component {
           <Route path='/favourite' component={favouriteCont} />
           <Route path='/add' component={AddItinerary} />
           <Route path='/Activity' component={Activity} />
-
           <Footer />
         </div>
       </BrowserRouter>

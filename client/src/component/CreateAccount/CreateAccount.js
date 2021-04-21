@@ -1,12 +1,11 @@
+/* eslint-disable indent */
 /* eslint-disable no-console */
 import React from 'react';
 import './CreateAccount.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { userSignupRequest, fetchUsers } from '../../store/actions/signUpActions'
-// import Add from '@material-ui/icons/Add';
 import Country from './Country'
-// import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 const emailRegx = RegExp(
@@ -24,9 +23,6 @@ const formIsValid = ({ formErrors, ...rest }) => {
 
   return valid;
 };
-
-
-
 
 class CreateAccount extends React.Component {
   constructor(props) {
@@ -66,44 +62,42 @@ class CreateAccount extends React.Component {
     let formErrors = this.state.formErrors;
 
     switch (name) {
-    case 'username':
-      formErrors.username =
+      case 'username':
+        formErrors.username =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'password':
-      formErrors.password =
+        break;
+      case 'password':
+        formErrors.password =
           value.length < 6 ? 'minimum 3 characters required' : '';
-      break;
-    case 'email':
-      formErrors.email = emailRegx.test(value)
-        ? ''
-        : 'invalid email address';
-      break;
-    case 'firstname':
-      formErrors.firstname =
+        break;
+      case 'email':
+        formErrors.email = emailRegx.test(value)
+          ? ''
+          : 'invalid email address';
+        break;
+      case 'firstname':
+        formErrors.firstname =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'lastname':
-      formErrors.lastname =
+        break;
+      case 'lastname':
+        formErrors.lastname =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'country':
-      formErrors.country = value.length < 0 ? 'please choose a country' : "";
-      break;
-    default:
-      break;
+        break;
+      case 'country':
+        formErrors.country = value.length < 0 ? 'please choose a country' : '';
+        break;
+      default:
+        break;
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    // this.setState({ formErrors, [name]: value }, () => console.log(this.state));
 
-    // this.setState({ [e.target.name]: e.target.value })
-    // this.state.email && this.props.fetchUsers(this.state.email)
+    this.setState({ [e.target.name]: e.target.value })
+    this.state.email && this.props.fetchUsers(this.state.email)
   }
 
 
   handleFile(event) {
-    console.log('this is event', event);
-    console.log('selectedfile', event.target.files[0]);
     this.setState({ selectedFile: event.target.files[0] });
   }
 
@@ -125,7 +119,6 @@ class CreateAccount extends React.Component {
 
     if (formIsValid(this.state)) {
       let formData = new FormData();
-
       formData.append('file', this.state.selectedFile);
       formData.append('username', this.state.username);
       formData.append('password', this.state.password);
@@ -134,7 +127,6 @@ class CreateAccount extends React.Component {
       formData.append('lastName', this.state.lastname);
       formData.append('country', this.state.country);
 
-
       this.props.userSignupRequest(formData)
 
     }
@@ -142,7 +134,7 @@ class CreateAccount extends React.Component {
   }
 
   handleButtonChange(e) {
-    console.log('change buttons');
+    // console.log('change buttons');
     e.preventDefault();
     if (formIsValid(this.state)) {
       this.setState({ submitReady: true });
@@ -175,18 +167,6 @@ class CreateAccount extends React.Component {
               style={{ color: '#484848' }}
             />
           </div>
-          {/* 
-          <label className="profileImageUpload" htmlFor="file">
-            <div className="box">
-              <div style={{ fontSize: 14 }}>
-                Add Photo <Add />
-              </div>
-            </div>
-          </label> */}
-
-
-
-          {/*redesign starts here */}
           <div className="userName form-Group input" >
             <label className="form-label"
               style={{ flex: 1 }}
@@ -257,8 +237,6 @@ class CreateAccount extends React.Component {
                   : 'form-control eml'
               }
             />
-            {/* {formErrors.email.length > 0 && <span>{formErrors.email}</span>} */}
-            {/* {this.props.users[0] && <p>Email already exist!!!</p>} */}
           </div>
           {formErrors.email.length > 0 && (
             <div className="errorForm">
@@ -403,7 +381,7 @@ class CreateAccount extends React.Component {
                 }}
                 className="btn btn-outline-primary chkd"
               >
-                  OK
+                OK
               </button>
             )}
           </div>

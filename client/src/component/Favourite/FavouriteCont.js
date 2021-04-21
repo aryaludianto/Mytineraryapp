@@ -4,23 +4,26 @@ import { getProfile } from "../../store/actions/profileAction";
 import { getFavourites } from '../../store/actions/favouriteActions';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { isLoggedIn } from '../../store/actions/loginActions'
 
 class FavouritesContainer extends Component {
-  getProfileAndFavourites = callback => {
+
+  getProfileAndFavourites = (callback) => {
+    this.props.isLoggedIn();
     this.props.getProfile();
-    var user = this.props.profile;
-    callback(user);
+
+    console.log(this.props.profile[0])
+    callback(this.props.profile[0]);
   };
 
+
   componentDidMount() {
-    // this.props.getProfile();
-    this.getProfileAndFavourites(() => {
-      var user = this.props.profile[0];
-      console.log("this should be user", user);
+    this.getProfileAndFavourites((user) => {
       this.props.getFavourites(user);
-      console.log(this.props);
     });
   }
+
+
   render() {
     return (
       <div className="itinerariesBody">
@@ -34,18 +37,24 @@ class FavouritesContainer extends Component {
 }
 
 FavouritesContainer.propTypes = {
-  getProfile: PropTypes.func.isRequired
+  getProfile: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.func.isRequired,
+  profile: PropTypes.array.isRequired
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile.profile,
-  favourites: state.favourites.favourites
-});
+const mapStateToProps = (state) => {
+  return {
+    login: state.login,
+    profile: state.profile.profile,
+    favourites: state.favourites.favourites
+  }
+};
 
 export default connect(
   mapStateToProps,
   {
     getProfile,
-    getFavourites
+    getFavourites,
+    isLoggedIn,
   }
 )(FavouritesContainer);

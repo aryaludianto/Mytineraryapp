@@ -71,11 +71,11 @@ class Login extends React.Component {
             </div>
 
 
-            <div className="userAgree">
-              {/* <label>
+            {/* <div className="userAgree"> */}
+            {/* <label>
                 <input type="checkbox" value="remember" /> Remember Me
               </label> */}
-            </div>
+            {/* </div> */}
             <input className="submtLog" type="submit" value="OK" />
           </form>
 
@@ -85,11 +85,11 @@ class Login extends React.Component {
               render={renderProps => (
                 <button
                   onClick={renderProps.onClick}
-                  className="btn btn-primary google "
+                  className="btn btn-primary google"
                 >
                   <div>
                     <img
-                      style={{ maxHeight: '25px', marginRight: 10 }}
+                      style={{ maxHeight: '25px', margin: 'auto' }}
                       src={google}
                       alt="google"
                     />
@@ -109,10 +109,10 @@ class Login extends React.Component {
                 className="btn btn-primary google "
               >
                 <div>
-                  <img
+                  {/* <img
                     style={{ maxHeight: '25px', marginRight: 10 }}
                     alt="accountImg"
-                  />
+                  /> */}
                   Create Account
                 </div>
               </button>

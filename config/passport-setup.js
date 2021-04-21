@@ -3,18 +3,12 @@ const Users = require('../models/users')
 const GooglePlusTokenStrategy = require("passport-google-plus-token");
 const config = require('./config');
 
-const absoluteUri = 'https://grim-monster-25961.herokuapp.com'
-
-console.log('below is the redirect url');
-console.log({ callbackURL: absoluteUri + '/auth/google/redirect' })
-console.log('above is the redirect url');
-
 passport.use(
   "googleToken",
   new GooglePlusTokenStrategy({
     clientID: config.google.clientID,
     clientSecret: config.google.clientSecret,
-    callbackURL: absoluteUri + '/auth/google/redirect',
+    callbackURL: '/auth/google/redirect',
     proxy: true
   }, (accessToken, refreshToken, profile, done) => {
 

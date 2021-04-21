@@ -1,14 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-
 import List from "@material-ui/core/List";
-
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
-
 import MenuItem from "@material-ui/core/MenuItem";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import { NavLink } from "react-router-dom";
@@ -26,13 +22,8 @@ const styles = {
 
 class MenuShow extends React.Component {
   componentDidMount(props) {
-    // let user = localStorage.getItem("user");
-    // if (user) {
-    //   this.setState({
-    //     isLoggedIn: true
-    //   });
-    // }
   }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -94,7 +85,7 @@ class MenuShow extends React.Component {
                 </NavLink>
                 <NavLink to="/Favourite">
                   <MenuItem style={style} onClick={this.handleClose}>
-                    Favourites
+                    Favorites
                   </MenuItem>
                 </NavLink>
                 <NavLink to="/ProfilePageCont">
@@ -173,7 +164,7 @@ class Menu extends React.Component {
   };
 
   render() {
-    let isLoggedIn  = this.props.login.isLoggedIn
+    let isLoggedIn = this.props.login.isLoggedIn
 
     return (
       <div className="menuIn">

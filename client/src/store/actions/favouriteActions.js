@@ -20,7 +20,6 @@ export const addToFavourites = (itineraryFavorite, user) => dispatch => {
 
 
 export const getFavourites = user => dispatch => {
-  console.log('the user of get favourites action', user);
   axios
     .post('/favorite/getfavorites', {
       user: user

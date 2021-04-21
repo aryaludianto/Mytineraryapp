@@ -19,11 +19,12 @@ import PropTypes from 'prop-types';
 class LandingPage extends React.Component {
 
   componentDidMount() {
-    if (localStorage.getItem('user') != null) {
-      this.props.getProfile();
-    }
+    // if (localStorage.getItem('user') != null) {
+    //   this.props.getProfile();
+    // }
     this.props.isLoggedIn()
   }
+
 
 
   render() {
@@ -45,7 +46,6 @@ class LandingPage extends React.Component {
         <p className='notifSize'>Mytinerary only Works on your phone, please adjust your screen size.</p>
       </div>
     )
-
   }
 }
 

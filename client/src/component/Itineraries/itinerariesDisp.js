@@ -33,11 +33,7 @@ export class ItinerariesDisp extends Component {
   }
 
   render() {
-
-    console.log(this.props)
-
     const itinerariesDisp = this.props.props && this.props.props.map((itinerary) => {
-
       let tag = itinerary.hashtags.map(hashtag => {
         return <p key={hashtag}>#{hashtag}</p>
       })
@@ -75,7 +71,6 @@ export class ItinerariesDisp extends Component {
         </div>
       )
     })
-
 
     return (
       <div>
