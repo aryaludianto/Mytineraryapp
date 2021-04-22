@@ -16,8 +16,6 @@ import { getFavourites } from '../../store/actions/favouriteActions'
 // eslint-disable-next-line no-unused-vars
 import ItinerariesDisp from './itinerariesDisp'
 
-
-
 class Itineraries extends Component {
 
   constructor(props) {
@@ -35,7 +33,6 @@ class Itineraries extends Component {
     this.props.getUsers()
     this.props.getProfile()
     this.props.profile[0] && this.props.getFavourites(this.props.profile[0]._id)
-
   }
 
   generateImageURL(fileLocation) {
@@ -87,10 +84,7 @@ class Itineraries extends Component {
           {itineraries.length === 0 ? <p className="noAvail">No available Mytineraries</p> : <p className="avail">Available Mytineraries</p>}
         </div>
         <div className="itineraries">
-          {/* {itinerariesDisp} */}
-
           <ItinerariesDisp props={itineraries} />
-
           {this.props.login.isLoggedIn && (<div className="addItinerary">
             <NavLink to='/add'> <button>Add Your Own Itinerary</button>
             </NavLink>
@@ -106,11 +100,6 @@ class Itineraries extends Component {
   }
 }
 
-// itineraries.propTypes = {
-//   itineraries: PropTypes.array.isRequired,
-//   fetchitineraries: PropTypes.func.isRequired
-// }
-
 
 const mapStateToProps = (state) => {
   return {
@@ -121,6 +110,5 @@ const mapStateToProps = (state) => {
     users: state.profile.users
   }
 }
-
 
 export default connect(mapStateToProps, { fetchItineraries, fetchCities, isLoggedIn, getUsers, getProfile, getFavourites })(Itineraries);

@@ -136,31 +136,31 @@ class AddItinerary extends Component {
 
 
     switch (name) {
-    case 'title':
-      formErrors.title =
+      case 'title':
+        formErrors.title =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'rating':
-      formErrors.rating =
+        break;
+      case 'rating':
+        formErrors.rating =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'duration':
-      formErrors.duration =
+        break;
+      case 'duration':
+        formErrors.duration =
           value.length < 6 ? 'minimum 3 characters required' : '';
-      break;
-    case 'price':
-      formErrors.price =
+        break;
+      case 'price':
+        formErrors.price =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'hashtag':
-      formErrors.hashtag =
+        break;
+      case 'hashtag':
+        formErrors.hashtag =
           value.length < 4 ? 'minimum 4 characters required' : '';
-      break;
-    case 'city':
-      formErrors.city = value.length < 0 ? 'please choose a country' : "";
-      break;
-    default:
-      break;
+        break;
+      case 'city':
+        formErrors.city = value.length < 0 ? 'please choose a country' : "";
+        break;
+      default:
+        break;
     }
 
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
@@ -175,28 +175,28 @@ class AddItinerary extends Component {
     let formErrors = this.state.formErrors;
 
     switch (name) {
-    case 'name':
-      formErrors.activity[0].name =
+      case 'name':
+        formErrors.activity[0].name =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'address':
-      formErrors.activity[0].address =
+        break;
+      case 'address':
+        formErrors.activity[0].address =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'time':
-      formErrors.activity[0].time =
+        break;
+      case 'time':
+        formErrors.activity[0].time =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'cost':
-      formErrors.activity[0].cost =
+        break;
+      case 'cost':
+        formErrors.activity[0].cost =
           value.length < 3 ? 'minimum 3 characters required' : '';
-      break;
-    case 'comment':
-      formErrors.activity[0].comment =
+        break;
+      case 'comment':
+        formErrors.activity[0].comment =
           value.length < 4 ? 'minimum 4 characters required' : '';
-      break;
-    default:
-      break;
+        break;
+      default:
+        break;
     }
     this.setState({ formErrors, activity: { ...this.state.activity, [name]: value } }, () => console.log(this.state));
   }
@@ -717,7 +717,7 @@ class AddItinerary extends Component {
                       }}
                       className="btn btn-outline-primary chkd"
                     >
-                        OK
+                      OK
                     </button>
                   )}
                 </div>

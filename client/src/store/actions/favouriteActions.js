@@ -14,10 +14,9 @@ export const addToFavourites = (itineraryFavorite, user) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
     });
 };
-
 
 export const getFavourites = user => dispatch => {
   axios
@@ -31,11 +30,9 @@ export const getFavourites = user => dispatch => {
       });
     })
     .catch(error => {
-      console.log(error.response);
+      console.error(error.response);
     });
 };
-
-
 
 export const removeFavourite = (id, user) => dispatch => {
   axios
@@ -47,6 +44,6 @@ export const removeFavourite = (id, user) => dispatch => {
       });
     })
     .catch(error => {
-      console.log(error.response);
+      console.error(error.response);
     });
 };

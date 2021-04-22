@@ -17,13 +17,12 @@ export const getProfile = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
     });
 };
 
 
 export const getUsers = () => dispatch => {
-
   axios
     .get('/users')
     .then(res => {
@@ -33,6 +32,6 @@ export const getUsers = () => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err)
+      console.error(err)
     })
 }

@@ -47,7 +47,6 @@ class CreateAccount extends React.Component {
       }
     }
 
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleButtonChange = this.handleButtonChange.bind(this);
@@ -68,7 +67,7 @@ class CreateAccount extends React.Component {
         break;
       case 'password':
         formErrors.password =
-          value.length < 6 ? 'minimum 3 characters required' : '';
+          value.length < 6 ? 'minimum 6 characters required' : '';
         break;
       case 'email':
         formErrors.email = emailRegx.test(value)
@@ -139,7 +138,7 @@ class CreateAccount extends React.Component {
     if (formIsValid(this.state)) {
       this.setState({ submitReady: true });
     } else {
-      console.log('form is not valid');
+      // console.log('form is not valid');
     }
   }
 
@@ -194,10 +193,6 @@ class CreateAccount extends React.Component {
               <span>{formErrors.username}</span>
             </div>
           )}
-
-
-
-
           <div className="password input form-Group">
             <label className="form-label"
               style={{ flex: 1 }}
@@ -205,9 +200,9 @@ class CreateAccount extends React.Component {
             >
               Password:{' '}
             </label>
-            <input type="password" name="password" onChange={this.onChange}
+            <input type="password" name="password" style={{ flex: 2 }} onChange={this.onChange}
               className={
-                formErrors.password.length > 0 ? 'error form-control'
+                formErrors.password.length > 0 ? 'form-control error'
                   : 'form-control psswd'
               }
             />
@@ -231,6 +226,7 @@ class CreateAccount extends React.Component {
               name="email"
               value={this.state.email}
               onChange={this.onChange}
+              style={{ flex: 2 }}
               className={
                 formErrors.email.length > 0
                   ? 'error form-control'
@@ -265,8 +261,6 @@ class CreateAccount extends React.Component {
               }
               style={{ flex: 2 }}
             />
-            {/* {formErrors.firstname.length > 0
-              && (<span>{formErrors.firstname} </span>)} */}
           </div>
           {formErrors.firstname.length > 0 && (
             <div className="errorForm">
@@ -275,8 +269,6 @@ class CreateAccount extends React.Component {
               </span>
             </div>
           )}
-
-
           <div className="lastName input form-group">
             <label
               className="form-label"

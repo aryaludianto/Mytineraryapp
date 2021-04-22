@@ -1,23 +1,23 @@
-
-.CreateAccount{
+.CreateAccount {
   background-color: white;
-  height: 100%;
+  /* height: 100%;
+  width: 100%; */
+  overflow-x: auto;
 }
 
-.createHead{
+.createHead {
   margin: 10px;
   text-align: center;
   font-weight: bolder;
 }
 
-.addPhoto{
+.addPhoto {
   margin: auto;
   border: 0;
   display: flex;
   flex-direction: row;
   width: 100%;
   height: 100%;
-
 }
 
 .addPhoto p {
@@ -39,7 +39,7 @@
   height: 90%;
 }
 
-.formInp{
+.formInp {
   display: grid;
   /* flex-direction: row; */
   grid-auto-columns: 2fr;
@@ -47,30 +47,29 @@
   height: 5vh;
 }
 
-label{
+label {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
-.formInp input{
+.formInp input {
   width: 150%;
 }
 
-.formInp p{
-  width:100%;
+.formInp p {
+  width: 100%;
 }
 
-.formInp select{
-  width:50%;
+.formInp select {
+  width: 50%;
   margin-left: 0;
 }
 
-.submt{
+.submt {
   width: 40%;
   margin: 2% auto;
 }
-
-
 
 /* redesign starts here */
 
@@ -84,13 +83,15 @@ label{
   display: flex;
   align-items: center;
   color: #484848;
+  width: 80px;
 }
 
 .error {
   background: pink;
+  width: 100%;
 }
 
-.errorForm{
+.errorForm {
   display: grid;
   width: 100%;
   font-size: 100%;
@@ -102,18 +103,10 @@ label{
   margin: 10px;
 }
 
-.psswd {
-  margin-left:10%;
-}
-
-.eml {
-  margin-left:19%;
-}
-
-.chk{
+.chk {
   margin-left: 10%;
 }
 
 .chkd {
-  margin:auto 15% auto;
+  margin: auto 15% auto;
 }

@@ -1,9 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import ActivitiesCont from '../Activities/ActivitiesCont';
 import LikeButton from '../Like/LikeButton';
 import { connect } from 'react-redux';
-
-
 
 export class ItinerariesDisp extends Component {
 
@@ -42,7 +41,6 @@ export class ItinerariesDisp extends Component {
         <div className="itinerariesDisp" key={itinerary._id}>
           <div className="itiCard" key={itinerary._id}>
             <div className="profile" >
-
               <img
                 src={this.generateImageURL(itinerary.profilePic)}
                 className='profPic'
@@ -51,11 +49,8 @@ export class ItinerariesDisp extends Component {
               <p>{itinerary.profileName}</p>
             </div>
             <div className="titContainer" key={itinerary._id}>
-              {this.props.login.isLoggedIn && <LikeButton props={itinerary} />
-              }
-
+              {this.props.login.isLoggedIn && <LikeButton props={itinerary} />}
               <h1 className="itiTitle">{itinerary.title}</h1>
-
               <div className='ratings'>
                 <p>Likes: {itinerary.rating}</p>
                 <p>{itinerary.duration} Hours</p>

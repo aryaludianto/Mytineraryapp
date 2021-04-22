@@ -11,6 +11,9 @@ import {
 } from '../../store/actions/loginActions'
 import { NavLink } from 'react-router-dom';
 
+import { isLoggedIn } from '../../store/actions/loginActions';
+import { getProfile } from '../../store/actions/profileAction';
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -34,16 +37,19 @@ class Login extends React.Component {
     const email = this.state.email;
     const password = this.state.password;
     this.props.checkAccount(email, password);
+    this.props.isLoggedIn();
+    this.props.getProfile();
     this.props.history.push('/');
   }
 
   async responseGoogle(res) {
     await this.props.oauthGoogle(res.accessToken);
     if (!this.props.errorMessage) {
+      this.props.isLoggedIn();
+      this.props.getProfile();
       this.props.history.push('/');
     }
   }
-
 
   render() {
     return (
@@ -69,13 +75,6 @@ class Login extends React.Component {
                 </input>
               </label>
             </div>
-
-
-            {/* <div className="userAgree"> */}
-            {/* <label>
-                <input type="checkbox" value="remember" /> Remember Me
-              </label> */}
-            {/* </div> */}
             <input className="submtLog" type="submit" value="OK" />
           </form>
 
@@ -109,10 +108,6 @@ class Login extends React.Component {
                 className="btn btn-primary google "
               >
                 <div>
-                  {/* <img
-                    style={{ maxHeight: '25px', marginRight: 10 }}
-                    alt="accountImg"
-                  /> */}
                   Create Account
                 </div>
               </button>
@@ -125,15 +120,15 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  checkAccount: PropTypes.func.isRequired
+  checkAccount: PropTypes.func.isRequired,
+  getProfile: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  // loggedInUser: state.loggedInUser.loggedInUser
+  login: state.login,
 })
-
 
 export default connect(
   mapStateToProps,
-  { checkAccount, oauthGoogle }
+  { checkAccount, oauthGoogle, isLoggedIn, getProfile }
 )(Login);
