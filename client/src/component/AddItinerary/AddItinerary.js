@@ -14,22 +14,18 @@ import { addItinerariesReq } from '../../store/actions/itineraryActions';
 
 const formIsValid = ({ formErrors, ...rest }) => {
   let valid = true;
-  console.log(rest)
   Object.values(formErrors).forEach(val => {
-
     val.length > 1 && (valid = false)
-
   });
   Object.values(rest).forEach(val => {
     console.log(val)
     val === null && (valid = false)
     // val.activities.length > 0 && (valid = true)
-
   });
 
   if (rest.activities.length >= 1 && rest.title !== '') (valid = true)
 
-  console.log('valid is :' + valid)
+  // console.log('valid is :' + valid)
 
   return valid;
 };

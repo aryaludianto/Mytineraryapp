@@ -1,30 +1,29 @@
-.itinerariesBody{
+.itinerariesBody {
   /* overflow: scroll; */
   display: flex;
   flex-direction: column;
   background-color: white;
 }
 
-
 .topCard {
   margin: 0;
 }
 
 .itineraries {
-  overflow:scroll;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 0 2%;
 }
 
-.itiCard{
+.itiCard {
   display: grid;
   /* border: 1px solid black; */
   grid-template-columns: 2fr 8fr;
 }
 
-.profile{
+.profile {
   display: grid;
   grid-auto-rows: 1fr;
 }
@@ -36,8 +35,9 @@
   font-weight: bold;
 }
 
-.titContainer{
+.titContainer {
   display: grid;
+  grid-auto-rows: 1fr;
 }
 
 .itiTitle {
@@ -48,40 +48,38 @@
   margin: auto auto auto 10%;
 }
 
-
-
-.ratings{
+.ratings {
   display: flex;
   flex-direction: row;
   font-size: 80%;
   margin: 0 5% 0;
 }
 
-
 .ratings p {
-  margin:auto;
-}
-
-.tags{
-  display: flex;
-  flex-direction: row;
-  font-size: 80%;
-}
-
-.tags p{
   margin: auto;
 }
 
-.viewAll{
+.tags {
+  display: flex;
+  flex-direction: row;
+  font-size: 80%;
+  margin-right: 10px;
+}
+
+.tags p {
+  margin: auto;
+}
+
+.viewAll {
   /* text-align: center; */
   /* justify-items: center; */
   background-color: #3c4f57;
   border-radius: 2%;
   height: 30px;
-  margin:auto;
+  margin: auto;
 }
 
-.viewAll p{
+.viewAll p {
   margin: auto;
   color: white;
   text-align: center;
@@ -117,9 +115,9 @@
 }
 
 .citiesDisp {
-    padding: 0 2% 0;
-    text-align: center;
-    width: 100%;
+  padding: 0 2% 0;
+  text-align: center;
+  width: 100%;
 }
 
 /* .citiesDisp h1 {
@@ -129,7 +127,7 @@
   display: grid;
 } */
 
-.anotherCity{
+.anotherCity {
   text-align: center;
   margin: 10% auto;
   font-size: 120%;
@@ -140,12 +138,12 @@
   color: blueviolet;
 }
 
-.noAvail{
+.noAvail {
   font-size: 150%;
   margin: 10% 10% 10% 10%;
 }
 
-.avail{
+.avail {
   margin: 5% 0 2% 3%;
 }
 
@@ -153,6 +151,6 @@
   width: 100%;
 }
 
-.addItinerary{
+.addItinerary {
   margin-top: 20px;
 }
