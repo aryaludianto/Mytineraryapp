@@ -61,7 +61,7 @@ class Favourite extends Component {
 
 const mapStateToProps = state => ({
   favourites: state.favourites.favourites,
-  profile: state.profile.profile,
+  // profile: state.profile.profile,
   login: state.login
 });
 

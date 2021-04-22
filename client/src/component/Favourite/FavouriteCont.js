@@ -1,26 +1,34 @@
-import React, { Component } from "react";
-import Favourite from "./Favourite";
-import { getProfile } from "../../store/actions/profileAction";
+import React, { Component } from 'react';
+import Favourite from './Favourite';
+import { getProfile } from '../../store/actions/profileAction';
 import { getFavourites } from '../../store/actions/favouriteActions';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { isLoggedIn } from '../../store/actions/loginActions'
+import axios from 'axios';
 
 class FavouritesContainer extends Component {
 
-  getProfileAndFavourites = (callback) => {
-    this.props.isLoggedIn();
-    if (this.props.isLoggedIn) {
-      this.props.getProfile();
-    }
-    callback(this.props.profile[0]);
-  };
+  getProfileAndFavourites = (callbackFunction) => {
+    const emailOfUser = localStorage.getItem('email');
+    const config = {
+      withCredentials: true,
+      headers: { Authorization: 'Bearer ' + localStorage.getItem('user') }
+    };
+    axios
+      .post('/profile/profiles', { emailOfUser: emailOfUser }, config)
+      .then(res => {
+        callbackFunction(res.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+
+  }
 
   componentDidMount() {
-    this.getProfileAndFavourites((user) => {
-      if (this.props.isLoggedIn) {
-        this.props.getFavourites(user);
-      }
-    });
+    this.props.isLoggedIn();
+    this.props.getProfile();
+    this.getProfileAndFavourites(this.props.getFavourites)
   }
 
   render() {
