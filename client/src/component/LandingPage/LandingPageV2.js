@@ -19,6 +19,11 @@ class LandingPage extends React.Component {
 
   componentDidMount() {
     this.props.isLoggedIn()
+
+    if (this.props.login.isLoggedIn) {
+      this.props.getProfile();
+    }
+
   }
 
   render() {

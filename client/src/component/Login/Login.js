@@ -13,6 +13,7 @@ import { NavLink } from 'react-router-dom';
 
 import { isLoggedIn } from '../../store/actions/loginActions';
 import { getProfile } from '../../store/actions/profileAction';
+import { Redirect } from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -39,7 +40,6 @@ class Login extends React.Component {
     this.props.checkAccount(email, password);
     this.props.isLoggedIn();
     this.props.getProfile();
-    this.props.history.push('/');
   }
 
   async responseGoogle(res) {
@@ -47,11 +47,16 @@ class Login extends React.Component {
     if (!this.props.errorMessage) {
       this.props.isLoggedIn();
       this.props.getProfile();
-      this.props.history.push('/');
     }
   }
 
   render() {
+
+    const isLoggedinProperly = this.props.login.isLoggedIn;
+    if (isLoggedinProperly) {
+      return (<Redirect to='/' />)
+    }
+
     return (
       <>
         <div className="Login">

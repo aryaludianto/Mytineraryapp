@@ -1,24 +1,16 @@
 import { GET_PROFILE, LOAD_USERS } from './actions';
 import axios from 'axios';
 
-let config = {
-  withCredentials: true,
-  headers: { Authorization: 'Bearer ' + localStorage.getItem('user') }
-};
+import { getProfileFunction } from '../general/profile'
 
 export const getProfile = () => dispatch => {
-  const emailOfUser = localStorage.getItem('email');
-  axios
-    .post('/profile/profiles', { emailOfUser: emailOfUser }, config)
-    .then(res => {
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      });
+  const dispatchCallback = (res) => {
+    dispatch({
+      type: GET_PROFILE,
+      payload: res
     })
-    .catch(err => {
-      console.error(err);
-    });
+  };
+  getProfileFunction(dispatchCallback)
 };
 
 
