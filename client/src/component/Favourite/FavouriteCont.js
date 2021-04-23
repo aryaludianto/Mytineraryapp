@@ -22,7 +22,6 @@ class FavouritesContainer extends Component {
       .catch(err => {
         console.error(err);
       });
-
   }
 
   componentDidMount() {
