@@ -26,7 +26,6 @@ class FavouritesContainer extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     login: state.login,

@@ -1,6 +1,5 @@
 import { GET_PROFILE, LOAD_USERS } from './actions';
 import axios from 'axios';
-
 import { getProfileFunction } from '../general/profile'
 
 export const getProfile = () => dispatch => {
@@ -12,7 +11,6 @@ export const getProfile = () => dispatch => {
   };
   getProfileFunction(dispatchCallback)
 };
-
 
 export const getUsers = () => dispatch => {
   axios

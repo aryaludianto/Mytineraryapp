@@ -85,7 +85,7 @@ class Login extends React.Component {
 
           <div className="googleButton">
             <GoogleLogin
-              clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
+              clientId="777898629223-qp96oar2mh7e92jf19gmhuv2kb9cepne.apps.googleusercontent.com"
               render={renderProps => (
                 <button
                   onClick={renderProps.onClick}

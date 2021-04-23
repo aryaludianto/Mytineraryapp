@@ -5,6 +5,7 @@ import './Profile.css'
 
 import { getProfile } from '../../store/actions/profileAction';
 import Profile from './Profile';
+import { Redirect } from 'react-router-dom';
 
 class ProfilePageCont extends Component {
   constructor(props) {
@@ -19,17 +20,26 @@ class ProfilePageCont extends Component {
     window.localStorage.removeItem('user');
     window.localStorage.removeItem('email');
     this.setState({ isLoggedIn: false });
+
     this.props.history.push('/')
+    // return (<Redirect to='/' />)
   }
 
   componentDidMount() {
-    if (localStorage.getItem('user') != null) {
+    if (localStorage.getItem('user') != null || this.props.login.isLoggedIn) {
       this.setState({ isLoggedIn: true });
       this.props.getProfile();
     }
   }
 
   render() {
+
+    const isLoggedOutProperly = this.state.isLoggedIn;
+
+    // if (!isLoggedOutProperly) {
+    //   return (<Redirect to='/' />)
+    // }
+
     return (
       <div>
         <div
@@ -63,7 +73,7 @@ class ProfilePageCont extends Component {
               </span>
               Please log in to see your Profile
               <span role="img" aria-label="thumbs up sign">
-                
+
               </span>
             </div>
           )}

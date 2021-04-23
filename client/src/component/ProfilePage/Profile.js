@@ -8,9 +8,10 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import { getProfile } from '../../store/actions/profileAction';
 
 class Profile extends Component {
-  componentDidMount() {
-    console.log(this.props.profile);
-  }
+
+  // componentDidMount() {
+  //   console.log(this.props.profile);
+  // }
 
   render() {
     return (

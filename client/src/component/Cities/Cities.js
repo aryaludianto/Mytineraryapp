@@ -24,8 +24,6 @@ class Cities extends Component {
 
   componentDidMount() {
     this.props.fetchCities()
-    this.props.isLoggedIn()
-    this.props.getProfile()
   }
 
   handleChange(e) {
