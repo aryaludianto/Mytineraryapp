@@ -1,15 +1,16 @@
 const passport = require('passport');
 const Users = require('../models/users')
 const GooglePlusTokenStrategy = require("passport-google-plus-token");
+// const GoogleStrategy = require("passport-google-oauth20");
 const config = require('./config');
 
 passport.use(
   "googleToken",
   new GooglePlusTokenStrategy({
-    clientID: config.google.clientID,
-    clientSecret: config.google.clientSecret,
-    callbackURL: '/auth/google/redirect',
-    proxy: true
+    clientID:
+      config.google.clientID,
+    clientSecret:
+      config.google.clientSecret,
   }, (accessToken, refreshToken, profile, done) => {
 
     // console.log("this is profile from google", profile);

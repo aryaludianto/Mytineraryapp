@@ -84,8 +84,8 @@ class Login extends React.Component {
           </form>
 
           <div className="googleButton">
-            <GoogleLogin
-              clientId="777898629223-qp96oar2mh7e92jf19gmhuv2kb9cepne.apps.googleusercontent.com"
+            {/* <GoogleLogin
+              clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
               render={renderProps => (
                 <button
                   onClick={renderProps.onClick}
@@ -104,7 +104,7 @@ class Login extends React.Component {
               buttonText="Log in with Google"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
-            />
+            /> */}
           </div>
           <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
           <div className="createAcc">

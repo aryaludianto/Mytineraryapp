@@ -22,6 +22,9 @@ export const oauthGoogle = accessToken => {
     const res = await axios.post('/auth/googlelogin', {
       access_token: accessToken
     });
+
+    console.log('this is access token:', accessToken)
+
     localStorage.setItem('user', res.data.token);
     localStorage.setItem('email', res.data.user.email);
     dispatch({

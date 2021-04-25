@@ -9,8 +9,11 @@ const GridFsStorage = require('multer-gridfs-storage')
 const multer = require('multer')
 const Grid = require("gridfs-stream");
 const crypto = require('crypto');
-const path = require('path')
+const path = require('path');
 
+const cors = require('cors')
+
+app.use(cors());
 // ---- THIS IS MIDDLEWARE ----------
 app.use(express.static('client'))
 
