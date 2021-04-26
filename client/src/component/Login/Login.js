@@ -45,11 +45,11 @@ class Login extends React.Component {
     console.log('this is googe response from async function')
     console.log(res.accessToken)
 
-    // await this.props.oauthGoogle(res.accessToken);
-    // if (!this.props.errorMessage) {
-    //   this.props.isLoggedIn();
-    //   // this.props.getProfile();
-    // }
+    await this.props.oauthGoogle(res.accessToken);
+    if (!this.props.errorMessage) {
+      this.props.isLoggedIn();
+      this.props.getProfile();
+    }
   }
 
   render() {

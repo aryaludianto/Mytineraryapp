@@ -11,9 +11,9 @@ const Grid = require("gridfs-stream");
 const crypto = require('crypto');
 const path = require('path');
 
-// const cors = require('cors')
+const cors = require('cors')
 
-// app.use(cors());
+app.use(cors());
 // ---- THIS IS MIDDLEWARE ----------
 app.use(express.static('client'))
 
