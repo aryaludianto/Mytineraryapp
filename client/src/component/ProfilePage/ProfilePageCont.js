@@ -35,7 +35,6 @@ class ProfilePageCont extends Component {
   render() {
 
     const isLoggedOutProperly = this.state.isLoggedIn;
-
     // if (!isLoggedOutProperly) {
     //   return (<Redirect to='/' />)
     // }
