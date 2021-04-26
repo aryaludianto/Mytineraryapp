@@ -16,20 +16,9 @@ Built with MonggoDB, Express.js, REACT (class based component), Node.JS and REDU
 ![Login-page](https://user-images.githubusercontent.com/45729368/116074175-a85bf680-a691-11eb-885c-845b37590207.png)
 ![Favorite-page](https://user-images.githubusercontent.com/45729368/116074303-d0e3f080-a691-11eb-8e44-b0956295a6d4.png)
 
-## Goals for this project
-
-- To practice for myself of a FullStack development
-- To showcase what I have learned during my coding bootcamp at codaisseur.
-- To showcase development approach of using **[wireframes](#wireframes)** with **[agile user-story](#user-story)**
-- **[To showcase disciplined git usage](#my-git-workflow)**
-
 ## Features to be included in the future
 
-- Functional shopping cart
-- Functional search feature
-- Send email/sms to cooking when booking
-- Chat feature between customers and cook
-- Filter dishes by category, dish name, location
+- Google Login (works in Local)
 
 # Install dependencies for server
 
