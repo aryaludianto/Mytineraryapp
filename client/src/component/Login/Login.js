@@ -42,8 +42,8 @@ class Login extends React.Component {
   }
 
   async responseGoogle(res) {
-    // console.log('this is googe response from async function')
-    // console.log(res.accessToken)
+    console.log('this is googe response from async function')
+    console.log(res.accessToken)
 
     await this.props.oauthGoogle(res.accessToken);
     if (!this.props.errorMessage) {
@@ -85,8 +85,8 @@ class Login extends React.Component {
             <input className="submtLog" type="submit" value="OK" />
           </form>
 
-          {/* <div className="googleButton">
-            <GoogleLogin
+          <div className="googleButton">
+            {/* <GoogleLogin
               // clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
               clientId="796492216166-3mnm6nan8ep6strlkerkj6u34m328gir.apps.googleusercontent.com"
               render={renderProps => (
@@ -107,8 +107,8 @@ class Login extends React.Component {
               buttonText="Log in with Google"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
-            />
-          </div> */}
+            /> */}
+          </div>
           <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
           <div className="createAcc">
             <NavLink to='CreateAccount'>
