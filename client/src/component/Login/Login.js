@@ -39,15 +39,17 @@ class Login extends React.Component {
     const password = this.state.password;
     this.props.checkAccount(email, password);
     this.props.isLoggedIn();
-    this.props.getProfile();
   }
 
   async responseGoogle(res) {
-    await this.props.oauthGoogle(res.accessToken);
-    if (!this.props.errorMessage) {
-      this.props.isLoggedIn();
-      this.props.getProfile();
-    }
+    console.log('this is googe response from async function')
+    console.log(res.accessToken)
+
+    // await this.props.oauthGoogle(res.accessToken);
+    // if (!this.props.errorMessage) {
+    //   this.props.isLoggedIn();
+    //   // this.props.getProfile();
+    // }
   }
 
   render() {
@@ -84,8 +86,9 @@ class Login extends React.Component {
           </form>
 
           <div className="googleButton">
-            {/* <GoogleLogin
-              clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
+            <GoogleLogin
+              // clientId="71133190926-d8mjt4mslu36qa3md2efuql8md35sjg9.apps.googleusercontent.com"
+              clientId="796492216166-3mnm6nan8ep6strlkerkj6u34m328gir.apps.googleusercontent.com"
               render={renderProps => (
                 <button
                   onClick={renderProps.onClick}
@@ -104,7 +107,7 @@ class Login extends React.Component {
               buttonText="Log in with Google"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
-            /> */}
+            />
           </div>
           <h1 className="textLog">Don't have a MYtinerary account yet? You should create one! It's totally free and only takes a minute.</h1>
           <div className="createAcc">
