@@ -33,7 +33,7 @@
     "history": "^4.10.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.0-beta2",
-    "mongoose": "^5.12.5",
+    "mongoose": "^5.13.15",
     "multer": "^1.4.2",
     "multer-gridfs-storage": "^3.3.0",
     "passport": "^0.4.0",
